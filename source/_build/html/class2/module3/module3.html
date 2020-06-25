@@ -87,7 +87,10 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../class2.html">Class 2 - Deploy, Publish and Protect Arcadia Web Application</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../module1/module1.html">DevOps deploy Arcadia Application - Main app</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../module2/module2.html">Step 2 - DevOps deploy Money Transfer application</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">step 3 - DevOps deploy Refer Friends Application</a><ul class="simple">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">step 3 - DevOps deploy Refer Friends Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-deploy-arcadia-app3-and-the-new-componenent-with-a-ci-cd-pipeline">Step 1 - Deploy Arcadia App3 and the new componenent with a CI/CD pipeline</a><ul class="simple">
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../module4/module4.html">step 4 - Protect Arcadia Application</a></li>
@@ -167,14 +170,65 @@
 <p class="first admonition-title">Note</p>
 <p class="last">At the end of this module, Arcadia Bank application will look like this.</p>
 </div>
-<a class="reference internal image-reference" href="class2/module3/../pictures/app3.png"><img alt="class2/module3/../pictures/app3.png" class="align-center" src="class2/module3/../pictures/app3.png" /></a>
+<img alt="../../_images/app31.png" class="align-center" src="../../_images/app31.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Video of this module :</p>
-<div style="text-align: center; margin-bottom: 2em;">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Phj3yHnt0HA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div><div class="toctree-wrapper compound">
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In this lab, all tasks will be automated. DevOps will deploy the app in K8S, and NetOps will create the new component at the same time.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="step-1-deploy-arcadia-app3-and-the-new-componenent-with-a-ci-cd-pipeline">
+<h2>Step 1 - Deploy Arcadia App3 and the new componenent with a CI/CD pipeline<a class="headerlink" href="#step-1-deploy-arcadia-app3-and-the-new-componenent-with-a-ci-cd-pipeline" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">In Gitlab, click on Administrator / Arcadia-App3</p>
+<ol class="arabic simple">
+<li>Click on file <code class="docutils literal notranslate"><span class="pre">deploy</span></code></li>
+<li>Click <code class="docutils literal notranslate"><span class="pre">edit</span></code> and make a modification - like YES !!!!!</li>
+<li>Click <code class="docutils literal notranslate"><span class="pre">Commit</span> <span class="pre">changes</span></code></li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">At this moment, you simulate a commit like a DevOps. This <code class="docutils literal notranslate"><span class="pre">commit</span></code> will trigger a <code class="docutils literal notranslate"><span class="pre">webhook</span></code> to <code class="docutils literal notranslate"><span class="pre">Jenkins</span></code>, so that Jenkins execute a <code class="docutils literal notranslate"><span class="pre">pipeline</span></code>.</p>
+</div>
+</li>
+<li><p class="first">In Jenkins, click on <code class="docutils literal notranslate"><span class="pre">DeployApp3</span></code> pipeline</p>
+</li>
+<li><p class="first">A pipeline is running, click on it</p>
+</li>
+<li><p class="first">You can follow the steps</p>
+<img alt="../../_images/pipeline1.png" class="align-center" src="../../_images/pipeline1.png" />
+</li>
+<li><p class="first">Connect to Controller GUI and check the new component in <code class="docutils literal notranslate"><span class="pre">web</span> <span class="pre">application</span> <span class="pre">arcadia</span></code></p>
+<img alt="../../_images/components1.png" src="../../_images/components1.png" />
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">align:</th><td class="field-body">center</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p class="first">In <code class="docutils literal notranslate"><span class="pre">Chrome</span></code> refresh the page. You can see the new App <a href="#id1"><span class="problematic" id="id2">``</span></a>Refer friends`</p>
+</li>
+<li><p class="first">Transfer some money to your friends in order to populate analytics</p>
+</li>
+</ol>
+<img alt="../../_images/app31.png" class="align-center" src="../../_images/app31.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Congrats, as you can notice, with one <code class="docutils literal notranslate"><span class="pre">commit</span></code> in Gitlab, you triggered a webhook that deployed the <code class="docutils literal notranslate"><span class="pre">app</span></code> and the <code class="docutils literal notranslate"><span class="pre">infra</span></code></p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Now, it’s time to protect Arcadia Finance application with a BIG-IP.</p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 

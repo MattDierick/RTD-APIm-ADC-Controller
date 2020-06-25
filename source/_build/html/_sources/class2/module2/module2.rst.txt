@@ -22,7 +22,7 @@ Step 1 - Deploy Arcadia App2 with a CI/CD pipeline like a DevOps
    #. Click ``edit`` and make a modification - like YES !!!!!
    #. Click ``Commit changes``
 
-.. note :: At this moment, you simulate a commit like a DevOps. This ``commit`` will trigger a ``webhook`` to ``Jenkins``, so that Jenkins execute a ``pipeline``.
+   .. note :: At this moment, you simulate a commit like a DevOps. This ``commit`` will trigger a ``webhook`` to ``Jenkins``, so that Jenkins execute a ``pipeline``.
 
 #. In Jenkins, click on ``DeployApp2`` pipeline
 #. A pipeline is running, click on it
