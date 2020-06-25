@@ -18,7 +18,7 @@ In this module, we will deploy the 2 main containers for Arcadia Bank applicatio
 Step 1 - Deploy Arcadia Main app with a CI/CD pipeline like a DevOps
 ********************************************************************
 
-#. Open Chrome, you can notice Chrome opens all the tabs for you
+#. Open ``Chrome``, you can notice Chrome opens all the tabs for you
 
 #. Login to all tools
    
@@ -32,12 +32,12 @@ Step 1 - Deploy Arcadia Main app with a CI/CD pipeline like a DevOps
 
 #. In Gitlab, click on Administrator / Arcadia-MainApp
    
-   #. Click on ``deploy`` file
+   #. Click on file ``deploy``
    #. Click ``edit`` and make a modification - like YES !!!!!
    #. Click ``Commit changes``
 
 
-.. note :: At this moment, you simulate a commit from a DevOps. This commit will trigger a webhook to Jenkins, so that Jenkins execute a pipeline.
+.. note :: At this moment, you simulate a commit like a DevOps. This ``commit`` will trigger a ``webhook`` to ``Jenkins``, so that Jenkins execute a ``pipeline``.
 
 #. In Jenkins, click on ``DeployMainApp`` pipeline
 #. A pipeline is running, click on it
@@ -59,7 +59,7 @@ Step 2 - Publish Arcadia application with NGINX+ and Controller
       #. You can see 2 deployments (main and back) with nodeports
    #. Started 3 NGINX+ instances in a docker
 
-      #. WebSSh to CICD and DOCKER (NGINX API gw, Dev Portal)
+      #. WebSSH to CICD and DOCKER (NGINX API gw, Dev Portal)
       #. Run a ``docker ps``
 
       .. code :: bash
@@ -86,6 +86,8 @@ Step 2 - Publish Arcadia application with NGINX+ and Controller
 .. note :: It is time to configure the NGINX+ instances in order to publish Arcadia application (main and back pods)
 
 **Configure the Controller**
+
+.. warning :: For all the commands below, there are CASE SENSITIVE
 
 #. Connect to the controller (admin@nginx-udf.internal / admin123!)
 #. Click on top ``left corner icon`` and ``Services``
@@ -115,7 +117,7 @@ Step 2 - Publish Arcadia application with NGINX+ and Controller
       :align: center
 |
 
-   .. warning :: don't forget to click on ``done``
+   .. warning :: Don't forget to click on ``done``
 |
 
    .. image:: ../pictures/module1/cp_main_4.png
@@ -126,7 +128,7 @@ Step 2 - Publish Arcadia application with NGINX+ and Controller
       :align: center
 |
 
-   .. warning :: don't forget to click on ``done``
+   .. warning :: Don't forget to click on ``done``
 
    .. note :: Click ``submit`` 
 |
@@ -146,7 +148,7 @@ Step 2 - Publish Arcadia application with NGINX+ and Controller
       :align: center
 |
 
-   .. warning :: don't forget to click on ``done``
+   .. warning :: Don't forget to click on ``done``
 |
 
    .. image:: ../pictures/module1/cp_back_4.png
@@ -157,13 +159,22 @@ Step 2 - Publish Arcadia application with NGINX+ and Controller
       :align: center
 |
 
-   .. warning :: don't forget to click on ``done``
+   .. warning :: Don't forget to click on ``done``
 
    .. note :: Click ``submit`` 
 |
 
+Step 3 - Test your Controller deployment
+****************************************
+
+#. Open ``Chrome`` and click on the bookmark ``Arcadia Finance``
+
+#. Click on ``Login``
+#. Login as ``matt`` / ``ilovef5`` 
+#. You should see the ``main app`` wihtout ``App2`` nor ``App3``
 
 
+.. warning :: Congratulations, you have deployed your first modern app with NGINX+ and controller
 
 .. toctree::
    :maxdepth: 1

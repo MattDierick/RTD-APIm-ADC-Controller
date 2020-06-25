@@ -87,7 +87,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../class2.html">Class 2 - Deploy, Publish and Protect Arcadia Web Application</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">DevOps deploy Arcadia Application - Main app</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#step-1-deploy-arcadia-main-app-with-a-ci-cd-pipeline-like-a-devops">Step 1 - Deploy Arcadia Main app with a CI/CD pipeline like a DevOps</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-2-publish-arcadia-application-with-nginx-and-controller">Step 2 - Publish Arcadia application with NGINX+ and Controller</a><ul class="simple">
+<li class="toctree-l3"><a class="reference internal" href="#step-2-publish-arcadia-application-with-nginx-and-controller">Step 2 - Publish Arcadia application with NGINX+ and Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-test-your-controller-deployment">Step 3 - Test your Controller deployment</a><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -180,7 +181,7 @@
 <div class="section" id="step-1-deploy-arcadia-main-app-with-a-ci-cd-pipeline-like-a-devops">
 <h2>Step 1 - Deploy Arcadia Main app with a CI/CD pipeline like a DevOps<a class="headerlink" href="#step-1-deploy-arcadia-main-app-with-a-ci-cd-pipeline-like-a-devops" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Open Chrome, you can notice Chrome opens all the tabs for you</li>
+<li>Open <code class="docutils literal notranslate"><span class="pre">Chrome</span></code>, you can notice Chrome opens all the tabs for you</li>
 <li>Login to all tools<ol class="arabic">
 <li>Controller : <a class="reference external" href="mailto:admin&#37;&#52;&#48;nginx-udf&#46;internal">admin<span>&#64;</span>nginx-udf<span>&#46;</span>internal</a> / admin123!</li>
 <li>Jenkins : admin / admin</li>
@@ -193,7 +194,7 @@
 </ol>
 </li>
 <li>In Gitlab, click on Administrator / Arcadia-MainApp<ol class="arabic">
-<li>Click on <code class="docutils literal notranslate"><span class="pre">deploy</span></code> file</li>
+<li>Click on file <code class="docutils literal notranslate"><span class="pre">deploy</span></code></li>
 <li>Click <code class="docutils literal notranslate"><span class="pre">edit</span></code> and make a modification - like YES !!!!!</li>
 <li>Click <code class="docutils literal notranslate"><span class="pre">Commit</span> <span class="pre">changes</span></code></li>
 </ol>
@@ -201,7 +202,7 @@
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">At this moment, you simulate a commit from a DevOps. This commit will trigger a webhook to Jenkins, so that Jenkins execute a pipeline.</p>
+<p class="last">At this moment, you simulate a commit like a DevOps. This <code class="docutils literal notranslate"><span class="pre">commit</span></code> will trigger a <code class="docutils literal notranslate"><span class="pre">webhook</span></code> to <code class="docutils literal notranslate"><span class="pre">Jenkins</span></code>, so that Jenkins execute a <code class="docutils literal notranslate"><span class="pre">pipeline</span></code>.</p>
 </div>
 <ol class="arabic simple">
 <li>In Jenkins, click on <code class="docutils literal notranslate"><span class="pre">DeployMainApp</span></code> pipeline</li>
@@ -227,7 +228,7 @@
 </li>
 <li><p class="first">Started 3 NGINX+ instances in a docker</p>
 <ol class="arabic simple">
-<li>WebSSh to CICD and DOCKER (NGINX API gw, Dev Portal)</li>
+<li>WebSSH to CICD and DOCKER (NGINX API gw, Dev Portal)</li>
 <li>Run a <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code></li>
 </ol>
 <div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>ubuntu@ip-10-1-1-9:~$ docker ps
@@ -256,6 +257,10 @@ ab75d7bd60bb        nginx                            &quot;nginx -g &#39;daemon 
 <p class="last">It is time to configure the NGINX+ instances in order to publish Arcadia application (main and back pods)</p>
 </div>
 <p><strong>Configure the Controller</strong></p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">For all the commands below, there are CASE SENSITIVE</p>
+</div>
 <ol class="arabic">
 <li><p class="first">Connect to the controller (<a class="reference external" href="mailto:admin&#37;&#52;&#48;nginx-udf&#46;internal">admin<span>&#64;</span>nginx-udf<span>&#46;</span>internal</a> / admin123!)</p>
 </li>
@@ -296,7 +301,7 @@ ab75d7bd60bb        nginx                            &quot;nginx -g &#39;daemon 
 <blockquote>
 <div><div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">don’t forget to click on <code class="docutils literal notranslate"><span class="pre">done</span></code></p>
+<p class="last">Don’t forget to click on <code class="docutils literal notranslate"><span class="pre">done</span></code></p>
 </div>
 </div></blockquote>
 <div class="line-block">
@@ -317,7 +322,7 @@ ab75d7bd60bb        nginx                            &quot;nginx -g &#39;daemon 
 <blockquote>
 <div><div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">don’t forget to click on <code class="docutils literal notranslate"><span class="pre">done</span></code></p>
+<p class="last">Don’t forget to click on <code class="docutils literal notranslate"><span class="pre">done</span></code></p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -352,7 +357,7 @@ ab75d7bd60bb        nginx                            &quot;nginx -g &#39;daemon 
 <blockquote>
 <div><div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">don’t forget to click on <code class="docutils literal notranslate"><span class="pre">done</span></code></p>
+<p class="last">Don’t forget to click on <code class="docutils literal notranslate"><span class="pre">done</span></code></p>
 </div>
 </div></blockquote>
 <div class="line-block">
@@ -373,7 +378,7 @@ ab75d7bd60bb        nginx                            &quot;nginx -g &#39;daemon 
 <blockquote>
 <div><div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">don’t forget to click on <code class="docutils literal notranslate"><span class="pre">done</span></code></p>
+<p class="last">Don’t forget to click on <code class="docutils literal notranslate"><span class="pre">done</span></code></p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -382,6 +387,19 @@ ab75d7bd60bb        nginx                            &quot;nginx -g &#39;daemon 
 </div></blockquote>
 <div class="line-block">
 <div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="step-3-test-your-controller-deployment">
+<h2>Step 3 - Test your Controller deployment<a class="headerlink" href="#step-3-test-your-controller-deployment" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Open <code class="docutils literal notranslate"><span class="pre">Chrome</span></code> and click on the bookmark <code class="docutils literal notranslate"><span class="pre">Arcadia</span> <span class="pre">Finance</span></code></li>
+<li>Click on <code class="docutils literal notranslate"><span class="pre">Login</span></code></li>
+<li>Login as <code class="docutils literal notranslate"><span class="pre">matt</span></code> / <code class="docutils literal notranslate"><span class="pre">ilovef5</span></code></li>
+<li>You should see the <code class="docutils literal notranslate"><span class="pre">main</span> <span class="pre">app</span></code> wihtout <code class="docutils literal notranslate"><span class="pre">App2</span></code> nor <code class="docutils literal notranslate"><span class="pre">App3</span></code></li>
+</ol>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Congratulations, you have deployed your first modern app with NGINX+ and controller</p>
 </div>
 <div class="toctree-wrapper compound">
 </div>
