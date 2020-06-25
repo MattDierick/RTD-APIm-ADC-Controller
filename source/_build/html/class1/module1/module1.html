@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Demo Architecture &mdash; NGINX Controller 3.x with BIG-IP Lab  documentation</title>
+  <title>Architecture of Arcadia Application &mdash; NGINX Controller 3.x with BIG-IP Lab  documentation</title>
   
 
   
@@ -84,7 +84,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../class1.html">Class 1 - Understand the infrastructure and the workflow</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Demo Architecture</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Architecture of Arcadia Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../module2/module2.html">Workflow of the demo</a></li>
 </ul>
 </li>
@@ -137,7 +137,7 @@
         
           <li><a href="../class1.html">Class 1 - Understand the infrastructure and the workflow</a> &raquo;</li>
         
-      <li>Demo Architecture</li>
+      <li>Architecture of Arcadia Application</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -156,17 +156,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="demo-architecture">
-<h1>Demo Architecture<a class="headerlink" href="#demo-architecture" title="Permalink to this headline">¶</a></h1>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
+  <div class="section" id="architecture-of-arcadia-application">
+<h1>Architecture of Arcadia Application<a class="headerlink" href="#architecture-of-arcadia-application" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">We will use the famous Arcadia Finance application in this lab. This application is based on 4 microservices. You can find below the different IP addresses and Ports used by NGINX and BIG-IP.</p>
 </div>
-<p>The diagram below explains the application routes.</p>
-<a class="reference internal image-reference" href="../../_images/arcadia-routes.png"><img alt="../../_images/arcadia-routes.png" class="align-center" src="../../_images/arcadia-routes.png" style="width: 569.4px; height: 320.1px;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This application is available in GitLab in case you want to build your own lab : <a class="reference external" href="https://gitlab.com/arcadia-application">https://gitlab.com/arcadia-application</a></p>
+</div>
+<p>First of all, it is important to understand how Arcadia app is split between micro-services</p>
+<p><strong>This is what Arcadia App looks like when the 4 microservices are up and running, and you can see how traffic is routed based on URI</strong></p>
+<img alt="../../_images/arcadia-api.png" class="align-center" src="../../_images/arcadia-api.png" />
+<p><strong>But you can deploy Arcadia Step by Step</strong></p>
+<p>If you deploy only <code class="docutils literal notranslate"><span class="pre">Main</span> <span class="pre">App</span></code> and <code class="docutils literal notranslate"><span class="pre">Back</span> <span class="pre">End</span></code> services.</p>
+<img alt="../../_images/MainApp2.png" class="align-center" src="../../_images/MainApp2.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can see App2 (Money Transfer) and App3 (Refer Friend) are not available. There is dynamic content showing a WARNING instead of a 404 or blank frame.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>If you deploy <code class="docutils literal notranslate"><span class="pre">Main</span> <span class="pre">App</span></code>, <code class="docutils literal notranslate"><span class="pre">Back</span> <span class="pre">End</span></code> and <code class="docutils literal notranslate"><span class="pre">Money</span> <span class="pre">Tranfer</span></code> services.</p>
+<img alt="../../_images/app22.png" class="align-center" src="../../_images/app22.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>If you deploy <code class="docutils literal notranslate"><span class="pre">Main</span> <span class="pre">App</span></code>, <code class="docutils literal notranslate"><span class="pre">Back</span> <span class="pre">End</span></code>, <code class="docutils literal notranslate"><span class="pre">Money</span> <span class="pre">Tranfer</span></code> and <code class="docutils literal notranslate"><span class="pre">Refer</span> <span class="pre">Friend</span></code> services.</p>
+<img alt="../../_images/app32.png" class="align-center" src="../../_images/app32.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>The diagram below show the IP addresses and the ports used for all the routes</strong></p>
+<img alt="../../_images/arcadia-routes.png" class="align-center" src="../../_images/arcadia-routes.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>

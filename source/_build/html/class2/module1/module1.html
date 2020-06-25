@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Step 1 - DevOps deploy Arcadia Application &mdash; NGINX Controller 3.x with BIG-IP Lab  documentation</title>
+  <title>DevOps deploy Arcadia Application - Main app &mdash; NGINX Controller 3.x with BIG-IP Lab  documentation</title>
   
 
   
@@ -85,7 +85,11 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1 - Understand the infrastructure and the workflow</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../class2.html">Class 2 - Deploy, Publish and Protect Arcadia Web Application</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Step 1 - DevOps deploy Arcadia Application</a><ul class="simple">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">DevOps deploy Arcadia Application - Main app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-deploy-arcadia-main-app-with-a-ci-cd-pipeline-like-a-devops">Step 1 - Deploy Arcadia Main app with a CI/CD pipeline like a DevOps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-publish-arcadia-application-with-nginx-and-controller">Step 2 - Publish Arcadia application with NGINX+ and Controller</a><ul class="simple">
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../module2/module2.html">Step 2 - DevOps deploy Money Transfer application</a></li>
@@ -141,7 +145,7 @@
         
           <li><a href="../class2.html">Class 2 - Deploy, Publish and Protect Arcadia Web Application</a> &raquo;</li>
         
-      <li>Step 1 - DevOps deploy Arcadia Application</li>
+      <li>DevOps deploy Arcadia Application - Main app</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -160,14 +164,102 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="step-1-devops-deploy-arcadia-application">
-<h1>Step 1 - DevOps deploy Arcadia Application<a class="headerlink" href="#step-1-devops-deploy-arcadia-application" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="devops-deploy-arcadia-application-main-app">
+<h1>DevOps deploy Arcadia Application - Main app<a class="headerlink" href="#devops-deploy-arcadia-application-main-app" title="Permalink to this headline">¶</a></h1>
 <p>In this module, we will deploy the 2 main containers for Arcadia Bank application and we will publish them.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">At the end of this module, Arcadia Bank application will look like this.</p>
 </div>
-<a class="reference internal image-reference" href="../../_images/MainApp1.png"><img alt="../../_images/MainApp1.png" class="align-center" src="../../_images/MainApp1.png" style="width: 571.2px; height: 280.2px;" /></a>
+<img alt="../../_images/MainApp1.png" class="align-center" src="../../_images/MainApp1.png" />
+<p><strong>Connect to Jumhost RDP and Login as user / user</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As a DevOps, you will deploy Arcadia Application (main and back end pods) with an automation tool set</p>
+</div>
+<div class="section" id="step-1-deploy-arcadia-main-app-with-a-ci-cd-pipeline-like-a-devops">
+<h2>Step 1 - Deploy Arcadia Main app with a CI/CD pipeline like a DevOps<a class="headerlink" href="#step-1-deploy-arcadia-main-app-with-a-ci-cd-pipeline-like-a-devops" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Open Chrome, you can notice Chrome opens all the tabs for you</li>
+<li>Login to all tools<ol class="arabic">
+<li>Controller : <a class="reference external" href="mailto:admin&#37;&#52;&#48;nginx-udf&#46;internal">admin<span>&#64;</span>nginx-udf<span>&#46;</span>internal</a> / admin123!</li>
+<li>Jenkins : admin / admin</li>
+<li>GitLab : root / F5twister$<ul>
+<li>If GitLab does not start, restart the docker in the GitLab VM (WebSSH &gt; docker restart gitlab). Wait 5 minutes.</li>
+</ul>
+</li>
+<li>Kubernetes : click on skip</li>
+<li>BIG-IP : admin / admin</li>
+</ol>
+</li>
+<li>In Gitlab, click on Administrator / Arcadia-MainApp<ol class="arabic">
+<li>Click on <code class="docutils literal notranslate"><span class="pre">deploy</span></code> file</li>
+<li>Click <code class="docutils literal notranslate"><span class="pre">edit</span></code> and make a modification - like YES !!!!!</li>
+<li>Click <code class="docutils literal notranslate"><span class="pre">Commit</span> <span class="pre">changes</span></code></li>
+</ol>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">At this moment, you simulate a commit from a DevOps. This commit will trigger a webhook to Jenkins, so that Jenkins execute a pipeline.</p>
+</div>
+<ol class="arabic simple">
+<li>In Jenkins, click on <code class="docutils literal notranslate"><span class="pre">DeployMainApp</span></code> pipeline</li>
+<li>A pipeline is running, click on it</li>
+<li>You can follow the steps</li>
+</ol>
+<img alt="../../_images/pipeline_mainapp.png" class="align-center" src="../../_images/pipeline_mainapp.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">At this stage, Arcadia Main app and Back End app are deployed un K8S. But you need to publish them with NGINX+ via the controller.</p>
+</div>
+</div>
+<div class="section" id="step-2-publish-arcadia-application-with-nginx-and-controller">
+<h2>Step 2 - Publish Arcadia application with NGINX+ and Controller<a class="headerlink" href="#step-2-publish-arcadia-application-with-nginx-and-controller" title="Permalink to this headline">¶</a></h2>
+<p>The Jenkins pipeline did several things</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">Deployed Arcadia application (main and back end pods) in Kubernetes</p>
+<ol class="arabic simple">
+<li>Connect to <code class="docutils literal notranslate"><span class="pre">Kubernetes</span></code> and check that.</li>
+<li>You can see 2 deployments (main and back) with nodeports</li>
+</ol>
+</li>
+<li><p class="first">Started 3 NGINX+ instances in a docker</p>
+<ol class="arabic simple">
+<li>WebSSh to CICD and DOCKER (NGINX API gw, Dev Portal)</li>
+<li>Run a <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code></li>
+</ol>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>ubuntu@ip-10-1-1-9:~$ docker ps
+CONTAINER ID        IMAGE                            COMMAND                  CREATED             STATUS              PORTS                                                              NAMES
+bf86e23a9807        nginx-plus:36v1                  &quot;sh /entrypoint.sh&quot;      33 seconds ago      Up 31 seconds       10.1.20.9:8080-&gt;80/tcp, 10.1.20.9:8443-&gt;443/tcp                    NginxPlusAPI
+74d679bdf5fb        nginx-plus:36v1                  &quot;sh /entrypoint.sh&quot;      33 seconds ago      Up 31 seconds       80/tcp, 10.1.20.12:8090-&gt;8090/tcp                                  NginxPlusDevPortal
+ac12c0f3148a        nginx-plus:36v1                  &quot;sh /entrypoint.sh&quot;      33 seconds ago      Up 32 seconds       10.1.20.10:8080-&gt;80/tcp, 10.1.20.10:8443-&gt;443/tcp                  NginxPlusWebApp
+ab75d7bd60bb        nginx                            &quot;nginx -g &#39;daemon of…&quot;   7 months ago        Up 13 hours         0.0.0.0:80-&gt;80/tcp                                                 lab-nginx
+35ddc5adc34d        sameersbn/bind:9.11.3-20190706   &quot;/sbin/entrypoint.sh…&quot;   9 months ago        Up 13 hours         0.0.0.0:53-&gt;53/tcp, 0.0.0.0:10000-&gt;10000/tcp, 0.0.0.0:53-&gt;53/udp   bind
+</pre></div>
+</div>
+</li>
+<li><p class="first">Check if NGINX+ instances appears in the controller</p>
+<ol class="arabic simple">
+<li>In the controller GUI, click top <code class="docutils literal notranslate"><span class="pre">left</span> <span class="pre">corner</span> <span class="pre">icon</span></code>, and <code class="docutils literal notranslate"><span class="pre">infrastructure</span></code></li>
+<li>You can see 3 instances running</li>
+</ol>
+<img alt="../../_images/instances.png" class="align-center" src="../../_images/instances.png" />
+</li>
+<li><p class="first">Deploy an AS3 declaration into the BIG-IP in order to publish the NGINX+ API GW</p>
+</li>
+</ol>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is time to configure the NGINX+ instances in order to publish Arcadia application (main and back pods)</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
 <ol class="arabic simple">
 <li>Application name : app_webapp</li>
 <li>Components:<ol class="arabic">
@@ -193,10 +285,8 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Video of this module :</p>
-<div style="text-align: center; margin-bottom: 2em;">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GPqtasD4DBM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div><div class="toctree-wrapper compound">
+<div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
