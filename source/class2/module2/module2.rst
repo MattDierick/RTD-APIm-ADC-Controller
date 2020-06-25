@@ -46,7 +46,7 @@ Step 2 - Publish Money Transfer App with NGINX+ and Controller
 #. Connect to Controller GUI and check the new component in ``web application arcadia``
 
    .. image:: ../pictures/module2/components.png
-   :align: center
+      :align: center
 
    .. note :: You can notice the new ``Money Transfer`` component
 

@@ -36,7 +36,7 @@ Step 1 - Deploy Arcadia App3 and the new componenent with a CI/CD pipeline
 #. Connect to Controller GUI and check the new component in ``web application arcadia``
 
    .. image:: ../pictures/module3/components.png
-   :align: center
+      :align: center
 
 #. In ``Chrome`` refresh the page. You can see the new App ``Refer friends`
 #. Transfer some money to your friends in order to populate analytics
