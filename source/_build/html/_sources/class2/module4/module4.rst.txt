@@ -37,13 +37,39 @@ In this module, we will deploy a WAF policy to protect Arcadia Bank application 
 
 |
 
-Video of this module :
+Step 1 - Send an attack
+***********************
 
-.. raw :: html
+#. In ``Chrome``, in Arcadia web application, refer a friend
+    #. Refer bob@sponge.com
 
-    <div style="text-align: center; margin-bottom: 2em;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/vKCtsByE9G8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
+    .. image:: ../pictures/module4/bobthesponge.png
+   :align: center
+
+#. Send an attack with the below payload in the ``refer friend`` field
+
+    .. code :: json
+
+        {\"$ne\":\"michael@gmail.com\"}
+
+#. Attack succeed and you can get the DB content
+
+    .. image:: ../pictures/module4/attack.png
+   :align: center
+
+
+Step 2 - Push AS3 declaration to deploy WAF policy
+**************************************************
+
+#. In ``Jenkins``, click on DeployWAF pipeline
+#. Run the ``pipeline``
+#. In ``Chrome``, launch an incognito window, and retry the attack
+#. Attack fails
+#. Check logs in the BIG-IP
+
+    .. image:: ../pictures/module4/logs.png
+    :align: center
+
 
 .. toctree::
    :maxdepth: 1
