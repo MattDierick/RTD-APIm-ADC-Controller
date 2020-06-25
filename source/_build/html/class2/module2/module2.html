@@ -86,7 +86,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1 - Understand the infrastructure and the workflow</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../class2.html">Class 2 - Deploy, Publish and Protect Arcadia Web Application</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../module1/module1.html">DevOps deploy Arcadia Application - Main app</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Step 2 - DevOps deploy Money Transfer application</a><ul class="simple">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Step 2 - DevOps deploy Money Transfer application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-deploy-arcadia-app2-with-a-ci-cd-pipeline-like-a-devops">Step 1 - Deploy Arcadia App2 with a CI/CD pipeline like a DevOps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-publish-money-transfer-app-with-nginx-and-controller">Step 2 - Publish Money Transfer App with NGINX+ and Controller</a><ul class="simple">
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../module3/module3.html">step 3 - DevOps deploy Refer Friends Application</a></li>
@@ -167,14 +171,75 @@
 <p class="first admonition-title">Note</p>
 <p class="last">At the end of this module, Arcadia Bank application will look like this.</p>
 </div>
-<a class="reference internal image-reference" href="class2/module2/../pictures/app2.png"><img alt="class2/module2/../pictures/app2.png" class="align-center" src="class2/module2/../pictures/app2.png" /></a>
+<img alt="../../_images/app21.png" class="align-center" src="../../_images/app21.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In this lab, we will automate some tasks in the controller. As you noticed in the previous lab, it is long to create and you can make mistakes. We will deploy a new component with Postman</p>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Video of this module :</p>
-<div style="text-align: center; margin-bottom: 2em;">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/sTGBKIQdAWw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div><div class="toctree-wrapper compound">
+<div class="section" id="step-1-deploy-arcadia-app2-with-a-ci-cd-pipeline-like-a-devops">
+<h2>Step 1 - Deploy Arcadia App2 with a CI/CD pipeline like a DevOps<a class="headerlink" href="#step-1-deploy-arcadia-app2-with-a-ci-cd-pipeline-like-a-devops" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>In Gitlab, click on Administrator / Arcadia-App2<ol class="arabic">
+<li>Click on file <code class="docutils literal notranslate"><span class="pre">deploy</span></code></li>
+<li>Click <code class="docutils literal notranslate"><span class="pre">edit</span></code> and make a modification - like YES !!!!!</li>
+<li>Click <code class="docutils literal notranslate"><span class="pre">Commit</span> <span class="pre">changes</span></code></li>
+</ol>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">At this moment, you simulate a commit like a DevOps. This <code class="docutils literal notranslate"><span class="pre">commit</span></code> will trigger a <code class="docutils literal notranslate"><span class="pre">webhook</span></code> to <code class="docutils literal notranslate"><span class="pre">Jenkins</span></code>, so that Jenkins execute a <code class="docutils literal notranslate"><span class="pre">pipeline</span></code>.</p>
+</div>
+<ol class="arabic simple">
+<li>In Jenkins, click on <code class="docutils literal notranslate"><span class="pre">DeployApp2</span></code> pipeline</li>
+<li>A pipeline is running, click on it</li>
+<li>You can follow the steps</li>
+</ol>
+<img alt="../../_images/pipeline.png" class="align-center" src="../../_images/pipeline.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">At this stage, App2 (Money Transfer app) is deployed un K8S. But you need to publish it via the controller.</p>
+</div>
+</div>
+<div class="section" id="step-2-publish-money-transfer-app-with-nginx-and-controller">
+<h2>Step 2 - Publish Money Transfer App with NGINX+ and Controller<a class="headerlink" href="#step-2-publish-money-transfer-app-with-nginx-and-controller" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">In the <code class="docutils literal notranslate"><span class="pre">Jumphost</span></code> open <code class="docutils literal notranslate"><span class="pre">Postman</span></code></p>
+</li>
+<li><p class="first">Open collection <code class="docutils literal notranslate"><span class="pre">Deploy</span> <span class="pre">Component</span> <span class="pre">App2</span></code>
+#. Send the first call <code class="docutils literal notranslate"><span class="pre">Log</span> <span class="pre">in</span> <span class="pre">NGINX</span> <span class="pre">Controller</span></code>
+#. Send the second call <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">App2</span> <span class="pre">Component</span></code></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">with one click, you created the component. Fast and no human mistake.</p>
+</div>
+</li>
+<li><p class="first">Connect to Controller GUI and check the new component in <code class="docutils literal notranslate"><span class="pre">web</span> <span class="pre">application</span> <span class="pre">arcadia</span></code></p>
+<img alt="../../_images/components.png" src="../../_images/components.png" />
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">align:</th><td class="field-body">center</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can notice the new <code class="docutils literal notranslate"><span class="pre">Money</span> <span class="pre">Transfer</span></code> component</p>
+</div>
+</li>
+<li><p class="first">In <code class="docutils literal notranslate"><span class="pre">Chrome</span></code> refresh the page. You can see the new App <code class="docutils literal notranslate"><span class="pre">Money</span> <span class="pre">Transfer</span></code></p>
+</li>
+<li><p class="first">Transfer some money to your friends in order to populate analytics</p>
+</li>
+</ol>
+<img alt="../../_images/app21.png" class="align-center" src="../../_images/app21.png" />
+<div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
