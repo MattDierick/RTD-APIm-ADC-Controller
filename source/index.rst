@@ -6,7 +6,8 @@ Publish and protect modern applications
 
 .. warning :: For any remark or mistake in this lab, please reach out Matthieu DIERICK or fork this repo and fix it with a merge request.
 
-
+.. image:: index.png
+   :align: center
 
 .. toctree::
    :maxdepth: 2

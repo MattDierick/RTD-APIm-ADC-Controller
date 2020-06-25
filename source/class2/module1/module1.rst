@@ -11,7 +11,19 @@ In this module, we will deploy the 2 main containers for Arcadia Bank applicatio
    :scale: 15%
 
 
-.. warning :: Please keep case senstive for all objects below
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #. Application name : app_webapp
 #. Components:
