@@ -1,5 +1,5 @@
-Step 2 - DevOps deploy Money Transfer application
-#################################################
+DevOps deploy Money Transfer application
+########################################
 
 In this module, we will deploy the Money Tranfer container for Arcadia Bank application and we will publish it.
 

@@ -1,5 +1,5 @@
-step 3 - DevOps deploy Refer Friends Application
-################################################
+DevOps deploy Refer Friends Application
+#######################################
 
 In this module, we will deploy the Refer Friends container for Arcadia Bank application and we will publish it.
 
