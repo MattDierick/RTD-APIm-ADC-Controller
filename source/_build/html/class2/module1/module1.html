@@ -216,7 +216,7 @@
 </div>
 <div class="section" id="step-2-publish-arcadia-application-with-nginx-and-controller">
 <h2>Step 2 - Publish Arcadia application with NGINX+ and Controller<a class="headerlink" href="#step-2-publish-arcadia-application-with-nginx-and-controller" title="Permalink to this headline">¶</a></h2>
-<p>The Jenkins pipeline did several things</p>
+<p><strong>The Jenkins pipeline did several things</strong></p>
 <blockquote>
 <div><ol class="arabic">
 <li><p class="first">Deployed Arcadia application (main and back end pods) in Kubernetes</p>
@@ -255,33 +255,131 @@ ab75d7bd60bb        nginx                            &quot;nginx -g &#39;daemon 
 <p class="first admonition-title">Note</p>
 <p class="last">It is time to configure the NGINX+ instances in order to publish Arcadia application (main and back pods)</p>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
+<p><strong>Configure the Controller</strong></p>
+<ol class="arabic">
+<li><p class="first">Connect to the controller (<a class="reference external" href="mailto:admin&#37;&#52;&#48;nginx-udf&#46;internal">admin<span>&#64;</span>nginx-udf<span>&#46;</span>internal</a> / admin123!)</p>
+</li>
+<li><p class="first">Click on top <code class="docutils literal notranslate"><span class="pre">left</span> <span class="pre">corner</span> <span class="pre">icon</span></code> and <code class="docutils literal notranslate"><span class="pre">Services</span></code></p>
+</li>
+<li><p class="first">Click on <code class="docutils literal notranslate"><span class="pre">Apps</span></code> and <code class="docutils literal notranslate"><span class="pre">create</span> <span class="pre">app</span></code></p>
 <ol class="arabic simple">
 <li>Application name : app_webapp</li>
-<li>Components:<ol class="arabic">
-<li>cp_mainapp:<ol class="arabic">
-<li>Ingress URI: <a class="reference external" href="http://www.arcadia-finance.io/">http://www.arcadia-finance.io/</a></li>
-<li>Workload: wl_mainapp<ol class="arabic">
-<li>URI: <a class="reference external" href="http://mainapp.nginx-udf.internal:30511">http://mainapp.nginx-udf.internal:30511</a></li>
+<li>Display name : Web Application Arcadia</li>
+<li>Environment : Production Environment</li>
 </ol>
 </li>
-</ol>
+<li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">submit</span></code></p>
+<img alt="../../_images/create_app_main.png" class="align-center" src="../../_images/create_app_main.png" />
 </li>
-<li>cp_back:<ol class="arabic">
-<li>Ingress URI: <a class="reference external" href="http://www.arcadia-finance.io/files/">http://www.arcadia-finance.io/files/</a></li>
-<li>Workload: wl_backend<ol class="arabic">
-<li>URI: <a class="reference external" href="http://backend.nginx-udf.internal:31584">http://backend.nginx-udf.internal:31584</a></li>
+<li><p class="first">Click on <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Component</span></code></p>
+<ol class="arabic simple">
+<li>Configure the component as below</li>
 </ol>
-</li>
-</ol>
-</li>
-</ol>
+<img alt="../../_images/cp_main_1.png" class="align-center" src="../../_images/cp_main_1.png" />
 </li>
 </ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><img alt="../../_images/cp_main_2.png" class="align-center" src="../../_images/cp_main_2.png" />
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><img alt="../../_images/cp_main_3.png" class="align-center" src="../../_images/cp_main_3.png" />
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">don’t forget to click on <code class="docutils literal notranslate"><span class="pre">done</span></code></p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><img alt="../../_images/cp_main_4.png" class="align-center" src="../../_images/cp_main_4.png" />
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><img alt="../../_images/cp_main_5.png" class="align-center" src="../../_images/cp_main_5.png" />
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">don’t forget to click on <code class="docutils literal notranslate"><span class="pre">done</span></code></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Click <code class="docutils literal notranslate"><span class="pre">submit</span></code></p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic">
+<li><p class="first">Get back to <code class="docutils literal notranslate"><span class="pre">Web</span> <span class="pre">App</span></code> and add a new <code class="docutils literal notranslate"><span class="pre">Component</span></code></p>
+</li>
+<li><p class="first">Do the same, but for the back end pod</p>
+<img alt="../../_images/cp_back_1.png" class="align-center" src="../../_images/cp_back_1.png" />
+</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><img alt="../../_images/cp_back_2.png" class="align-center" src="../../_images/cp_back_2.png" />
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><img alt="../../_images/cp_back_3.png" class="align-center" src="../../_images/cp_back_3.png" />
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">don’t forget to click on <code class="docutils literal notranslate"><span class="pre">done</span></code></p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><img alt="../../_images/cp_back_4.png" class="align-center" src="../../_images/cp_back_4.png" />
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><img alt="../../_images/cp_back_5.png" class="align-center" src="../../_images/cp_back_5.png" />
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">don’t forget to click on <code class="docutils literal notranslate"><span class="pre">done</span></code></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Click <code class="docutils literal notranslate"><span class="pre">submit</span></code></p>
+</div>
+</div></blockquote>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>

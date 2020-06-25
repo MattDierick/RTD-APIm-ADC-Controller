@@ -51,7 +51,7 @@ Step 1 - Deploy Arcadia Main app with a CI/CD pipeline like a DevOps
 Step 2 - Publish Arcadia application with NGINX+ and Controller
 ***************************************************************
 
-The Jenkins pipeline did several things
+**The Jenkins pipeline did several things**
    
    #. Deployed Arcadia application (main and back end pods) in Kubernetes
 
@@ -85,32 +85,84 @@ The Jenkins pipeline did several things
 
 .. note :: It is time to configure the NGINX+ instances in order to publish Arcadia application (main and back pods)
 
+**Configure the Controller**
 
+#. Connect to the controller (admin@nginx-udf.internal / admin123!)
+#. Click on top ``left corner icon`` and ``Services``
+#. Click on ``Apps`` and ``create app``
 
+   #. Application name : app_webapp
+   #. Display name : Web Application Arcadia
+   #. Environment : Production Environment
+#. Click ``submit``
 
+   .. image:: ../pictures/module1/create_app_main.png
+      :align: center
+
+#. Click on ``Create Component``
+
+   #. Configure the component as below
+
+   .. image:: ../pictures/module1/cp_main_1.png
+      :align: center
 |
+
+   .. image:: ../pictures/module1/cp_main_2.png
+      :align: center
 |
+
+   .. image:: ../pictures/module1/cp_main_3.png
+      :align: center
+|
+
+   .. warning :: don't forget to click on ``done``
+|
+
+   .. image:: ../pictures/module1/cp_main_4.png
+      :align: center
+|
+
+   .. image:: ../pictures/module1/cp_main_5.png
+      :align: center
+|
+
+   .. warning :: don't forget to click on ``done``
+
+   .. note :: Click ``submit`` 
+|
+
+#. Get back to ``Web App`` and add a new ``Component``
+#. Do the same, but for the back end pod
+
+   .. image:: ../pictures/module1/cp_back_1.png
+      :align: center
+|
+
+   .. image:: ../pictures/module1/cp_back_2.png
+      :align: center
+|
+
+   .. image:: ../pictures/module1/cp_back_3.png
+      :align: center
+|
+
+   .. warning :: don't forget to click on ``done``
+|
+
+   .. image:: ../pictures/module1/cp_back_4.png
+      :align: center
+|
+
+   .. image:: ../pictures/module1/cp_back_5.png
+      :align: center
+|
+
+   .. warning :: don't forget to click on ``done``
+
+   .. note :: Click ``submit`` 
 |
 
 
-#. Application name : app_webapp
-#. Components:
-
-   #. cp_mainapp:
-
-      #. Ingress URI: http://www.arcadia-finance.io/
-      #. Workload: wl_mainapp
-
-         #. URI: http://mainapp.nginx-udf.internal:30511
-   
-   #. cp_back:
-
-      #. Ingress URI: http://www.arcadia-finance.io/files/
-      #. Workload: wl_backend
-      
-         #. URI: http://backend.nginx-udf.internal:31584  
-
-|
 
 
 .. toctree::
