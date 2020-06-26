@@ -137,6 +137,19 @@ Step 4 - Test your API
    :align: center
    :scale: 50%
 
+Step 5 - Look at the analytics
+******************************
+
+#. In the controler GUI
+#. Click on top left right corner icon, and click on ``Apps``
+#. Click on your ``API Application Arcadia``
+#. You can see your analytics for this API
+
+.. image:: ../pictures/module1/analytics.png
+   :align: center
+   :scale: 50%
+
+
 .. toctree::
    :maxdepth: 1
    :glob:
