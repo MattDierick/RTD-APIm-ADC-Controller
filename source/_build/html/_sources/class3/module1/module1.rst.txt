@@ -25,6 +25,8 @@ Step 1 - Create an API Application
 .. image:: ../pictures/module1/apps.png
    :align: center
 
+|
+
 Step 2 - Create an API Definition
 **********************************
 
@@ -36,13 +38,13 @@ Step 2 - Create an API Definition
    #. Version : ``v1``
    #. Select ``OpenAPI specification`` 
    
-      #. and ``Copy and paste specification text`` **if your not connected in the jumphost**
+      #. and ``Copy and paste specification text`` **if your not connected in the jumphost** from here : https://app.swaggerhub.com/apis/F5EMEASSA/json_arcadia/1.0.0-oas3
       #. or ``Import file`` **if your are connected in the jumphost**, the file is located in Downloads and its name is ``arcadia-swagger3.yaml``
 
       .. image:: ../pictures/module1/oas_paste.png
          :align: center
 
-   #. Click ``Next```
+   #. Click ``Next``
    #. You can see all the resources have been imported from the ``swagger file`` and you can open one resource to check its parameters
 
       .. image:: ../pictures/module1/resource_list.png
@@ -55,6 +57,7 @@ Step 2 - Create an API Definition
 
    #. Click ``Summit``
 
+|
 
 Step 3 - Publish the API
 ************************
@@ -113,6 +116,7 @@ Step 3 - Publish the API
       :align: center
       :scale: 50%
 
+|
 
 Step 4 - Test your API
 **********************
@@ -136,6 +140,8 @@ Step 4 - Test your API
 .. image:: ../pictures/module1/webapp.png
    :align: center
    :scale: 50%
+
+|
 
 Step 5 - Look at the analytics
 ******************************
