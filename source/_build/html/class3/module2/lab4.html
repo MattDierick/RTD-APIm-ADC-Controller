@@ -83,9 +83,9 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Intro - Understand the infrastructure and the workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Demo - Run the demo in UDF</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../class1.html">Class 1 - API Security and Managment with NGINX and F5 solutions</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1 - Understand the infrastructure and the workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2 - Deploy, Publish and Protect Arcadia Web Application</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class3.html">Class 3 - Publish and Protect Arcadia API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../module1/module1.html">Module 1 - Reviewing the Arcadia application</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="module2.html">Module 2 - Nginx API Management</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="lab1.html">Lab 2.1 - Reviewing Nginx Configuration and deploy TLS Policy</a></li>
@@ -148,7 +148,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../class1.html">Class 1 - API Security and Managment with NGINX and F5 solutions</a> &raquo;</li>
+          <li><a href="../class3.html">Class 3 - Publish and Protect Arcadia API</a> &raquo;</li>
         
           <li><a href="module2.html">Module 2 - Nginx API Management</a> &raquo;</li>
         
@@ -185,7 +185,7 @@
 <h2>Deploy new Nginx+ instance for the Dev Portal<a class="headerlink" href="#deploy-new-nginx-instance-for-the-dev-portal" title="Permalink to this headline">¶</a></h2>
 <p>Find the “DOCKER (NGINX API gw + Bind + Dev Portal)” system in your UDF deployment, click on Access and select SSH.</p>
 <blockquote>
-<div><img alt="../../_images/devportal_lab_1.png" src="../../_images/devportal_lab_1.png" />
+<div><img alt="class3/module2/../pictures/module2/devportal_lab_1.png" src="class3/module2/../pictures/module2/devportal_lab_1.png" />
 </div></blockquote>
 <p>Please Confirm that your NGINX instances are running in
 your docker environment</p>
@@ -209,19 +209,19 @@ in docker</p>
 <p>Access the controller Web GUI and watch the ‘Systems’ area (in Graphs section) on the left for the appearance
 of your new ‘devportal’ NGINX instance. It should look like this after it successfully registers (name will differ):</p>
 <blockquote>
-<div><img alt="../../_images/devportal_lab_2.png" src="../../_images/devportal_lab_2.png" />
+<div><img alt="class3/module2/../pictures/module2/devportal_lab_2.png" src="class3/module2/../pictures/module2/devportal_lab_2.png" />
 </div></blockquote>
 <p>To give it a friendly alias, click on newly registered instance and then click the settings
 wheel next to the instance name and give the system the name of “devportal”:</p>
 <blockquote>
-<div><img alt="../../_images/devportal_lab_3.png" src="../../_images/devportal_lab_3.png" />
+<div><img alt="class3/module2/../pictures/module2/devportal_lab_3.png" src="class3/module2/../pictures/module2/devportal_lab_3.png" />
 </div></blockquote>
 <p>And while in this system properties, also add and type the <strong>“devportal” tag</strong> and <strong>PRESS ENTER</strong> to add it. Lower case, one word. The tag is created and can be re-use for next instances if needed.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This tag “devportal” is hardcoded in Nginx controller. You can’t choose another tag at the moment to specify the NGINX+ instance running as a DevPortal.</p>
 </div>
-<img alt="../../_images/devportal_lab_5.png" src="../../_images/devportal_lab_5.png" />
+<img alt="class3/module2/../pictures/module2/devportal_lab_5.png" src="class3/module2/../pictures/module2/devportal_lab_5.png" />
 <p>Click on the “save” button at the bottom of the system properties window.
 The system properties window will close, and you should see a green banner at the top of the controller window stating, “System Properties were successfully updated”.</p>
 <div class="admonition note">
@@ -241,11 +241,11 @@ The system properties window will close, and you should see a green banner at th
 <h2>Define all resources and add Dev Portal descriptions to them<a class="headerlink" href="#define-all-resources-and-add-dev-portal-descriptions-to-them" title="Permalink to this headline">¶</a></h2>
 <p>The next step is to define additional resources so that we can document all of the resources for our API in the developer portal. Click on the “API Management” tab at the top of the Controller GUI and then click on the edit button for the “Arcadia API” definition.</p>
 <blockquote>
-<div><img alt="../../_images/devportal_lab_6.png" src="../../_images/devportal_lab_6.png" />
+<div><img alt="class3/module2/../pictures/module2/devportal_lab_6.png" src="class3/module2/../pictures/module2/devportal_lab_6.png" />
 </div></blockquote>
 <p>In the Resources section, you will need to click on the ‘edit’ pencil icon next to each resource so that we can update the documentation for each resource which will allow for the developer portal to be populated. Click to edit the “buy stocks” resource.</p>
 <blockquote>
-<div><img alt="../../_images/devportal_lab_7.png" src="../../_images/devportal_lab_7.png" />
+<div><img alt="class3/module2/../pictures/module2/devportal_lab_7.png" src="class3/module2/../pictures/module2/devportal_lab_7.png" />
 </div></blockquote>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -253,15 +253,15 @@ The system properties window will close, and you should see a green banner at th
 </div>
 <p>Click on the Path Prefix and change it from “Prefix (*)” to “Exact (=)” if not already done.</p>
 <blockquote>
-<div><img alt="../../_images/devportal_lab_8.png" src="../../_images/devportal_lab_8.png" />
+<div><img alt="class3/module2/../pictures/module2/devportal_lab_8.png" src="class3/module2/../pictures/module2/devportal_lab_8.png" />
 </div></blockquote>
 <p>In the Path, verify that it specifies “/trading/rest/buy_stocks.php” (without the quotes). Tick the “Enable Documentation” check box and change the method from “GET” to “POST”.</p>
 <blockquote>
-<div><img alt="../../_images/devportal_lab_9.png" src="../../_images/devportal_lab_9.png" />
+<div><img alt="class3/module2/../pictures/module2/devportal_lab_9.png" src="class3/module2/../pictures/module2/devportal_lab_9.png" />
 </div></blockquote>
 <p>In the description, enter in “Buy stocks” and then click the “Add Parameter” button.</p>
 <blockquote>
-<div><img alt="../../_images/devportal_lab_10.png" src="../../_images/devportal_lab_10.png" />
+<div><img alt="class3/module2/../pictures/module2/devportal_lab_10.png" src="class3/module2/../pictures/module2/devportal_lab_10.png" />
 </div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -281,7 +281,7 @@ The system properties window will close, and you should see a green banner at th
 </div>
 <p>Click the slider next to each parameter to enable them and change the “company” and “action” parameters from integer” to “string”.</p>
 <blockquote>
-<div><img alt="../../_images/devportal_lab_11.png" src="../../_images/devportal_lab_11.png" />
+<div><img alt="class3/module2/../pictures/module2/devportal_lab_11.png" src="class3/module2/../pictures/module2/devportal_lab_11.png" />
 </div></blockquote>
 <p>We now need to add in a sample request and a sample response. Copy and paste should work but be careful to ensure you select exactly the text only below and no whitespace. Sample request:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -304,7 +304,7 @@ The system properties window will close, and you should see a green banner at th
 </div>
 <p>Click save. If you have any syntax errors, then there will be a red bar at the top stating “Validation error: Sample request is invalid, Sample response is invalid”. Check your syntax carefully for errors and / or type out the request and response by hand to remove any whitespace character issues</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/devportal_lab_12.png"><img alt="../../_images/devportal_lab_12.png" src="../../_images/devportal_lab_12.png" style="width: 563.4px; height: 529.8px;" /></a>
+<div><a class="reference internal image-reference" href="class3/module2/../pictures/module2/devportal_lab_12.png"><img alt="class3/module2/../pictures/module2/devportal_lab_12.png" src="class3/module2/../pictures/module2/devportal_lab_12.png" /></a>
 </div></blockquote>
 <p>Before we push out the changes, we need to also create a developer portal definition for all the other resources in our API. Click the edit icon next to the “/trading/transactions.php (GET)” resource.</p>
 <div class="admonition warning">
@@ -322,7 +322,7 @@ The system properties window will close, and you should see a green banner at th
 <span class="p">}</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../../_images/devportal_lab_13.png"><img alt="../../_images/devportal_lab_13.png" src="../../_images/devportal_lab_13.png" style="width: 790.0px; height: 732.0px;" /></a>
+<a class="reference internal image-reference" href="class3/module2/../pictures/module2/devportal_lab_13.png"><img alt="class3/module2/../pictures/module2/devportal_lab_13.png" src="class3/module2/../pictures/module2/devportal_lab_13.png" /></a>
 <p>Create the other resource definitions, with the appropriate parameters and request &amp; response samples.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -383,10 +383,10 @@ The system properties window will close, and you should see a green banner at th
 <p class="first admonition-title">Note</p>
 <p class="last">Your resources has to look like below. You can delete the /api if it is still there.</p>
 </div>
-<a class="reference internal image-reference" href="../../_images/devportal_lab_22.png"><img alt="../../_images/devportal_lab_22.png" src="../../_images/devportal_lab_22.png" style="width: 618.0px; height: 370.8px;" /></a>
+<a class="reference internal image-reference" href="class3/module2/../pictures/module2/devportal_lab_22.png"><img alt="class3/module2/../pictures/module2/devportal_lab_22.png" src="class3/module2/../pictures/module2/devportal_lab_22.png" /></a>
 <p>We now need to push our changes. Click the edit icon next to the “prod API” in the “Environments” section.</p>
 <blockquote>
-<div><img alt="../../_images/devportal_lab_14.png" src="../../_images/devportal_lab_14.png" />
+<div><img alt="class3/module2/../pictures/module2/devportal_lab_14.png" src="class3/module2/../pictures/module2/devportal_lab_14.png" />
 </div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -395,13 +395,13 @@ The system properties window will close, and you should see a green banner at th
 <p>Tick the “Update Developer Portal” check box and then click the large “Publish” button directly underneath.</p>
 <blockquote>
 <div><blockquote>
-<div><img alt="../../_images/devportal_lab_17.png" src="../../_images/devportal_lab_17.png" />
+<div><img alt="class3/module2/../pictures/module2/devportal_lab_17.png" src="class3/module2/../pictures/module2/devportal_lab_17.png" />
 </div></blockquote>
 <div class="line-block">
 <div class="line">You should get a green banner at the top of the screen saying that it has successfully been published.</div>
 </div>
 <blockquote>
-<div><img alt="../../_images/devportal_lab_18.png" src="../../_images/devportal_lab_18.png" />
+<div><img alt="class3/module2/../pictures/module2/devportal_lab_18.png" src="class3/module2/../pictures/module2/devportal_lab_18.png" />
 </div></blockquote>
 </div></blockquote>
 </div>
@@ -410,18 +410,18 @@ The system properties window will close, and you should see a green banner at th
 <p>To view the developer portal, go into the Windows jump host and you will notice in chrome that there is a bookmark for the developer portal; click this.</p>
 <blockquote>
 <div><blockquote>
-<div><img alt="../../_images/devportal_lab_19.png" src="../../_images/devportal_lab_19.png" />
+<div><img alt="class3/module2/../pictures/module2/devportal_lab_19.png" src="class3/module2/../pictures/module2/devportal_lab_19.png" />
 </div></blockquote>
 <div class="line-block">
 <div class="line">You will see that the Arcadia API has been published.</div>
 </div>
 <blockquote>
-<div><img alt="../../_images/devportal_lab_20.png" src="../../_images/devportal_lab_20.png" />
+<div><img alt="class3/module2/../pictures/module2/devportal_lab_20.png" src="class3/module2/../pictures/module2/devportal_lab_20.png" />
 </div></blockquote>
 </div></blockquote>
 <p>Explore this site and look to verify that the Endpoints, Parameters, Request Sample and Response Samples are present and as we defined them in the Controller.</p>
 <blockquote>
-<div><img alt="../../_images/devportal_lab_21.png" src="../../_images/devportal_lab_21.png" />
+<div><img alt="class3/module2/../pictures/module2/devportal_lab_21.png" src="class3/module2/../pictures/module2/devportal_lab_21.png" />
 </div></blockquote>
 </div>
 </div>

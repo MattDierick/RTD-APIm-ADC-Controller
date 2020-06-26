@@ -82,9 +82,9 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Intro - Understand the infrastructure and the workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Demo - Run the demo in UDF</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../class1.html">Class 1 - API Security and Managment with NGINX and F5 solutions</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1 - Understand the infrastructure and the workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2 - Deploy, Publish and Protect Arcadia Web Application</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class3.html">Class 3 - Publish and Protect Arcadia API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../module1/module1.html">Module 1 - Reviewing the Arcadia application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../module2/module2.html">Module 2 - Nginx API Management</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="module3.html">Module 3 - F5 BIG-IP configuration</a><ul class="current">
@@ -140,7 +140,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../class1.html">Class 1 - API Security and Managment with NGINX and F5 solutions</a> &raquo;</li>
+          <li><a href="../class3.html">Class 3 - Publish and Protect Arcadia API</a> &raquo;</li>
         
           <li><a href="module3.html">Module 3 - F5 BIG-IP configuration</a> &raquo;</li>
         
@@ -172,11 +172,11 @@
 <ol class="arabic simple">
 <li>Go to Postman console and open “Post Buy Stocks XSS Attack” in Arcadia collection</li>
 </ol>
-<a class="reference internal image-reference" href="../../_images/Picture110.png"><img alt="../../_images/Picture110.png" class="align-center" src="../../_images/Picture110.png" style="width: 300.0px; height: 196.0px;" /></a>
+<a class="reference internal image-reference" href="class3/module3/../pictures/module3/lab3/Picture1.png"><img alt="class3/module3/../pictures/module3/lab3/Picture1.png" class="align-center" src="class3/module3/../pictures/module3/lab3/Picture1.png" /></a>
 <p>2. Validate the XSS attack in action parameter. Click Send.
 Request gets rejected. <strong>Note the Support ID in response</strong></p>
-<a class="reference internal image-reference" href="../../_images/Picture25.png"><img alt="../../_images/Picture25.png" class="align-center" src="../../_images/Picture25.png" style="width: 751.2px; height: 311.2px;" /></a>
-<a class="reference internal image-reference" href="../../_images/Picture32.png"><img alt="../../_images/Picture32.png" class="align-center" src="../../_images/Picture32.png" style="width: 604.8px; height: 232.8px;" /></a>
+<a class="reference internal image-reference" href="class3/module3/../pictures/module3/lab3/Picture2.png"><img alt="class3/module3/../pictures/module3/lab3/Picture2.png" class="align-center" src="class3/module3/../pictures/module3/lab3/Picture2.png" /></a>
+<a class="reference internal image-reference" href="class3/module3/../pictures/module3/lab3/Picture3.png"><img alt="class3/module3/../pictures/module3/lab3/Picture3.png" class="align-center" src="class3/module3/../pictures/module3/lab3/Picture3.png" /></a>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This beta build 15.1 has an issue in UDF. The asmlogd daemon is failing due to lack of threads, hence you don’t see any logs in the GUI. This only occurs in UDF at the moment. So you can use an irule to get the ASM logs, or use the REST API calls below.</p>
@@ -184,11 +184,11 @@ Request gets rejected. <strong>Note the Support ID in response</strong></p>
 <ol class="arabic simple" start="3">
 <li>Go to Postman Collection Arcadia-REST-WAF . Open GetEventLog</li>
 </ol>
-<a class="reference internal image-reference" href="../../_images/Picture91.png"><img alt="../../_images/Picture91.png" class="align-center" src="../../_images/Picture91.png" style="width: 388.0px; height: 276.0px;" /></a>
+<a class="reference internal image-reference" href="class3/module3/../pictures/module3/lab3/Picture9.png"><img alt="class3/module3/../pictures/module3/lab3/Picture9.png" class="align-center" src="class3/module3/../pictures/module3/lab3/Picture9.png" /></a>
 <ol class="arabic simple" start="4">
 <li>Replace the Support ID (by the one collected in step 2) in URL and Send Request. Details for blocking is available in the response.</li>
 </ol>
-<a class="reference internal image-reference" href="../../_images/Picture101.png"><img alt="../../_images/Picture101.png" class="align-center" src="../../_images/Picture101.png" style="width: 751.2px; height: 511.2px;" /></a>
+<a class="reference internal image-reference" href="class3/module3/../pictures/module3/lab3/Picture10.png"><img alt="class3/module3/../pictures/module3/lab3/Picture10.png" class="align-center" src="class3/module3/../pictures/module3/lab3/Picture10.png" /></a>
 </div>
 
 

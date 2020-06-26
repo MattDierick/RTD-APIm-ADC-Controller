@@ -44,7 +44,7 @@ Step 1 - Send an attack
     #. Refer bob@sponge.com
 
     .. image:: ../pictures/module4/bobthesponge.png
-   :align: center
+        :align: center
 
 #. Send an attack with the below payload in the ``refer friend`` field
 
@@ -55,7 +55,7 @@ Step 1 - Send an attack
 #. Attack succeed and you can get the DB content
 
     .. image:: ../pictures/module4/attack.png
-   :align: center
+        :align: center
 
 
 Step 2 - Push AS3 declaration to deploy WAF policy
@@ -68,8 +68,10 @@ Step 2 - Push AS3 declaration to deploy WAF policy
 #. Check logs in the BIG-IP
 
     .. image:: ../pictures/module4/logs.png
-    :align: center
+        :align: center
 
+
+.. warning :: In the next version of this lab, we will upload the OAS3 file directly to BIG-IP v16.0, instead of pushing declarative WAF policy. Benn Alp is working on such Blueprint.
 
 .. toctree::
    :maxdepth: 1

@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Module 1 - Reviewing the Arcadia application" href="module1/module1.html" />
-    <link rel="prev" title="step 4 - Protect Arcadia Application" href="../class2/module4/module4.html" /> 
+    <link rel="next" title="Module 1 - Publish API with OAS3 spec file from the Controller GUI" href="module1/module1.html" />
+    <link rel="prev" title="Protect Arcadia Application" href="../class2/module4/module4.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,11 +84,11 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../class1/class1.html">Class 1 - Understand the infrastructure and the workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class2/class2.html">Class 2 - Deploy, Publish and protect Arcadia Web Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class2/class2.html">Class 2 - Deploy, Publish and Protect Arcadia Web Application</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Class 3 - Publish and Protect Arcadia API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="module1/module1.html">Module 1 - Reviewing the Arcadia application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module2/module2.html">Module 2 - Nginx API Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module3/module3.html">Module 3 - F5 BIG-IP configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module1/module1.html">Module 1 - Publish API with OAS3 spec file from the Controller GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module2/module2.html">Module 2 - Publish API with OAS3 spec file via API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module3/module3.html">Module 3 - Protect Arcadia API with Adv. Waf and APM</a></li>
 </ul>
 </li>
 </ul>
@@ -157,23 +157,22 @@
             
   <div class="section" id="class-3-publish-and-protect-arcadia-api">
 <h1>Class 3 - Publish and Protect Arcadia API<a class="headerlink" href="#class-3-publish-and-protect-arcadia-api" title="Permalink to this headline">¶</a></h1>
-<p>Welcome into the API Security and Managment with NGINX and F5 solutions lab.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">For any remark or mistake in this lab, please send ASAP a Teams chat to Matthieu DIERICK, Graham ALDERSON and Kevin REYNOLDS so that we can fix it for the next sessions.</p>
-</div>
-<p><strong>First of all, register in the UDF Course “ISC FY20 - API Security and Mgmt”</strong></p>
-<p>Click on <strong>Courses</strong> in the left hand navigation. From there, click on the <strong>Upcoming Sessions</strong> tab in the Courses interface</p>
-<a class="reference internal image-reference" href="../_images/UDF-course-1.png"><img alt="../_images/UDF-course-1.png" src="../_images/UDF-course-1.png" style="width: 792.6px; height: 545.4px;" /></a>
-<p>Search for <strong>ISC FY20 - API Security and Mgmt</strong>, click <strong>details</strong>, then <strong>Schedule</strong> and find your session. Please <strong>join</strong> for the <strong>Location Room</strong> you are affected.</p>
-<a class="reference internal image-reference" href="../_images/UDF-course-2.png"><img alt="../_images/UDF-course-2.png" src="../_images/UDF-course-2.png" style="width: 776.4px; height: 301.2px;" /></a>
-<a class="reference internal image-reference" href="../_images/UDF-course-3.png"><img alt="../_images/UDF-course-3.png" src="../_images/UDF-course-3.png" style="width: 1075.2px; height: 706.2px;" /></a>
-<p>Click <strong>Launch Session</strong></p>
+<p>In this section, we will publish and protect Arcadia API. There are 4 API allowing us to :</p>
+<blockquote>
+<div><ul class="simple">
+<li>See last transactions</li>
+<li>Buy stocks</li>
+<li>Sell stocks</li>
+<li>Make a money transfer</li>
+</ul>
+</div></blockquote>
+<p>The API specification is available here : <a class="reference external" href="https://app.swaggerhub.com/apis/F5EMEASSA/json_arcadia/1.0.0-oas3">https://app.swaggerhub.com/apis/F5EMEASSA/json_arcadia/1.0.0-oas3</a></p>
+<img alt="../_images/swagger.png" class="align-center" src="../_images/swagger.png" />
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="module1/module1.html">Module 1 - Reviewing the Arcadia application</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module2/module2.html">Module 2 - Nginx API Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module3/module3.html">Module 3 - F5 BIG-IP configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module1/module1.html">Module 1 - Publish API with OAS3 spec file from the Controller GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module2/module2.html">Module 2 - Publish API with OAS3 spec file via API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module3/module3.html">Module 3 - Protect Arcadia API with Adv. Waf and APM</a></li>
 </ul>
 </div>
 <div class="line-block">
@@ -190,10 +189,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="module1/module1.html" class="btn btn-neutral float-right" title="Module 1 - Reviewing the Arcadia application" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="module1/module1.html" class="btn btn-neutral float-right" title="Module 1 - Publish API with OAS3 spec file from the Controller GUI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../class2/module4/module4.html" class="btn btn-neutral float-left" title="step 4 - Protect Arcadia Application" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../class2/module4/module4.html" class="btn btn-neutral float-left" title="Protect Arcadia Application" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

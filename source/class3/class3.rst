@@ -1,27 +1,18 @@
 Class 3 - Publish and Protect Arcadia API
 #########################################
 
-Welcome into the API Security and Managment with NGINX and F5 solutions lab.
+In this section, we will publish and protect Arcadia API. There are 4 API allowing us to :
 
-.. warning :: For any remark or mistake in this lab, please send ASAP a Teams chat to Matthieu DIERICK, Graham ALDERSON and Kevin REYNOLDS so that we can fix it for the next sessions.
+   - See last transactions
+   - Buy stocks
+   - Sell stocks
+   - Make a money transfer
 
-**First of all, register in the UDF Course "ISC FY20 - API Security and Mgmt"**
+The API specification is available here : https://app.swaggerhub.com/apis/F5EMEASSA/json_arcadia/1.0.0-oas3
 
-Click on **Courses** in the left hand navigation. From there, click on the **Upcoming Sessions** tab in the Courses interface
+.. image:: swagger.png
+   :align: center
 
-.. image:: ./pictures/UDF-course-1.png
-   :scale: 60%
-
-
-Search for **ISC FY20 - API Security and Mgmt**, click **details**, then **Schedule** and find your session. Please **join** for the **Location Room** you are affected.
-
-.. image:: ./pictures/UDF-course-2.png
-   :scale: 60%
-
-.. image:: ./pictures/UDF-course-3.png
-   :scale: 30%
-
-Click **Launch Session**
 
 .. toctree::
    :maxdepth: 1

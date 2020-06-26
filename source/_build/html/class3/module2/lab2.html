@@ -83,9 +83,9 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Intro - Understand the infrastructure and the workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Demo - Run the demo in UDF</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../class1.html">Class 1 - API Security and Managment with NGINX and F5 solutions</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1 - Understand the infrastructure and the workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2 - Deploy, Publish and Protect Arcadia Web Application</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class3.html">Class 3 - Publish and Protect Arcadia API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../module1/module1.html">Module 1 - Reviewing the Arcadia application</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="module2.html">Module 2 - Nginx API Management</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="lab1.html">Lab 2.1 - Reviewing Nginx Configuration and deploy TLS Policy</a></li>
@@ -143,7 +143,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../class1.html">Class 1 - API Security and Managment with NGINX and F5 solutions</a> &raquo;</li>
+          <li><a href="../class3.html">Class 3 - Publish and Protect Arcadia API</a> &raquo;</li>
         
           <li><a href="module2.html">Module 2 - Nginx API Management</a> &raquo;</li>
         
@@ -171,7 +171,7 @@
 <p>1. To verify Upstream configuration, click “Upstream Group”,
 and then click edit icon for app2</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/api_lab-01-08.png"><img alt="../../_images/api_lab-01-08.png" class="align-center" src="../../_images/api_lab-01-08.png" style="width: 900.0px; height: 353.4px;" /></a>
+<div><a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-08.png"><img alt="class3/module2/../pictures/module2/api_lab-01-08.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-08.png" /></a>
 </div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -179,8 +179,8 @@ and then click edit icon for app2</p>
 </div>
 <p>2. Add app2 to API definition. Click “API Definitions”,
 then click the edit icon under “Arcadia WebApp”</p>
-<a class="reference internal image-reference" href="../../_images/api_lab-01-09-1.png"><img alt="../../_images/api_lab-01-09-1.png" class="align-center" src="../../_images/api_lab-01-09-1.png" style="width: 568.0px; height: 385.6px;" /></a>
-<a class="reference internal image-reference" href="../../_images/api_lab-01-09.png"><img alt="../../_images/api_lab-01-09.png" class="align-center" src="../../_images/api_lab-01-09.png" style="width: 900.0px; height: 360.0px;" /></a>
+<a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-09-1.png"><img alt="class3/module2/../pictures/module2/api_lab-01-09-1.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-09-1.png" /></a>
+<a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-09.png"><img alt="class3/module2/../pictures/module2/api_lab-01-09.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-09.png" /></a>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">You can notice only 2 microservices are published. The / (main App) and the /files (Back End DB)</p>
@@ -188,28 +188,28 @@ then click the edit icon under “Arcadia WebApp”</p>
 <ol class="arabic" start="3">
 <li><p class="first">Click “Add Resource”, put /api into “Path”, then click “Save”</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/api_lab-01-10.png"><img alt="../../_images/api_lab-01-10.png" class="align-center" src="../../_images/api_lab-01-10.png" style="width: 900.0px; height: 337.8px;" /></a>
+<div><a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-10.png"><img alt="class3/module2/../pictures/module2/api_lab-01-10.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-10.png" /></a>
 </div></blockquote>
 </li>
 <li><p class="first">Click edit icon for “prod WebApp” in “Environment”</p>
 </li>
 </ol>
-<a class="reference internal image-reference" href="../../_images/api_lab-01-11-1.png"><img alt="../../_images/api_lab-01-11-1.png" class="align-center" src="../../_images/api_lab-01-11-1.png" style="width: 830.4px; height: 428.8px;" /></a>
+<a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-11-1.png"><img alt="class3/module2/../pictures/module2/api_lab-01-11-1.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-11-1.png" /></a>
 <ol class="arabic simple" start="5">
 <li>Click “Add Route”. Select /api in “Resource”, and app2 in “Upstream Group”. Click SAVE.</li>
 </ol>
-<a class="reference internal image-reference" href="../../_images/api_lab-01-11.png"><img alt="../../_images/api_lab-01-11.png" class="align-center" src="../../_images/api_lab-01-11.png" style="width: 649.8px; height: 675.0px;" /></a>
+<a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-11.png"><img alt="class3/module2/../pictures/module2/api_lab-01-11.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-11.png" /></a>
 <p>6. Click “Publish”. A publish successful message will appear at top,
 once publish is completed.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/api_lab-01-12.png"><img alt="../../_images/api_lab-01-12.png" class="align-center" src="../../_images/api_lab-01-12.png" style="width: 900.0px; height: 111.6px;" /></a>
+<div><a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-12.png"><img alt="class3/module2/../pictures/module2/api_lab-01-12.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-12.png" /></a>
 </div></blockquote>
 <p>7. Verify app2 is running in the Web Application. RDP into Windows Jumphost,
 and refresh the browser session for the application. The app2 (Quick Money Transfer) appears. Do a money transfer by
 selecting an account in “From”, a person in “To”, fill a number in “Amount”, and click “Transfer Now”;
 you will see a successful message, and the money transfer transaction will show in “Transfer history”</p>
 <blockquote>
-<div><img alt="../../_images/api_lab-01-13.png" src="../../_images/api_lab-01-13.png" />
+<div><img alt="class3/module2/../pictures/module2/api_lab-01-13.png" src="class3/module2/../pictures/module2/api_lab-01-13.png" />
 </div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -220,7 +220,7 @@ for Arcadia API</p>
 <ul>
 <li><p class="first">Go back to API Definition and click on edit icon for “Arcadia API”</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/api_lab-01-14.png"><img alt="../../_images/api_lab-01-14.png" class="align-center" src="../../_images/api_lab-01-14.png" style="width: 900.0px; height: 309.0px;" /></a>
+<div><a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-14.png"><img alt="class3/module2/../pictures/module2/api_lab-01-14.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-14.png" /></a>
 </div></blockquote>
 </li>
 </ul>
@@ -231,12 +231,12 @@ for Arcadia API</p>
 <ul>
 <li><p class="first">Click “Add Resource”, and put /api in “Path”, and click “Save”</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/api_lab-01-15.png"><img alt="../../_images/api_lab-01-15.png" class="align-center" src="../../_images/api_lab-01-15.png" style="width: 900.0px; height: 264.6px;" /></a>
+<div><a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-15.png"><img alt="class3/module2/../pictures/module2/api_lab-01-15.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-15.png" /></a>
 </div></blockquote>
 </li>
 <li><p class="first">Click edit button for “prod API” in Environment, click “Add Route”, select /api for resource, select app2 for “Upsteam Group”, and click “Save”</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/api_lab-01-16.png"><img alt="../../_images/api_lab-01-16.png" class="align-center" src="../../_images/api_lab-01-16.png" style="width: 678.6px; height: 675.0px;" /></a>
+<div><a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-16.png"><img alt="class3/module2/../pictures/module2/api_lab-01-16.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-16.png" /></a>
 </div></blockquote>
 </li>
 <li><p class="first">Click “Publish”, and wait for publishing to complete</p>
@@ -249,11 +249,11 @@ for Arcadia API</p>
 <p>9. Verify API call via Postman. RDP into Windows Jumphost, launch Postman,
 open “Arcadia” collection, select “POST Transfer Money”. Review the body and click “Send”. You should see successful message in response.</p>
 <blockquote>
-<div><img alt="../../_images/api_lab-01-17.png" class="align-center" src="../../_images/api_lab-01-17.png" />
+<div><img alt="class3/module2/../pictures/module2/api_lab-01-17.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-17.png" />
 </div></blockquote>
 <ol class="arabic" start="10">
 <li><p class="first">Go back to the Web Application, reload the page, and check if the transaction is shown in the Money Transfer app.</p>
-<a class="reference internal image-reference" href="../../_images/api_lab-01-17-1.png"><img alt="../../_images/api_lab-01-17-1.png" class="align-center" src="../../_images/api_lab-01-17-1.png" style="width: 323.0px; height: 724.0px;" /></a>
+<a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-17-1.png"><img alt="class3/module2/../pictures/module2/api_lab-01-17-1.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-17-1.png" /></a>
 </li>
 </ol>
 </div>

@@ -83,9 +83,9 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Intro - Understand the infrastructure and the workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Demo - Run the demo in UDF</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../class1.html">Class 1 - API Security and Managment with NGINX and F5 solutions</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1 - Understand the infrastructure and the workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2 - Deploy, Publish and Protect Arcadia Web Application</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class3.html">Class 3 - Publish and Protect Arcadia API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../module1/module1.html">Module 1 - Reviewing the Arcadia application</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="module2.html">Module 2 - Nginx API Management</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="lab1.html">Lab 2.1 - Reviewing Nginx Configuration and deploy TLS Policy</a></li>
@@ -143,7 +143,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../class1.html">Class 1 - API Security and Managment with NGINX and F5 solutions</a> &raquo;</li>
+          <li><a href="../class3.html">Class 3 - Publish and Protect Arcadia API</a> &raquo;</li>
         
           <li><a href="module2.html">Module 2 - Nginx API Management</a> &raquo;</li>
         
@@ -172,7 +172,7 @@
 <p>1. Create Client Group in Nginx Controller. Click <strong>Client Groups</strong>,
 and then click “Create a Group”</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/api_lab-01-18.png"><img alt="../../_images/api_lab-01-18.png" class="align-center" src="../../_images/api_lab-01-18.png" style="width: 900.0px; height: 189.6px;" /></a>
+<div><a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-18.png"><img alt="class3/module2/../pictures/module2/api_lab-01-18.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-18.png" /></a>
 </div></blockquote>
 <p>2. Put name <strong>Arcadia Users</strong> in “Name”. In the lab, we use JWT key file, so select JWT as “Type”.
 Then click “browse” and select the “jwt_key_file_API.jwk”, and click “Create”.</p>
@@ -192,16 +192,16 @@ Then click “browse” and select the “jwt_key_file_API.jwk”, and click “
 <p class="first admonition-title">See also</p>
 <p class="last">The JWK file has to be created as above. The “k” is the secret key shared between the Autorization Server and the Resource Server. The key is ilovenginx encoded in base64. The format of the key is Octet.</p>
 </div>
-<a class="reference internal image-reference" href="../../_images/api_lab-01-19.png"><img alt="../../_images/api_lab-01-19.png" class="align-center" src="../../_images/api_lab-01-19.png" style="width: 900.0px; height: 392.4px;" /></a>
+<a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-19.png"><img alt="class3/module2/../pictures/module2/api_lab-01-19.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-19.png" /></a>
 <ol class="arabic" start="3">
 <li><p class="first">Add JWT policy to Arcadia API. Click “API Definitions”, and click edit icon for “prod API” environment; click “Add a Policy”.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/api_lab-01-20-1.png"><img alt="../../_images/api_lab-01-20-1.png" class="align-center" src="../../_images/api_lab-01-20-1.png" style="width: 1026.0px; height: 1157.0px;" /></a>
+<div><a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-20-1.png"><img alt="class3/module2/../pictures/module2/api_lab-01-20-1.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-20-1.png" /></a>
 </div></blockquote>
 </li>
 <li><p class="first">Select “Authentication” in Policy Type, “Arcadia Users” in Client Group, “Bearer Token” in Credential Location jwt, and click “Save”</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/api_lab-01-20.png"><img alt="../../_images/api_lab-01-20.png" class="align-center" src="../../_images/api_lab-01-20.png" style="width: 900.0px; height: 573.0px;" /></a>
+<div><a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-20.png"><img alt="class3/module2/../pictures/module2/api_lab-01-20.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-20.png" /></a>
 </div></blockquote>
 </li>
 </ol>
@@ -210,12 +210,12 @@ Postman</p>
 <ul>
 <li><p class="first">Open Arcadia Collection, and select “Last Transactions”, in request configuration, select NoAuth for “Authorization”, and click Send. You should see “401 Unauthorized” message</p>
 <blockquote>
-<div><img alt="../../_images/api_lab-01-22-1.png" src="../../_images/api_lab-01-22-1.png" />
+<div><img alt="class3/module2/../pictures/module2/api_lab-01-22-1.png" src="class3/module2/../pictures/module2/api_lab-01-22-1.png" />
 </div></blockquote>
 </li>
 <li><p class="first">Select Bearer Token for “Authorization”, copy the <strong>“token user :”</strong> from file “JWT Token.txt” (located in Downloads folder in Windows Jumphost), paste it in “Token” (one previous token can already exist, overwrite it), and Click on <strong>Preview Request</strong> (this add a new Autorization header in the request), then click “Send”, you will see the successful transaction.</p>
 <blockquote>
-<div><img alt="../../_images/api_lab-01-22-2.png" src="../../_images/api_lab-01-22-2.png" />
+<div><img alt="class3/module2/../pictures/module2/api_lab-01-22-2.png" src="class3/module2/../pictures/module2/api_lab-01-22-2.png" />
 </div></blockquote>
 </li>
 </ul>
@@ -225,12 +225,12 @@ and select “Create new Policy”.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">Know bug. You can not delete the access policy, only create and edit access policy is allowed in this build.</p>
 </div>
-<a class="reference internal image-reference" href="../../_images/api_lab-01-21.png"><img alt="../../_images/api_lab-01-21.png" class="align-center" src="../../_images/api_lab-01-21.png" style="width: 1239.6px; height: 500.4px;" /></a>
+<a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-21.png"><img alt="class3/module2/../pictures/module2/api_lab-01-21.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-21.png" /></a>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This policy will check if the JWT token contains a claim name “Role” with capital “R”, and if the value equals to “admin”</p>
 </div>
-<a class="reference internal image-reference" href="../../_images/api_lab-01-21-2.png"><img alt="../../_images/api_lab-01-21-2.png" class="align-center" src="../../_images/api_lab-01-21-2.png" style="width: 795.0px; height: 881.0px;" /></a>
+<a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-21-2.png"><img alt="class3/module2/../pictures/module2/api_lab-01-21-2.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-21-2.png" /></a>
 <p>7. Click Publish, and wait for
 publishing to complete</p>
 <p>8. Create 2 new resources (new API) in order to buy and sell stocks. Go back to API Definitions and edit Arcadia API Definition. Add <strong>/trading/rest/buy_stocks.php</strong>
@@ -239,12 +239,12 @@ and <strong>/trading/rest/sell_stocks.php</strong></p>
 <p class="first admonition-title">Note</p>
 <p class="last">As these URLs are explicit, don’t use Prefix(*) but Exact(=)</p>
 </div>
-<a class="reference internal image-reference" href="../../_images/api_lab-01-23.png"><img alt="../../_images/api_lab-01-23.png" class="align-center" src="../../_images/api_lab-01-23.png" style="width: 900.0px; height: 450.0px;" /></a>
+<a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-23.png"><img alt="class3/module2/../pictures/module2/api_lab-01-23.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-23.png" /></a>
 <p>9. Then, <strong>add routes</strong> for /trading/rest/buy_stocks.php and /trading/rest/sell_stocks.php into the “prod API” environment.
 <strong>Assign Allow</strong> to /trading/transactions.php and /trading/rest/sell_stocks.php, <strong>assign allow_admin</strong> to /trading/rest/buy_stocks.php.</p>
 <p>Create the policy as screenshot below. Only Buy_Stocks will request JWT claim “admin”.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/api_lab-01-24.png"><img alt="../../_images/api_lab-01-24.png" class="align-center" src="../../_images/api_lab-01-24.png" style="width: 900.0px; height: 402.6px;" /></a>
+<div><a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-24.png"><img alt="class3/module2/../pictures/module2/api_lab-01-24.png" class="align-center" src="class3/module2/../pictures/module2/api_lab-01-24.png" /></a>
 </div></blockquote>
 <p>10. Click Publish, and wait for publishing
 to complete.</p>
@@ -253,17 +253,17 @@ via Postman</p>
 <ul>
 <li><p class="first">Open Arcadia Collection, select “Buy Stocks”. In request configuration, select Bearer Token for “Authorization”, copy the <strong>user token</strong> from file “JWT Token.txt” (still located in Downloads folder), paste it in “Token”, click “Preview Request”, and click Send. You should see “403 Forbidden” message.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/api_lab-01-25-1.png"><img alt="../../_images/api_lab-01-25-1.png" src="../../_images/api_lab-01-25-1.png" style="width: 937.0px; height: 504.0px;" /></a>
+<div><a class="reference internal image-reference" href="class3/module2/../pictures/module2/api_lab-01-25-1.png"><img alt="class3/module2/../pictures/module2/api_lab-01-25-1.png" src="class3/module2/../pictures/module2/api_lab-01-25-1.png" /></a>
 </div></blockquote>
 </li>
 <li><p class="first">Copy the <strong>admin token</strong> from file “JWT Token.txt”, paste it in “Token”, click “Preview Request”, and click Send. You should see transaction successful message.</p>
 <blockquote>
-<div><img alt="../../_images/api_lab-01-25-2.png" src="../../_images/api_lab-01-25-2.png" />
+<div><img alt="class3/module2/../pictures/module2/api_lab-01-25-2.png" src="class3/module2/../pictures/module2/api_lab-01-25-2.png" />
 </div></blockquote>
 </li>
 <li><p class="first">Select “Sell Stocks” in collection. In request configuration, select Bearer Token for “Authorization”, copy the <strong>user token</strong> from file “JWT Token.txt”, paste it in “Token”, click “Preview Request”, and click Send. You should see successful message.</p>
 <blockquote>
-<div><img alt="../../_images/api_lab-01-25-3.png" src="../../_images/api_lab-01-25-3.png" />
+<div><img alt="class3/module2/../pictures/module2/api_lab-01-25-3.png" src="class3/module2/../pictures/module2/api_lab-01-25-3.png" />
 </div></blockquote>
 </li>
 </ul>
@@ -274,7 +274,7 @@ via Postman</p>
 <ol class="arabic" start="12">
 <li><p class="first">Check the JWT tokens in <a class="reference external" href="https://jwt.io">https://jwt.io</a> in order to understand why <strong>user token</strong> can’t get an access.</p>
 <blockquote>
-<div><img alt="../../_images/api_lab-01-25-4.png" src="../../_images/api_lab-01-25-4.png" />
+<div><img alt="class3/module2/../pictures/module2/api_lab-01-25-4.png" src="class3/module2/../pictures/module2/api_lab-01-25-4.png" />
 </div></blockquote>
 </li>
 </ol>

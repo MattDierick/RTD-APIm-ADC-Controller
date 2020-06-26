@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Module 1 - Reviewing the Arcadia application &mdash; NGINX Controller 3.x with BIG-IP Lab  documentation</title>
+  <title>Module 1 - Publish API with OAS3 spec file from the Controller GUI &mdash; NGINX Controller 3.x with BIG-IP Lab  documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Lab 1.1 - Reviewing architecture network diagram" href="lab1.html" />
-    <link rel="prev" title="Class 3 - Deploy and Publish Arcadia API" href="../class3.html" /> 
+    <link rel="next" title="Module 2 - Publish API with OAS3 spec file via API" href="../module2/module2.html" />
+    <link rel="prev" title="Class 3 - Publish and Protect Arcadia API" href="../class3.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,16 +84,19 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1 - Understand the infrastructure and the workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2 - Deploy and Publish Arcadia Web Application</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../class3.html">Class 3 - Deploy and Publish Arcadia API</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Module 1 - Reviewing the Arcadia application</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="lab1.html">Lab 1.1 - Reviewing architecture network diagram</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lab2.html">Lab 1.2 - Reviewing Arcadia application</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lab3.html">Lab 1.3 - Reviewing Kubernetes deployments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2 - Deploy, Publish and Protect Arcadia Web Application</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class3.html">Class 3 - Publish and Protect Arcadia API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Module 1 - Publish API with OAS3 spec file from the Controller GUI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-create-an-api-application">Step 1 - Create an API Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-create-an-api-definition">Step 2 - Create an API Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-publish-the-api">Step 3 - Publish the API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-test-your-api">Step 4 - Test your API</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../module2/module2.html">Module 2 - Nginx API Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module3/module3.html">Module 3 - F5 BIG-IP configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../module2/module2.html">Module 2 - Publish API with OAS3 spec file via API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3/module3.html">Module 3 - Protect Arcadia API with Adv. Waf and APM</a></li>
 </ul>
 </li>
 </ul>
@@ -141,9 +144,9 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../class3.html">Class 3 - Deploy and Publish Arcadia API</a> &raquo;</li>
+          <li><a href="../class3.html">Class 3 - Publish and Protect Arcadia API</a> &raquo;</li>
         
-      <li>Module 1 - Reviewing the Arcadia application</li>
+      <li>Module 1 - Publish API with OAS3 spec file from the Controller GUI</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -162,17 +165,148 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-1-reviewing-the-arcadia-application">
-<h1>Module 1 - Reviewing the Arcadia application<a class="headerlink" href="#module-1-reviewing-the-arcadia-application" title="Permalink to this headline">¶</a></h1>
-<p>In this module, we will focus on the <strong>Arcadia application</strong>
-in <strong>Kubernetes</strong> cluster</p>
-<p>We will do the following labs:</p>
+  <div class="section" id="module-1-publish-api-with-oas3-spec-file-from-the-controller-gui">
+<h1>Module 1 - Publish API with OAS3 spec file from the Controller GUI<a class="headerlink" href="#module-1-publish-api-with-oas3-spec-file-from-the-controller-gui" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In this section we will push OAS3 specification file into the controller GUI in order to create the API</p>
+</div>
+<p><strong>Connect to Controller GUI</strong> via your laptop’s browser or the jumphost</p>
+<blockquote>
+<div><p>login: <a class="reference external" href="mailto:admin&#37;&#52;&#48;nginx-udf&#46;internal">admin<span>&#64;</span>nginx-udf<span>&#46;</span>internal</a></p>
+<p>password: admin123!</p>
+</div></blockquote>
+<div class="section" id="step-1-create-an-api-application">
+<h2>Step 1 - Create an API Application<a class="headerlink" href="#step-1-create-an-api-application" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Click on top left right corner icon, and click on <code class="docutils literal notranslate"><span class="pre">Apps</span></code></li>
+<li>Click <code class="docutils literal notranslate"><span class="pre">Create</span></code></li>
+<li>Create a new Application<ol class="arabic">
+<li>name : <code class="docutils literal notranslate"><span class="pre">app_api</span></code></li>
+<li>display name : <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">Application</span> <span class="pre">Arcadia</span></code></li>
+<li>Environment : <code class="docutils literal notranslate"><span class="pre">Production</span> <span class="pre">Environment</span></code></li>
+</ol>
+</li>
+<li>Click <code class="docutils literal notranslate"><span class="pre">Summit</span></code></li>
+</ol>
+<img alt="../../_images/apps.png" class="align-center" src="../../_images/apps.png" />
+</div>
+<div class="section" id="step-2-create-an-api-definition">
+<h2>Step 2 - Create an API Definition<a class="headerlink" href="#step-2-create-an-api-definition" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Click on the left menu <code class="docutils literal notranslate"><span class="pre">APIs`</span></code></p>
+</li>
+<li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">API</span> <span class="pre">Definition</span></code></p>
+<ol class="arabic">
+<li><p class="first">Name : <code class="docutils literal notranslate"><span class="pre">arcadia-api-def</span></code></p>
+</li>
+<li><p class="first">Display Name : <code class="docutils literal notranslate"><span class="pre">Arcadia</span> <span class="pre">APi</span> <span class="pre">Definition</span></code></p>
+</li>
+<li><p class="first">Version : <code class="docutils literal notranslate"><span class="pre">v1</span></code></p>
+</li>
+<li><p class="first">Select <code class="docutils literal notranslate"><span class="pre">OpenAPI</span> <span class="pre">specification</span></code></p>
+<ol class="arabic simple">
+<li>and <code class="docutils literal notranslate"><span class="pre">Copy</span> <span class="pre">and</span> <span class="pre">paste</span> <span class="pre">specification</span> <span class="pre">text</span></code> <strong>if your not connected in the jumphost</strong></li>
+<li>or <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">file</span></code> <strong>if your are connected in the jumphost</strong>, the file is located in Downloads and its name is <code class="docutils literal notranslate"><span class="pre">arcadia-swagger3.yaml</span></code></li>
+</ol>
+<img alt="../../_images/oas_paste.png" class="align-center" src="../../_images/oas_paste.png" />
+</li>
+<li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Next`</span></code></p>
+</li>
+<li><p class="first">You can see all the resources have been imported from the <code class="docutils literal notranslate"><span class="pre">swagger</span> <span class="pre">file</span></code> and you can open one resource to check its parameters</p>
+<a class="reference internal image-reference" href="../../_images/resource_list.png"><img alt="../../_images/resource_list.png" class="align-center" src="../../_images/resource_list.png" style="width: 700.0px; height: 464.1px;" /></a>
+<a class="reference internal image-reference" href="../../_images/resource_sell_stocks.png"><img alt="../../_images/resource_sell_stocks.png" class="align-center" src="../../_images/resource_sell_stocks.png" style="width: 700.0px; height: 1079.4px;" /></a>
+</li>
+<li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Summit</span></code></p>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="step-3-publish-the-api">
+<h2>Step 3 - Publish the API<a class="headerlink" href="#step-3-publish-the-api" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">At this stage, the API definition is created. So the controller knows the differents URI but doesn’t know yet where to forward the traffic to.</p>
+</div>
+<ol class="arabic">
+<li><p class="first">Click on the API definition raw, and on the right frame, click on <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Add</span> <span class="pre">Published</span> <span class="pre">API</span></code></p>
+</li>
+<li><p class="first">Configure the mandatory settings</p>
+<ol class="arabic">
+<li><p class="first">Name: prod-api</p>
+</li>
+<li><p class="first">Display Name: Production API</p>
+<img alt="../../_images/published-api-1.png" class="align-center" src="../../_images/published-api-1.png" />
+</li>
+</ol>
+</li>
+<li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Next</span></code></p>
+</li>
+<li><p class="first">Configure the <code class="docutils literal notranslate"><span class="pre">deployment</span></code></p>
+<ol class="arabic">
+<li><p class="first">Environment: <code class="docutils literal notranslate"><span class="pre">Production</span> <span class="pre">Environment</span></code></p>
+</li>
+<li><p class="first">App: <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">Application</span> <span class="pre">Arcadia</span></code></p>
+</li>
+<li><p class="first">Gateways: <code class="docutils literal notranslate"><span class="pre">Gateway</span> <span class="pre">API</span></code></p>
+<img alt="../../_images/published-api-2.png" class="align-center" src="../../_images/published-api-2.png" />
+</li>
+</ol>
+</li>
+<li><p class="first">It is time to configure the <code class="docutils literal notranslate"><span class="pre">Routing</span></code>. It is similar to the <code class="docutils literal notranslate"><span class="pre">components</span></code> in the WebApp configuration</p>
+</li>
+<li><p class="first">Create a new component routing to the <code class="docutils literal notranslate"><span class="pre">MainApp</span></code></p>
+<ol class="arabic">
+<li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">New</span></code> in the <code class="docutils literal notranslate"><span class="pre">Components</span> <span class="pre">section</span></code> and configure it as below</p>
+<a class="reference internal image-reference" href="../../_images/component_1.png"><img alt="../../_images/component_1.png" class="align-center" src="../../_images/component_1.png" style="width: 700.0px; height: 694.4px;" /></a>
+<a class="reference internal image-reference" href="../../_images/component_2.png"><img alt="../../_images/component_2.png" class="align-center" src="../../_images/component_2.png" style="width: 700.0px; height: 733.6px;" /></a>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Don’t forget to click on <code class="docutils literal notranslate"><span class="pre">done</span></code> 2 times. One <code class="docutils literal notranslate"><span class="pre">done</span></code> for the URI and one <code class="docutils literal notranslate"><span class="pre">done</span></code> for the workload</p>
+</div>
+</li>
+<li><p class="first">You shouls see the workload</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We only configure one workload as the API we will test is hosted in the main app pod (sell stocks and buy stocks)</p>
+</div>
+</li>
+<li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Next</span></code> til the end and click <code class="docutils literal notranslate"><span class="pre">Submit</span></code></p>
+</li>
+</ol>
+</li>
+<li><p class="first">Now, drag and drop the 3 URI starting by <code class="docutils literal notranslate"><span class="pre">/trading</span></code> to the right <code class="docutils literal notranslate"><span class="pre">Component</span> <span class="pre">MainApp</span></code></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/routing.png"><img alt="../../_images/routing.png" class="align-center" src="../../_images/routing.png" style="width: 700.0px; height: 432.6px;" /></a>
+</div></blockquote>
+</li>
+<li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Next</span></code> and <code class="docutils literal notranslate"><span class="pre">Submit</span></code></p>
+<a class="reference internal image-reference" href="../../_images/api-definition.png"><img alt="../../_images/api-definition.png" class="align-center" src="../../_images/api-definition.png" style="width: 1000.0px; height: 326.0px;" /></a>
+</li>
+</ol>
+</div>
+<div class="section" id="step-4-test-your-api">
+<h2>Step 4 - Test your API<a class="headerlink" href="#step-4-test-your-api" title="Permalink to this headline">¶</a></h2>
+<p><strong>RDP to the jumphost</strong></p>
+<blockquote>
+<div><p>login: user</p>
+<p>password: user</p>
+</div></blockquote>
+<ol class="arabic simple">
+<li>Open <code class="docutils literal notranslate"><span class="pre">Postman</span></code></li>
+<li>Open up the collection <code class="docutils literal notranslate"><span class="pre">Arcadia</span> <span class="pre">API</span></code></li>
+<li>Make 2 calls<ol class="arabic">
+<li>Last transactions</li>
+<li>POST Buy Stocks</li>
+</ol>
+</li>
+<li>Both works and are routed to the <code class="docutils literal notranslate"><span class="pre">MainApp</span> <span class="pre">pod</span></code> in K8S thanks to the NIGNX+ API GW.</li>
+<li>You can check in the Web Application in <code class="docutils literal notranslate"><span class="pre">Chrome</span></code> if your Buy Stock call passed. It should appears in the last transaction GUI.</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/webapp.png"><img alt="../../_images/webapp.png" class="align-center" src="../../_images/webapp.png" style="width: 1000.0px; height: 619.0px;" /></a>
 <div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1.1 - Reviewing architecture network diagram</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 1.2 - Reviewing Arcadia application</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 1.3 - Reviewing Kubernetes deployments</a></li>
-</ul>
+</div>
 </div>
 </div>
 
@@ -184,10 +318,10 @@ in <strong>Kubernetes</strong> cluster</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="lab1.html" class="btn btn-neutral float-right" title="Lab 1.1 - Reviewing architecture network diagram" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../module2/module2.html" class="btn btn-neutral float-right" title="Module 2 - Publish API with OAS3 spec file via API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../class3.html" class="btn btn-neutral float-left" title="Class 3 - Deploy and Publish Arcadia API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../class3.html" class="btn btn-neutral float-left" title="Class 3 - Publish and Protect Arcadia API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
