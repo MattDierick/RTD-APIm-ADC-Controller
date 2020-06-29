@@ -58,8 +58,8 @@ Step 1 - Send an attack
         :align: center
 
 
-Step 2 - Push AS3 declaration to deploy WAF policy
-**************************************************
+Step 2 - Push AS3 declaration to deploy the WAF policy
+******************************************************
 
 #. In ``Jenkins``, click on DeployWAF pipeline
 #. Run the ``pipeline``
@@ -71,7 +71,7 @@ Step 2 - Push AS3 declaration to deploy WAF policy
         :align: center
 
 
-.. warning :: In the next version of this lab, we will upload the OAS3 file directly to BIG-IP v16.0, instead of pushing declarative WAF policy. Benn Alp is working on such Blueprint.
+.. warning :: In the next version of this lab, we will upload the OAS3 file directly into the BIG-IP v16.0, instead of pushing declarative WAF policy. Benn Alp is working on such Blueprint.
 
 .. toctree::
    :maxdepth: 1

@@ -1,7 +1,7 @@
 DevOps deploy Refer Friends Application
 #######################################
 
-In this module, we will deploy the Refer Friends container for Arcadia Bank application and we will publish it.
+In this module, we will deploy the Refer Friends container for Arcadia Bank web application and we will publish it.
 
 .. note :: At the end of this module, Arcadia Bank application will look like this.
 
@@ -44,9 +44,9 @@ Step 1 - Deploy Arcadia App3 and the new componenent with a CI/CD pipeline
 .. image:: ../pictures/module3/app3.png
    :align: center
 
-.. note :: Congrats, as you can notice, with one ``commit`` in Gitlab, you triggered a webhook that deployed the ``app`` and the ``infra``
+.. note :: Congrats, as you can notice, with one ``commit`` in Gitlab, you triggered a webhook that deployed the ``app`` and the ``infrastructure``
 
-.. warning :: Now, it's time to protect Arcadia Finance application with a BIG-IP.
+.. warning :: Now, it's time to protect Arcadia Finance web application with a BIG-IP.
 
 .. toctree::
    :maxdepth: 1

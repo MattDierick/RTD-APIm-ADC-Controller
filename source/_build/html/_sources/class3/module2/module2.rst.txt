@@ -6,10 +6,10 @@ Module 2 - Publish API with OAS3 spec file via API
 Clean up the APIm configuration
 *******************************
 
-#. In the controller GUI, go to ``APIm`` menu and click on the existing API definintion ``arcadia-api-dev`` 
+#. In the controller GUI, go to ``APIs`` left menu and click on the existing API definintion ``arcadia-api-def`` 
 #. On the right panel
 
-   #. Delete the ``Production API`` but clicking the ``trash`` button
+   #. Delete the ``Production API`` by clicking the ``trash`` button
 
       .. image:: ../pictures/module2/delete-published.png
          :align: center
@@ -26,11 +26,13 @@ Clean up the APIm configuration
 Create and publish an API Definition with the Controller API
 ************************************************************
 
+.. note :: We will execute exactly the same job but by using the NGINX Controller control plane only. No GUI.
+
 #. Connect to the Jumphost (user / user)
 #. Launch ``Postman``
 
    #. Open ``Arcadia OAS`` collection
-   #. And ``run`` all calls
+   #. And ``run`` all calls from top to bottom
 
    .. note :: For every call, check what is happening in the controller GUI
 

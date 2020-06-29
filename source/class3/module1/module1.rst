@@ -30,15 +30,15 @@ Step 1 - Create an API Application
 Step 2 - Create an API Definition
 **********************************
 
-#. Click on the left menu ``APIs```
+#. Click on the left menu ``APIs``
 #. Click ``Create API Definition``
 
    #. Name : ``arcadia-api-def``
-   #. Display Name : ``Arcadia APi Definition``
+   #. Display Name : ``Arcadia API Definition``
    #. Version : ``v1``
    #. Select ``OpenAPI specification`` 
    
-      #. and ``Copy and paste specification text`` **if your not connected in the jumphost** from here : https://app.swaggerhub.com/apis/F5EMEASSA/json_arcadia/1.0.0-oas3
+      #. and ``Copy and paste specification text`` **if you are not connected in the jumphost** from here : https://app.swaggerhub.com/apis/F5EMEASSA/json_arcadia/1.0.0-oas3
       #. or ``Import file`` **if your are connected in the jumphost**, the file is located in Downloads and its name is ``arcadia-swagger3.yaml``
 
       .. image:: ../pictures/module1/oas_paste.png
@@ -67,8 +67,8 @@ Step 3 - Publish the API
 #. Click on the API definition raw, and on the right frame, click on ``+ Add Published API``
 #. Configure the mandatory settings 
    
-   #. Name: prod-api
-   #. Display Name: Production API
+   #. Name: ``prod-api``
+   #. Display Name: ``Production API``
 
       .. image:: ../pictures/module1/published-api-1.png
          :align: center
@@ -98,11 +98,11 @@ Step 3 - Publish the API
 
       .. warning :: Don't forget to click on ``done`` 2 times. One ``done`` for the URI and one ``done`` for the workload
    
-   #. You shouls see the workload
+   #. You can see the workload
 
       .. note :: We only configure one workload as the API we will test is hosted in the main app pod (sell stocks and buy stocks)
 
-   #. Click ``Next`` til the end and click ``Submit``
+   #. Click ``Next`` until the end and click ``Submit``
 
 #. Now, drag and drop the 3 URI starting by ``/trading`` to the right ``Component MainApp``
 
@@ -135,7 +135,7 @@ Step 4 - Test your API
    #. POST Buy Stocks
 
 #. Both works and are routed to the ``MainApp pod`` in K8S thanks to the NIGNX+ API GW.
-#. You can check in the Web Application in ``Chrome`` if your Buy Stock call passed. It should appears in the last transaction GUI.
+#. You can check in the Web Application in ``Chrome`` if your Buy Stock call passed. It should appear in the last transaction GUI.
 
 .. image:: ../pictures/module1/webapp.png
    :align: center
@@ -147,7 +147,7 @@ Step 5 - Look at the analytics
 ******************************
 
 #. In the controler GUI
-#. Click on top left right corner icon, and click on ``Apps``
+#. Click on the left icon ``Apps``
 #. Click on your ``API Application Arcadia``
 #. You can see your analytics for this API
 

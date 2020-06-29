@@ -38,6 +38,7 @@ Step 2 - Publish Money Transfer App with NGINX+ and Controller
 
 #. In the ``Jumphost`` open ``Postman``
 #. Open collection ``Deploy Component App2``
+
    #. Send the first call ``Log in NGINX Controller``
    #. Send the second call ``Create App2 Component``
 

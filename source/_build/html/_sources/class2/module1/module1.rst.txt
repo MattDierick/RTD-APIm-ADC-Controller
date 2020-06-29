@@ -128,7 +128,7 @@ Step 2 - Publish Arcadia application with NGINX+ and Controller
       :align: center
 |
 
-   .. warning :: Don't forget to click on ``done``
+   .. warning :: Don't forget to click on ``done`` twice
 
    .. note :: Click ``submit`` 
 |
@@ -159,7 +159,7 @@ Step 2 - Publish Arcadia application with NGINX+ and Controller
       :align: center
 |
 
-   .. warning :: Don't forget to click on ``done``
+   .. warning :: Don't forget to click on ``done`` twice
 
    .. note :: Click ``submit`` 
 |
@@ -174,7 +174,7 @@ Step 3 - Test your Controller deployment
 #. You should see the ``main app`` wihtout ``App2`` nor ``App3``
 
 
-.. warning :: Congratulations, you have deployed your first modern app with NGINX+ and controller
+.. warning :: Congratulations, you have deployed your first modern app with NGINX+ and the NGINX Controller
 
 .. toctree::
    :maxdepth: 1

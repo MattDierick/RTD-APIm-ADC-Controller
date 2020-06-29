@@ -97,7 +97,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../module2/module2.html">Module 2 - Publish API with OAS3 spec file via API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module3/module3.html">Module 3 - Protect Arcadia API with Adv. Waf and APM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3/module3.html">Module 3 - Protect Arcadia API with Adv. Waf and APM (Bearer SSO)</a></li>
 </ul>
 </li>
 </ul>
@@ -198,19 +198,19 @@
 <div class="section" id="step-2-create-an-api-definition">
 <h2>Step 2 - Create an API Definition<a class="headerlink" href="#step-2-create-an-api-definition" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Click on the left menu <code class="docutils literal notranslate"><span class="pre">APIs`</span></code></p>
+<li><p class="first">Click on the left menu <code class="docutils literal notranslate"><span class="pre">APIs</span></code></p>
 </li>
 <li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">API</span> <span class="pre">Definition</span></code></p>
 <ol class="arabic">
 <li><p class="first">Name : <code class="docutils literal notranslate"><span class="pre">arcadia-api-def</span></code></p>
 </li>
-<li><p class="first">Display Name : <code class="docutils literal notranslate"><span class="pre">Arcadia</span> <span class="pre">APi</span> <span class="pre">Definition</span></code></p>
+<li><p class="first">Display Name : <code class="docutils literal notranslate"><span class="pre">Arcadia</span> <span class="pre">API</span> <span class="pre">Definition</span></code></p>
 </li>
 <li><p class="first">Version : <code class="docutils literal notranslate"><span class="pre">v1</span></code></p>
 </li>
 <li><p class="first">Select <code class="docutils literal notranslate"><span class="pre">OpenAPI</span> <span class="pre">specification</span></code></p>
 <ol class="arabic simple">
-<li>and <code class="docutils literal notranslate"><span class="pre">Copy</span> <span class="pre">and</span> <span class="pre">paste</span> <span class="pre">specification</span> <span class="pre">text</span></code> <strong>if your not connected in the jumphost</strong> from here : <a class="reference external" href="https://app.swaggerhub.com/apis/F5EMEASSA/json_arcadia/1.0.0-oas3">https://app.swaggerhub.com/apis/F5EMEASSA/json_arcadia/1.0.0-oas3</a></li>
+<li>and <code class="docutils literal notranslate"><span class="pre">Copy</span> <span class="pre">and</span> <span class="pre">paste</span> <span class="pre">specification</span> <span class="pre">text</span></code> <strong>if you are not connected in the jumphost</strong> from here : <a class="reference external" href="https://app.swaggerhub.com/apis/F5EMEASSA/json_arcadia/1.0.0-oas3">https://app.swaggerhub.com/apis/F5EMEASSA/json_arcadia/1.0.0-oas3</a></li>
 <li>or <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">file</span></code> <strong>if your are connected in the jumphost</strong>, the file is located in Downloads and its name is <code class="docutils literal notranslate"><span class="pre">arcadia-swagger3.yaml</span></code></li>
 </ol>
 <img alt="../../_images/oas_paste.png" class="align-center" src="../../_images/oas_paste.png" />
@@ -241,9 +241,9 @@
 </li>
 <li><p class="first">Configure the mandatory settings</p>
 <ol class="arabic">
-<li><p class="first">Name: prod-api</p>
+<li><p class="first">Name: <code class="docutils literal notranslate"><span class="pre">prod-api</span></code></p>
 </li>
-<li><p class="first">Display Name: Production API</p>
+<li><p class="first">Display Name: <code class="docutils literal notranslate"><span class="pre">Production</span> <span class="pre">API</span></code></p>
 <img alt="../../_images/published-api-1.png" class="align-center" src="../../_images/published-api-1.png" />
 </li>
 </ol>
@@ -273,13 +273,13 @@
 <p class="last">Don’t forget to click on <code class="docutils literal notranslate"><span class="pre">done</span></code> 2 times. One <code class="docutils literal notranslate"><span class="pre">done</span></code> for the URI and one <code class="docutils literal notranslate"><span class="pre">done</span></code> for the workload</p>
 </div>
 </li>
-<li><p class="first">You shouls see the workload</p>
+<li><p class="first">You can see the workload</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">We only configure one workload as the API we will test is hosted in the main app pod (sell stocks and buy stocks)</p>
 </div>
 </li>
-<li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Next</span></code> til the end and click <code class="docutils literal notranslate"><span class="pre">Submit</span></code></p>
+<li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Next</span></code> until the end and click <code class="docutils literal notranslate"><span class="pre">Submit</span></code></p>
 </li>
 </ol>
 </li>
@@ -312,7 +312,7 @@
 </ol>
 </li>
 <li>Both works and are routed to the <code class="docutils literal notranslate"><span class="pre">MainApp</span> <span class="pre">pod</span></code> in K8S thanks to the NIGNX+ API GW.</li>
-<li>You can check in the Web Application in <code class="docutils literal notranslate"><span class="pre">Chrome</span></code> if your Buy Stock call passed. It should appears in the last transaction GUI.</li>
+<li>You can check in the Web Application in <code class="docutils literal notranslate"><span class="pre">Chrome</span></code> if your Buy Stock call passed. It should appear in the last transaction GUI.</li>
 </ol>
 <a class="reference internal image-reference" href="../../_images/webapp.png"><img alt="../../_images/webapp.png" class="align-center" src="../../_images/webapp.png" style="width: 1000.0px; height: 619.0px;" /></a>
 <div class="line-block">
@@ -323,7 +323,7 @@
 <h2>Step 5 - Look at the analytics<a class="headerlink" href="#step-5-look-at-the-analytics" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>In the controler GUI</li>
-<li>Click on top left right corner icon, and click on <code class="docutils literal notranslate"><span class="pre">Apps</span></code></li>
+<li>Click on the left icon <code class="docutils literal notranslate"><span class="pre">Apps</span></code></li>
 <li>Click on your <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">Application</span> <span class="pre">Arcadia</span></code></li>
 <li>You can see your analytics for this API</li>
 </ol>

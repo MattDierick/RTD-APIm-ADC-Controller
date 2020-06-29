@@ -30,7 +30,7 @@ Configure NGINX Controller with a new Identity Provider
          ]
       }
 
-   .. note :: I invite you to decode the "k" value to know what is the ``key``. As you can notice, we don't use a RSA key, but a secret (just to simplify hte lab). This secret is BASE64 encoded.
+   .. note :: I invite you to decode the "k" value to know what is the ``key``. As you can notice, we don't use a RSA key, but a secret (just to simplify the lab). This secret is BASE64 encoded.
 
    .. image:: ../pictures/module3/identity-provider.png
       :align: center
@@ -73,14 +73,14 @@ Configure NGINX Controller with a new Identity Provider
          :align: center
          :scale: 75%
 
-.. note :: As you don't include any JWT token in you request, the API GW rejected the requst. It is time to configure APM to inject this JWT Bearer SSO
+.. note :: As you don't include any JWT token in you request, the API GW rejected the request. It is time to configure APM to inject this JWT Bearer SSO
 
 
 
 Configure Adv. WAF and APM
 **************************
 
-.. note :: In this lab we will use Access Guided Configuration and we will do some custom tuning in the policies. There are several ways ot protect API with BIG-IP, but at the moment, we will focus on AGC so that you can understand how it works. GSA team is working on a dedicated UDF Blueprint for API Declarative WAF policy with v16.0
+.. note :: In this lab we will use Access Guided Configuration and we will do some custom tuning in the policies. There are several ways to protect API with BIG-IP, but at the moment, we will focus on AGC so that you can understand how it works. GSA team is working on a dedicated UDF Blueprint for API Declarative WAF policy with v16.0
 
 #. Delete the existing ``vs-arcadia-api`` Virtual Server in the BIG_IP. We are going to create a new one from the Guided Configuration.
 
@@ -116,6 +116,7 @@ Configure Adv. WAF and APM
          :align: center
          :scale: 50%
 
+      - Select the default Servrer at the bottom of the screen
 
       .. image:: ../pictures/module3/AGC-3.png
          :align: center
@@ -150,7 +151,7 @@ Configure Adv. WAF and APM
       .. note :: We will focus on Claims later on
 
 
-   #. Configure ``Rate Limiting`` as below. We will limit request per user based on their Email address extracted from the JWT token. The value used is ``subsession.oauth.scope.last.jwt.Email``
+   #. Configure ``Rate Limiting`` as below. We will limit request per user based on their Email address extracted from the JWT token. The value used for the ``User ID Key`` is ``subsession.oauth.scope.last.jwt.Email``
 
       .. image:: ../pictures/module3/AGC-8.png
          :align: center
@@ -159,6 +160,7 @@ Configure Adv. WAF and APM
 |
 
    #. Configure the ``Virtual Server`` as below
+
       - VS : 10.1.10.18
       - Log All Requests
       - Client SSL arcadia_client_ssl
@@ -169,9 +171,9 @@ Configure Adv. WAF and APM
    
    #. Click ``Deploy``
 
-#. Now we have to add the 2 more providers in the APM configuration (due to the BUGID in AGC 6.0)
+#. Now we have to add manually the 2 more providers in the APM configuration (due to the BUGID in AGC 6.0)
 
-   #. ``Unstrict`` the configuration in AGC, by clicking on the ``lock`` icon
+   #. ``Unstrict`` the configuration in AGC, by clicking on the ``lock`` icon and approve the change.
 
       .. image:: ../pictures/module3/unstrictness.png
          :align: center
@@ -191,8 +193,8 @@ Configure Adv. WAF and APM
 
 |
 
-Test your protected API
-***********************
+Test your protected API with Authentication, WAF and Rate Limiting
+******************************************************************
 
 #. Open ``Postman`` and select the ``Arcadia API`` collection
 #. Select one call, the one you want.
@@ -212,7 +214,7 @@ Test your protected API
 #. Now, try with the 2 other providers (partner1 and partner2)
 
       #. You can find the tokens on the desktop in the file ``JWT tokens.txt``
-      #. Don't use ``Oauth 2.0``, as we already have the tokens. But use ``Bearer`` instead. I generated these tokens from the website http://jwtbuilder.jamiekurtz.com/
+      #. Don't use ``Oauth 2.0``, as we already have the tokens. But use ``Bearer Token`` instead. I generated these tokens from the website http://jwtbuilder.jamiekurtz.com/
 
       .. code :: bash 
 
@@ -224,7 +226,14 @@ Test your protected API
          Partner 2
          eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwYXJ0bmVyMiIsImlhdCI6MTU5Mjg1MzI4NiwiZXhwIjoxNjI0Mzg5Mjg2LCJhdWQiOiJhcGkuYXJjYWRpYS1maW5hbmNlLmlvIiwic3ViIjoiYXBpLmFyY2FkaWEtZmluYW5jZS5pbyIsIkdpdmVuTmFtZSI6IkJvYiIsIlN1cm5hbWUiOiJUaGUgU3BvbmdlIiwiRW1haWwiOiJib2JAZ21haWwuY29tIiwiUm9sZSI6Ik1hbmFnZXIifQ.J-mheqiM-2Hyn-Re_ghUWO4chXKc6rJ6ISxJTCGJ8f8
 
-#. Send an attack
+#. Test the **Rate Limiting** by sending 4 calls with the same token. The 4th will be block. You can notice the reponse code ``429 Too Many Requests``
+
+      .. image:: ../pictures/module3/ratelimit.png
+         :align: center
+         :scale: 75%   
+
+
+#. Send an **attack**
 
    #. Select the call ``POST Buy Stocks XSS attack``
    #. Send the request and notice the ``200 OK`` response. It means the WAF didn't block the request
