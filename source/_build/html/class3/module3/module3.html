@@ -272,94 +272,53 @@ APM will authenticate JWT tokens coming from different providers with different 
 <p class="first admonition-title">Note</p>
 <p class="last">The OAS file is located in <code class="docutils literal notranslate"><span class="pre">Downloads</span></code> directory and its name is <code class="docutils literal notranslate"><span class="pre">swaggerArcadia2.json</span></code></p>
 </div>
-<ul class="simple">
-<li>Check the boxes <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">Rate</span> <span class="pre">Limiting</span></code> and OAuth 2.0``</li>
-</ul>
+<ol class="arabic">
+<li><p class="first">Check the boxes <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">Rate</span> <span class="pre">Limiting</span></code> and OAuth 2.0``</p>
 <a class="reference internal image-reference" href="../../_images/AGC-2.png"><img alt="../../_images/AGC-2.png" class="align-center" src="../../_images/AGC-2.png" style="width: 556.0px; height: 804.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/AGC-3.png"><img alt="../../_images/AGC-3.png" class="align-center" src="../../_images/AGC-3.png" style="width: 750.0px; height: 793.0px;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can notice the URI and the back server have been imported from the OAS2 file</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/AGC-4.png"><img alt="../../_images/AGC-4.png" class="align-center" src="../../_images/AGC-4.png" style="width: 952.0px; height: 713.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/AGC-5.png"><img alt="../../_images/AGC-5.png" class="align-center" src="../../_images/AGC-5.png" style="width: 750.0px; height: 496.5px;" /></a>
+</li>
+<li><p class="first">Select <code class="docutils literal notranslate"><span class="pre">AzureAD</span></code> <code class="docutils literal notranslate"><span class="pre">AAD-F5Sales</span></code> as provider</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Due to a bug in AGC, we can’t add more providers here. We will modify the list later on directly in the APM configuraiton (ID 835509)</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/AGC-6.png"><img alt="../../_images/AGC-6.png" class="align-center" src="../../_images/AGC-6.png" style="width: 341.0px; height: 534.0px;" /></a>
+</li>
+<li><p class="first">Configure <code class="docutils literal notranslate"><span class="pre">Signle</span> <span class="pre">Sign-On</span> <span class="pre">Settings</span></code> as below</p>
+<a class="reference internal image-reference" href="../../_images/AGC-7.png"><img alt="../../_images/AGC-7.png" class="align-center" src="../../_images/AGC-7.png" style="width: 750.0px; height: 915.75px;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We will focus on Claims later on</p>
+</div>
+</li>
+<li><p class="first">Configure <code class="docutils literal notranslate"><span class="pre">Rate</span> <span class="pre">Limiting</span></code> as below. We will limit request per user based on their Email address extracted from the JWT token. The value used is <code class="docutils literal notranslate"><span class="pre">subsession.oauth.scope.last.jwt.Email</span></code></p>
+<a class="reference internal image-reference" href="../../_images/AGC-8.png"><img alt="../../_images/AGC-8.png" class="align-center" src="../../_images/AGC-8.png" style="width: 750.0px; height: 583.5px;" /></a>
+</li>
+</ol>
 </li>
 </ol>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/AGC-3.png"><img alt="../../_images/AGC-3.png" class="align-center" src="../../_images/AGC-3.png" style="width: 750.0px; height: 793.0px;" /></a>
-</div></blockquote>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
+<div><ol class="arabic">
+<li><p class="first">Configure the <code class="docutils literal notranslate"><span class="pre">Virtual</span> <span class="pre">Server</span></code> as below
+- VS : 10.1.10.18
+- Log All Requests
+- Client SSL arcadia_client_ssl</p>
 <blockquote>
-<div><div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You can notice the URI and the back server have been imported from the OAS2 file</p>
-</div>
+<div><a class="reference internal image-reference" href="../../_images/AGC-9.png"><img alt="../../_images/AGC-9.png" class="align-center" src="../../_images/AGC-9.png" style="width: 750.0px; height: 788.5px;" /></a>
 </div></blockquote>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<blockquote>
-<div><a class="reference internal image-reference" href="../../_images/AGC-4.png"><img alt="../../_images/AGC-4.png" class="align-center" src="../../_images/AGC-4.png" style="width: 952.0px; height: 713.0px;" /></a>
-</div></blockquote>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<blockquote>
-<div><a class="reference internal image-reference" href="../../_images/AGC-5.png"><img alt="../../_images/AGC-5.png" class="align-center" src="../../_images/AGC-5.png" style="width: 750.0px; height: 496.5px;" /></a>
-</div></blockquote>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<blockquote>
-<div><ul class="simple">
-<li>Select <code class="docutils literal notranslate"><span class="pre">AzureAD</span></code> <code class="docutils literal notranslate"><span class="pre">AAD-F5Sales</span></code> as provider</li>
-</ul>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Due to a bug in AGC, we can’t add more providers here. We will modify the list later on directly in the APM configuraiton (ID 835509)</p>
-</div>
-<a class="reference internal image-reference" href="../../_images/AGC-6.png"><img alt="../../_images/AGC-6.png" class="align-center" src="../../_images/AGC-6.png" style="width: 341.0px; height: 534.0px;" /></a>
-</div></blockquote>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<blockquote>
-<div><ul class="simple">
-<li>Configure <code class="docutils literal notranslate"><span class="pre">Signle</span> <span class="pre">Sign-On</span> <span class="pre">Settings</span></code> as below</li>
-</ul>
-<a class="reference internal image-reference" href="../../_images/AGC-7.png"><img alt="../../_images/AGC-7.png" class="align-center" src="../../_images/AGC-7.png" style="width: 750.0px; height: 915.75px;" /></a>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">We will focus on Claims later on</p>
-</div>
-</div></blockquote>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<blockquote>
-<div><ul class="simple">
-<li>Configure <code class="docutils literal notranslate"><span class="pre">Rate</span> <span class="pre">Limiting</span></code> as below. We will limit request per user based on their Email address extracted from the JWT token. The value used is <code class="docutils literal notranslate"><span class="pre">subsession.oauth.scope.last.jwt.Email</span></code></li>
-</ul>
-<a class="reference internal image-reference" href="../../_images/AGC-8.png"><img alt="../../_images/AGC-8.png" class="align-center" src="../../_images/AGC-8.png" style="width: 750.0px; height: 583.5px;" /></a>
-</div></blockquote>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<blockquote>
-<div><ul class="simple">
-<li><dl class="first docutils">
-<dt>Configure the <code class="docutils literal notranslate"><span class="pre">Virtual</span> <span class="pre">Server</span></code> as below</dt>
-<dd><ul class="first last">
-<li>VS : 10.1.10.18</li>
-<li>Log All Requests</li>
-<li>Client SSL arcadia_client_ssl</li>
-</ul>
-</dd>
-</dl>
 </li>
-</ul>
-<a class="reference internal image-reference" href="../../_images/AGC-9.png"><img alt="../../_images/AGC-9.png" class="align-center" src="../../_images/AGC-9.png" style="width: 750.0px; height: 788.5px;" /></a>
-<ul class="simple">
-<li>Click <code class="docutils literal notranslate"><span class="pre">Deploy</span></code></li>
-</ul>
+<li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Deploy</span></code></p>
+</li>
+</ol>
 </div></blockquote>
 <ol class="arabic">
 <li><p class="first">Now we have to add the 2 more providers in the APM configuration (due to the BUGID in AGC 6.0)</p>
@@ -406,13 +365,11 @@ APM will authenticate JWT tokens coming from different providers with different 
 <li><p class="first">When done, click <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">token</span></code> and send your request.</p>
 </li>
 </ol>
-</li>
-</ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">It passes. Token is approved by APM, and a new token is generated by APM and sent to the NGINX API GW (Bearer SSO)</p>
 </div>
-<ol class="arabic">
+</li>
 <li><p class="first">Now, try with the 2 other providers (partner1 and partner2)</p>
 <blockquote>
 <div><ol class="arabic simple">
