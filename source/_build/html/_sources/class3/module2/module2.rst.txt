@@ -38,7 +38,7 @@ Create and publish an API Definition with the Controller API
 
 .. warning :: Check the call ``Import API Definition OAS3``, we imported an OAS3 YAML File directly in the Controller with all the definitions and documentations
 
-.. note :: In a near futur, we will learn more on API definition versions
+.. note :: In a near future, we will learn more on API definition versions
 
 
 
