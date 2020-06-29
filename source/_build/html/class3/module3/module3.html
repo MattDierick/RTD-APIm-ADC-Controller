@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Module 3 - Protect Arcadia API with Adv. Waf and APM &mdash; NGINX Controller 3.x with BIG-IP Lab  documentation</title>
+  <title>Module 3 - Protect Arcadia API with Adv. Waf and APM (Bearer SSO) &mdash; NGINX Controller 3.x with BIG-IP Lab  documentation</title>
   
 
   
@@ -85,9 +85,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1 - Understand the infrastructure and the workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2 - Deploy, Publish and Protect Arcadia Web Application</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../class3.html">Class 3 - Publish and Protect Arcadia API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../module1/module1.html">Module 1 - Publish API with OAS3 spec file from the GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1/module1.html">Module 1 - Publish API with OAS3 spec file from the Controller GUI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../module2/module2.html">Module 2 - Publish API with OAS3 spec file via API</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Module 3 - Protect Arcadia API with Adv. Waf and APM</a><ul class="simple">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Module 3 - Protect Arcadia API with Adv. Waf and APM (Bearer SSO)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configure-nginx-controller-with-a-new-identity-provider">Configure NGINX Controller with a new Identity Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-adv-waf-and-apm">Configure Adv. WAF and APM</a><ul class="simple">
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -139,7 +143,7 @@
         
           <li><a href="../class3.html">Class 3 - Publish and Protect Arcadia API</a> &raquo;</li>
         
-      <li>Module 3 - Protect Arcadia API with Adv. Waf and APM</li>
+      <li>Module 3 - Protect Arcadia API with Adv. Waf and APM (Bearer SSO)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -158,9 +162,222 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-3-protect-arcadia-api-with-adv-waf-and-apm">
-<h1>Module 3 - Protect Arcadia API with Adv. Waf and APM<a class="headerlink" href="#module-3-protect-arcadia-api-with-adv-waf-and-apm" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-3-protect-arcadia-api-with-adv-waf-and-apm-bearer-sso">
+<h1>Module 3 - Protect Arcadia API with Adv. Waf and APM (Bearer SSO)<a class="headerlink" href="#module-3-protect-arcadia-api-with-adv-waf-and-apm-bearer-sso" title="Permalink to this headline">¶</a></h1>
+<p>In this lab we will deploy in front of the API Gateway a BIG-IP security policy based on Adv. WAF and APM.
+In order to make life better and simple for DevOps, we will delegate all the Authentication layer to APM.
+APM will authenticate JWT tokens coming from different providers with different keys, and we will use APM Bearer SSO in order to share a unique JWT key with the API gateways.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">APM will download keys from external providers automatically (by using OIDC discovery process) and will use another an unique key for internal SSO with NGINX API Gateways. This will allow DevOps to know only one key for all their deployments. And SecOps will manage the external providers.</p>
+</div>
+<img alt="../../_images/archi.png" class="align-center" src="../../_images/archi.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="configure-nginx-controller-with-a-new-identity-provider">
+<h2>Configure NGINX Controller with a new Identity Provider<a class="headerlink" href="#configure-nginx-controller-with-a-new-identity-provider" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">In the left menu, click on <code class="docutils literal notranslate"><span class="pre">Identity</span> <span class="pre">Provider</span></code> icon</p>
+</li>
+<li><p class="first">Create a new Identity Provider as below. Use the JSON code below for the JWK</p>
+<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+      <span class="s2">&quot;k&quot;</span><span class="p">:</span> <span class="s2">&quot;aWxvdmVuZ2lueA&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;9876543210&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;kty&quot;</span><span class="p">:</span> <span class="s2">&quot;oct&quot;</span>
+      <span class="p">}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">I invite you to decode the “k” value to know what is the <code class="docutils literal notranslate"><span class="pre">key</span></code>. As you can notice, we don’t use a RSA key, but a secret (just to simplify hte lab). This secret is BASE64 encoded.</p>
+</div>
+<img alt="../../_images/identity-provider.png" class="align-center" src="../../_images/identity-provider.png" />
+</li>
+<li><p class="first">Assign this <code class="docutils literal notranslate"><span class="pre">Identity</span> <span class="pre">Provider</span></code> with your API Definition</p>
+<ol class="arabic">
+<li><p class="first">Get back to your <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">definition</span></code> and <code class="docutils literal notranslate"><span class="pre">edit</span></code> the <code class="docutils literal notranslate"><span class="pre">Published</span> <span class="pre">API</span></code></p>
+<a class="reference internal image-reference" href="../../_images/edit-published1.png"><img alt="../../_images/edit-published1.png" class="align-center" src="../../_images/edit-published1.png" style="width: 500.0px; height: 476.0px;" /></a>
+</li>
+<li><p class="first">Click on <code class="docutils literal notranslate"><span class="pre">routing</span></code> and edit the <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Settings</span></code></p>
+<a class="reference internal image-reference" href="../../_images/edit-security.png"><img alt="../../_images/edit-security.png" class="align-center" src="../../_images/edit-security.png" style="width: 750.0px; height: 462.0px;" /></a>
+</li>
+<li><p class="first">Click on <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Authentication</span></code></p>
+<a class="reference internal image-reference" href="../../_images/add-auth.png"><img alt="../../_images/add-auth.png" class="align-center" src="../../_images/add-auth.png" style="width: 750.0px; height: 464.25px;" /></a>
+</li>
+<li><p class="first">Select the provider created previouly <code class="docutils literal notranslate"><span class="pre">JWT</span> <span class="pre">Bearer</span> <span class="pre">SSO</span></code> and <code class="docutils literal notranslate"><span class="pre">Bearer</span></code></p>
+<a class="reference internal image-reference" href="../../_images/auth.png"><img alt="../../_images/auth.png" class="align-center" src="../../_images/auth.png" style="width: 750.0px; height: 520.5px;" /></a>
+</li>
+<li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Done</span></code> and <code class="docutils literal notranslate"><span class="pre">Submit</span></code></p>
+</li>
+<li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Submit</span></code> again</p>
+</li>
+</ol>
+</li>
+<li><p class="first">Make a quick test with <code class="docutils literal notranslate"><span class="pre">Postman</span></code> by sending a request to the Arcadia API like <code class="docutils literal notranslate"><span class="pre">Last</span> <span class="pre">Transactions</span></code> or <code class="docutils literal notranslate"><span class="pre">Buy</span> <span class="pre">stocks</span></code></p>
+<ol class="arabic">
+<li><p class="first">You can see a <code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Unauthorized</span></code></p>
+<a class="reference internal image-reference" href="../../_images/401.png"><img alt="../../_images/401.png" class="align-center" src="../../_images/401.png" style="width: 750.0px; height: 382.5px;" /></a>
+</li>
+</ol>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As you don’t include any JWT token in you request, the API GW rejected the requst. It is time to configure APM to inject this JWT Bearer SSO</p>
+</div>
+</div>
+<div class="section" id="configure-adv-waf-and-apm">
+<h2>Configure Adv. WAF and APM<a class="headerlink" href="#configure-adv-waf-and-apm" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In this lab we will use Access Guided Configuration and we will do some custom tuning in the policies. There are several ways ot protect API with BIG-IP, but at the moment, we will focus on AGC so that you can understand how it works. GSA team is working on a dedicated UDF Blueprint for API Declarative WAF policy with v16.0</p>
+</div>
+<ol class="arabic">
+<li><p class="first">Connect to the Jumhost (user / user)</p>
+</li>
+<li><p class="first">Open <code class="docutils literal notranslate"><span class="pre">Chrome</span></code> and connect to the BIG-IP (admin / admin)</p>
+</li>
+<li><p class="first">First of all, create a JWK Bearer SSO key. If you remember below, the key (encoded64) was <code class="docutils literal notranslate"><span class="pre">aWxvdmVuZ2lueA</span></code>, and decoded64 <code class="docutils literal notranslate"><span class="pre">ilovenginx</span></code></p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Access</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Federation</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">JSON</span> <span class="pre">Web</span> <span class="pre">Token</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Key</span> <span class="pre">Configuration</span></code></p>
+</li>
+<li><p class="first">Create a new key as below with the value <code class="docutils literal notranslate"><span class="pre">ilovenginx</span></code> as Shared Secret</p>
+<a class="reference internal image-reference" href="../../_images/bearer-key.png"><img alt="../../_images/bearer-key.png" class="align-center" src="../../_images/bearer-key.png" style="width: 750.0px; height: 483.0px;" /></a>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Don’t forget to set an ID. It is mandatory in order to use this key in the Bearer SSO profile</p>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">In <code class="docutils literal notranslate"><span class="pre">Access</span></code>, click on <code class="docutils literal notranslate"><span class="pre">Guided</span> <span class="pre">Configuration</span></code> and select the template <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">Protection</span> <span class="pre">Proxy</span></code> in <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">Protection</span></code> group</p>
+<a class="reference internal image-reference" href="../../_images/AGC-1.png"><img alt="../../_images/AGC-1.png" class="align-center" src="../../_images/AGC-1.png" style="width: 750.0px; height: 465.0px;" /></a>
+</li>
+<li><p class="first">Configure the template as below.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The AGC template does not support yet OpenAPI spec file Version 3. But only Version 2. We will use another version of the OAS file.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The OAS file is located in <code class="docutils literal notranslate"><span class="pre">Downloads</span></code> directory and its name is <code class="docutils literal notranslate"><span class="pre">swaggerArcadia2.json</span></code></p>
+</div>
+<ul class="simple">
+<li>Check the boxes <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">Rate</span> <span class="pre">Limiting</span></code> and OAuth 2.0``</li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/AGC-2.png"><img alt="../../_images/AGC-2.png" class="align-center" src="../../_images/AGC-2.png" style="width: 556.0px; height: 804.0px;" /></a>
+</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/AGC-3.png"><img alt="../../_images/AGC-3.png" class="align-center" src="../../_images/AGC-3.png" style="width: 750.0px; height: 793.0px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can notice the URI and the back server have been imported from the OAS2 file</p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/AGC-4.png"><img alt="../../_images/AGC-4.png" class="align-center" src="../../_images/AGC-4.png" style="width: 952.0px; height: 713.0px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/AGC-5.png"><img alt="../../_images/AGC-5.png" class="align-center" src="../../_images/AGC-5.png" style="width: 750.0px; height: 496.5px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li>Select <code class="docutils literal notranslate"><span class="pre">AzureAD</span></code> <code class="docutils literal notranslate"><span class="pre">AAD-F5Sales</span></code> as provider</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Due to a bug in AGC, we can’t add more providers here. We will modify the list later on directly in the APM configuraiton (ID 835509)</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/AGC-6.png"><img alt="../../_images/AGC-6.png" class="align-center" src="../../_images/AGC-6.png" style="width: 341.0px; height: 534.0px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li>Configure <code class="docutils literal notranslate"><span class="pre">Signle</span> <span class="pre">Sign-On</span> <span class="pre">Settings</span></code> as below</li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/AGC-7.png"><img alt="../../_images/AGC-7.png" class="align-center" src="../../_images/AGC-7.png" style="width: 750.0px; height: 915.75px;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We will focus on Claims later on</p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li>Configure <code class="docutils literal notranslate"><span class="pre">Rate</span> <span class="pre">Limiting</span></code> as below. We will limit request per user based on their Email address extracted from the JWT token. The value used is <code class="docutils literal notranslate"><span class="pre">subsession.oauth.scope.last.jwt.Email</span></code></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/AGC-8.png"><img alt="../../_images/AGC-8.png" class="align-center" src="../../_images/AGC-8.png" style="width: 750.0px; height: 583.5px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>Configure the <code class="docutils literal notranslate"><span class="pre">Virtual</span> <span class="pre">Server</span></code> as below</dt>
+<dd><ul class="first last">
+<li>VS : 10.1.10.18</li>
+<li>Log All Requests</li>
+<li>Client SSL arcadia_client_ssl</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/AGC-9.png"><img alt="../../_images/AGC-9.png" class="align-center" src="../../_images/AGC-9.png" style="width: 750.0px; height: 788.5px;" /></a>
+<ul class="simple">
+<li>Click <code class="docutils literal notranslate"><span class="pre">Deploy</span></code></li>
+</ul>
+</div></blockquote>
+<ol class="arabic">
+<li><p class="first">Now we have to add the 2 more providers in the APM configuration (due to the BUGID in AGC 6.0)</p>
+<ol class="arabic">
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">Unstrict</span></code> the configuration in AGC, by clicking on the <code class="docutils literal notranslate"><span class="pre">lock</span></code> icon</p>
+<a class="reference internal image-reference" href="../../_images/unstrictness.png"><img alt="../../_images/unstrictness.png" class="align-center" src="../../_images/unstrictness.png" style="width: 1000.0px; height: 394.5px;" /></a>
+</li>
+<li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Access</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Federation</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">JSON</span> <span class="pre">Web</span> <span class="pre">Token</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Provider</span> <span class="pre">List</span></code> and <code class="docutils literal notranslate"><span class="pre">edit</span></code> the existing profile</p>
+</li>
+<li><p class="first">Add <code class="docutils literal notranslate"><span class="pre">provider1</span></code> and <code class="docutils literal notranslate"><span class="pre">provider2</span></code> into the list</p>
+<a class="reference internal image-reference" href="../../_images/provider-list.png"><img alt="../../_images/provider-list.png" class="align-center" src="../../_images/provider-list.png" style="width: 500.0px; height: 244.0px;" /></a>
+</li>
+</ol>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Congratulation, Arcadia API is protected by an Advanced WAF (you can check the policy) and APM in order to authenticate requests from 3 providers.</p>
+</div>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
