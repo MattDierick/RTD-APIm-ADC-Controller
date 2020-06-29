@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Module 3 - F5 BIG-IP configuration" href="../module3/module3.html" />
-    <link rel="prev" title="Module 1 - Publish API with OAS3 spec file from the GUI" href="../module1/module1.html" /> 
+    <link rel="next" title="Module 3 - Protect Arcadia API with Adv. Waf and APM" href="../module3/module3.html" />
+    <link rel="prev" title="Module 1 - Publish API with OAS3 spec file from the Controller GUI" href="../module1/module1.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,11 +86,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1 - Understand the infrastructure and the workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2 - Deploy, Publish and Protect Arcadia Web Application</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../class3.html">Class 3 - Publish and Protect Arcadia API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../module1/module1.html">Module 1 - Publish API with OAS3 spec file from the GUI</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Module 2 - Publish API with OAS3 spec file via API</a><ul class="simple">
+<li class="toctree-l2"><a class="reference internal" href="../module1/module1.html">Module 1 - Publish API with OAS3 spec file from the Controller GUI</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Module 2 - Publish API with OAS3 spec file via API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#clean-up-the-apim-configuration">Clean up the APIm configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-and-publish-an-api-definition-with-the-controller-api">Create and publish an API Definition with the Controller API</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../module3/module3.html">Module 3 - F5 BIG-IP configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../module3/module3.html">Module 3 - Protect Arcadia API with Adv. Waf and APM</a></li>
 </ul>
 </li>
 </ul>
@@ -161,7 +165,59 @@
             
   <div class="section" id="module-2-publish-api-with-oas3-spec-file-via-api">
 <h1>Module 2 - Publish API with OAS3 spec file via API<a class="headerlink" href="#module-2-publish-api-with-oas3-spec-file-via-api" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We will clean up the previous lab in order to configure exactly the same outcomes but with API calls only.</p>
+</div>
+<div class="section" id="clean-up-the-apim-configuration">
+<h2>Clean up the APIm configuration<a class="headerlink" href="#clean-up-the-apim-configuration" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">In the controller GUI, go to <code class="docutils literal notranslate"><span class="pre">APIm</span></code> menu and click on the existing API definintion <code class="docutils literal notranslate"><span class="pre">arcadia-api-dev</span></code></p>
+</li>
+<li><p class="first">On the right panel</p>
+<ol class="arabic">
+<li><p class="first">Delete the <code class="docutils literal notranslate"><span class="pre">Production</span> <span class="pre">API</span></code> but clicking the <code class="docutils literal notranslate"><span class="pre">trash</span></code> button</p>
+<a class="reference internal image-reference" href="../../_images/delete-published.png"><img alt="../../_images/delete-published.png" class="align-center" src="../../_images/delete-published.png" style="width: 500.0px; height: 523.0px;" /></a>
+</li>
+<li><p class="first">Delete the API definition <code class="docutils literal notranslate"><span class="pre">arcadia-api-def</span></code></p>
+<img alt="../../_images/delete-definition.png" class="align-center" src="../../_images/delete-definition.png" />
+</li>
+</ol>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Your API Definitions environment is clean.</p>
+</div>
+</div>
+<div class="section" id="create-and-publish-an-api-definition-with-the-controller-api">
+<h2>Create and publish an API Definition with the Controller API<a class="headerlink" href="#create-and-publish-an-api-definition-with-the-controller-api" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Connect to the Jumphost (user / user)</p>
+</li>
+<li><p class="first">Launch <code class="docutils literal notranslate"><span class="pre">Postman</span></code></p>
+<ol class="arabic simple">
+<li>Open <code class="docutils literal notranslate"><span class="pre">Arcadia</span> <span class="pre">OAS</span></code> collection</li>
+<li>And <code class="docutils literal notranslate"><span class="pre">run</span></code> all calls</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For every call, check what is happening in the controller GUI</p>
+</div>
+</li>
+<li><p class="first">At then end, you should have the same results as the previous lab.</p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Check the call <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">API</span> <span class="pre">Definition</span> <span class="pre">OAS3</span></code>, we imported an OAS3 YAML File directly in the Controller with all the definitions and documentations</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In a near futur, we will learn more on API definition versions</p>
+</div>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
@@ -173,10 +229,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../module3/module3.html" class="btn btn-neutral float-right" title="Module 3 - F5 BIG-IP configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../module3/module3.html" class="btn btn-neutral float-right" title="Module 3 - Protect Arcadia API with Adv. Waf and APM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../module1/module1.html" class="btn btn-neutral float-left" title="Module 1 - Publish API with OAS3 spec file from the GUI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../module1/module1.html" class="btn btn-neutral float-left" title="Module 1 - Publish API with OAS3 spec file from the Controller GUI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
