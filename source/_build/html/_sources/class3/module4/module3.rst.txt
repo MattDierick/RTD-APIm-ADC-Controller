@@ -219,12 +219,12 @@ Test your protected API with Authentication, WAF and Rate Limiting
       .. code :: bash 
 
          Partner 1
-         eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwYXJ0bmVyMSIsImlhdCI6MTU5MzQ1NTk4NSwiZXhwIjoxNjg4MDYzOTg1LCJhdWQiOiJhcGkuYXJjYWRpYS1maW5hbmNlLmlvIiwic3ViIjoiYXBpLmFyY2FkaWEtZmluYW5jZS5pbyIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjoiTWFuYWdlciJ9.JRboDfKWvSLVU3md6OULGifoVxJ-ryx7y-0DKrOlPOM
+         eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwYXJ0bmVyMSIsImlhdCI6MTU5MTc4NTQ1OSwiZXhwIjoxNjIzMzIxNDU5LCJhdWQiOiJhcGkuYXJjYWRpYS1maW5hbmNlLmlvIiwic3ViIjoiYXBpLmFyY2FkaWEtZmluYW5jZS5pbyIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.EXanJudwJiu_HUJ0r0Xb2oeEaENn1OnJ3N9y5IVhvYM
 
       .. code :: bash
 
          Partner 2
-         eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwYXJ0bmVyMiIsImlhdCI6MTU5MzQ1NTk4NSwiZXhwIjoxNjg4MDYzOTg1LCJhdWQiOiJhcGkuYXJjYWRpYS1maW5hbmNlLmlvIiwic3ViIjoiYXBpLmFyY2FkaWEtZmluYW5jZS5pbyIsIkdpdmVuTmFtZSI6IkJvYiIsIlN1cm5hbWUiOiJUaGUgU3BvbmdlIiwiRW1haWwiOiJib2JAc3BvbmdlLmNvbSIsIlJvbGUiOiJDb250cmFjdG9yIn0.aqTxd6X4z7EFijJsyiuq8mZAKMLG519Bmjz1ra24L-s
+         eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwYXJ0bmVyMiIsImlhdCI6MTU5Mjg1MzI4NiwiZXhwIjoxNjI0Mzg5Mjg2LCJhdWQiOiJhcGkuYXJjYWRpYS1maW5hbmNlLmlvIiwic3ViIjoiYXBpLmFyY2FkaWEtZmluYW5jZS5pbyIsIkdpdmVuTmFtZSI6IkJvYiIsIlN1cm5hbWUiOiJUaGUgU3BvbmdlIiwiRW1haWwiOiJib2JAZ21haWwuY29tIiwiUm9sZSI6Ik1hbmFnZXIifQ.J-mheqiM-2Hyn-Re_ghUWO4chXKc6rJ6ISxJTCGJ8f8
 
 #. Test the **Rate Limiting** by sending 4 calls with the same token. The 4th will be block. You can notice the reponse code ``429 Too Many Requests``
 

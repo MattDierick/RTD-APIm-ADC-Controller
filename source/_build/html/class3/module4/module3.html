@@ -35,8 +35,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Module 4 - Fine granted access with NGINX Controller APIm module" href="../module4/module4.html" />
-    <link rel="prev" title="Module 2 - Publish API with OAS3 spec file via API" href="../module2/module2.html" /> 
+    <link rel="prev" title="Module 3 - Protect Arcadia API with Adv. Waf and APM (Bearer SSO)" href="../module3/module3.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -88,6 +87,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../class3.html">Class 3 - Publish and Protect Arcadia API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../module1/module1.html">Module 1 - Publish API with OAS3 spec file from the Controller GUI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../module2/module2.html">Module 2 - Publish API with OAS3 spec file via API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3/module3.html">Module 3 - Protect Arcadia API with Adv. Waf and APM (Bearer SSO)</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Module 3 - Protect Arcadia API with Adv. Waf and APM (Bearer SSO)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#configure-nginx-controller-with-a-new-identity-provider">Configure NGINX Controller with a new Identity Provider</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configure-adv-waf-and-apm">Configure Adv. WAF and APM</a></li>
@@ -96,7 +96,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../module4/module4.html">Module 4 - Fine granted access with NGINX Controller APIm module</a></li>
 </ul>
 </li>
 </ul>
@@ -152,7 +151,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/class3/module3/module3.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/class3/module4/module3.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -174,7 +173,7 @@ APM will authenticate JWT tokens coming from different providers with different 
 <p class="first admonition-title">Note</p>
 <p class="last">APM will download keys from external providers automatically (by using OIDC discovery process) and will use another an unique key for internal SSO with NGINX API Gateways. This will allow DevOps to know only one key for all their deployments. And SecOps will manage the external providers.</p>
 </div>
-<img alt="../../_images/archi.png" class="align-center" src="../../_images/archi.png" />
+<img alt="../../_images/archi1.png" class="align-center" src="../../_images/archi1.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -199,21 +198,21 @@ APM will authenticate JWT tokens coming from different providers with different 
 <p class="first admonition-title">Note</p>
 <p class="last">I invite you to decode the “k” value to know what is the <code class="docutils literal notranslate"><span class="pre">key</span></code>. As you can notice, we don’t use a RSA key, but a secret (just to simplify the lab). This secret is BASE64 encoded.</p>
 </div>
-<img alt="../../_images/identity-provider.png" class="align-center" src="../../_images/identity-provider.png" />
+<img alt="../../_images/identity-provider1.png" class="align-center" src="../../_images/identity-provider1.png" />
 </li>
 <li><p class="first">Assign this <code class="docutils literal notranslate"><span class="pre">Identity</span> <span class="pre">Provider</span></code> with your API Definition</p>
 <ol class="arabic">
 <li><p class="first">Get back to your <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">definition</span></code> and <code class="docutils literal notranslate"><span class="pre">edit</span></code> the <code class="docutils literal notranslate"><span class="pre">Published</span> <span class="pre">API</span></code></p>
-<a class="reference internal image-reference" href="../../_images/edit-published1.png"><img alt="../../_images/edit-published1.png" class="align-center" src="../../_images/edit-published1.png" style="width: 500.0px; height: 476.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/edit-published2.png"><img alt="../../_images/edit-published2.png" class="align-center" src="../../_images/edit-published2.png" style="width: 500.0px; height: 476.0px;" /></a>
 </li>
 <li><p class="first">Click on <code class="docutils literal notranslate"><span class="pre">routing</span></code> and edit the <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Settings</span></code></p>
-<a class="reference internal image-reference" href="../../_images/edit-security.png"><img alt="../../_images/edit-security.png" class="align-center" src="../../_images/edit-security.png" style="width: 750.0px; height: 462.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/edit-security1.png"><img alt="../../_images/edit-security1.png" class="align-center" src="../../_images/edit-security1.png" style="width: 750.0px; height: 462.0px;" /></a>
 </li>
 <li><p class="first">Click on <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Authentication</span></code></p>
-<a class="reference internal image-reference" href="../../_images/add-auth.png"><img alt="../../_images/add-auth.png" class="align-center" src="../../_images/add-auth.png" style="width: 750.0px; height: 464.25px;" /></a>
+<a class="reference internal image-reference" href="../../_images/add-auth1.png"><img alt="../../_images/add-auth1.png" class="align-center" src="../../_images/add-auth1.png" style="width: 750.0px; height: 464.25px;" /></a>
 </li>
 <li><p class="first">Select the provider created previouly <code class="docutils literal notranslate"><span class="pre">JWT</span> <span class="pre">Bearer</span> <span class="pre">SSO</span></code> and <code class="docutils literal notranslate"><span class="pre">Bearer</span></code></p>
-<a class="reference internal image-reference" href="../../_images/auth.png"><img alt="../../_images/auth.png" class="align-center" src="../../_images/auth.png" style="width: 750.0px; height: 520.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/auth1.png"><img alt="../../_images/auth1.png" class="align-center" src="../../_images/auth1.png" style="width: 750.0px; height: 520.5px;" /></a>
 </li>
 <li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Done</span></code> and <code class="docutils literal notranslate"><span class="pre">Submit</span></code></p>
 </li>
@@ -224,7 +223,7 @@ APM will authenticate JWT tokens coming from different providers with different 
 <li><p class="first">Make a quick test with <code class="docutils literal notranslate"><span class="pre">Postman</span></code> by sending a request to the Arcadia API like <code class="docutils literal notranslate"><span class="pre">Last</span> <span class="pre">Transactions</span></code> or <code class="docutils literal notranslate"><span class="pre">Buy</span> <span class="pre">stocks</span></code></p>
 <ol class="arabic">
 <li><p class="first">You can see a <code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Unauthorized</span></code></p>
-<a class="reference internal image-reference" href="../../_images/401.png"><img alt="../../_images/401.png" class="align-center" src="../../_images/401.png" style="width: 750.0px; height: 382.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/4011.png"><img alt="../../_images/4011.png" class="align-center" src="../../_images/4011.png" style="width: 750.0px; height: 382.5px;" /></a>
 </li>
 </ol>
 </li>
@@ -253,7 +252,7 @@ APM will authenticate JWT tokens coming from different providers with different 
 <li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Access</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Federation</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">JSON</span> <span class="pre">Web</span> <span class="pre">Token</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Key</span> <span class="pre">Configuration</span></code></p>
 </li>
 <li><p class="first">Create a new key as below with the value <code class="docutils literal notranslate"><span class="pre">ilovenginx</span></code> as Shared Secret</p>
-<a class="reference internal image-reference" href="../../_images/bearer-key.png"><img alt="../../_images/bearer-key.png" class="align-center" src="../../_images/bearer-key.png" style="width: 750.0px; height: 483.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/bearer-key1.png"><img alt="../../_images/bearer-key1.png" class="align-center" src="../../_images/bearer-key1.png" style="width: 750.0px; height: 483.0px;" /></a>
 </li>
 </ol>
 <div class="admonition warning">
@@ -263,7 +262,7 @@ APM will authenticate JWT tokens coming from different providers with different 
 </div></blockquote>
 </li>
 <li><p class="first">In <code class="docutils literal notranslate"><span class="pre">Access</span></code>, click on <code class="docutils literal notranslate"><span class="pre">Guided</span> <span class="pre">Configuration</span></code> and select the template <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">Protection</span> <span class="pre">Proxy</span></code> in <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">Protection</span></code> group</p>
-<a class="reference internal image-reference" href="../../_images/AGC-1.png"><img alt="../../_images/AGC-1.png" class="align-center" src="../../_images/AGC-1.png" style="width: 750.0px; height: 465.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/AGC-11.png"><img alt="../../_images/AGC-11.png" class="align-center" src="../../_images/AGC-11.png" style="width: 750.0px; height: 465.0px;" /></a>
 </li>
 <li><p class="first">Configure the template as below.</p>
 <div class="admonition warning">
@@ -276,34 +275,34 @@ APM will authenticate JWT tokens coming from different providers with different 
 </div>
 <ol class="arabic">
 <li><p class="first">Check the boxes <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">Rate</span> <span class="pre">Limiting</span></code> and OAuth 2.0``</p>
-<a class="reference internal image-reference" href="../../_images/AGC-2.png"><img alt="../../_images/AGC-2.png" class="align-center" src="../../_images/AGC-2.png" style="width: 556.0px; height: 804.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/AGC-21.png"><img alt="../../_images/AGC-21.png" class="align-center" src="../../_images/AGC-21.png" style="width: 556.0px; height: 804.0px;" /></a>
 <ul class="simple">
 <li>Select the default Servrer at the bottom of the screen</li>
 </ul>
-<a class="reference internal image-reference" href="../../_images/AGC-3.png"><img alt="../../_images/AGC-3.png" class="align-center" src="../../_images/AGC-3.png" style="width: 750.0px; height: 793.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/AGC-31.png"><img alt="../../_images/AGC-31.png" class="align-center" src="../../_images/AGC-31.png" style="width: 750.0px; height: 793.0px;" /></a>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">You can notice the URI and the back server have been imported from the OAS2 file</p>
 </div>
-<a class="reference internal image-reference" href="../../_images/AGC-4.png"><img alt="../../_images/AGC-4.png" class="align-center" src="../../_images/AGC-4.png" style="width: 952.0px; height: 713.0px;" /></a>
-<a class="reference internal image-reference" href="../../_images/AGC-5.png"><img alt="../../_images/AGC-5.png" class="align-center" src="../../_images/AGC-5.png" style="width: 750.0px; height: 496.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/AGC-41.png"><img alt="../../_images/AGC-41.png" class="align-center" src="../../_images/AGC-41.png" style="width: 952.0px; height: 713.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/AGC-51.png"><img alt="../../_images/AGC-51.png" class="align-center" src="../../_images/AGC-51.png" style="width: 750.0px; height: 496.5px;" /></a>
 </li>
 <li><p class="first">Select <code class="docutils literal notranslate"><span class="pre">AzureAD</span></code> <code class="docutils literal notranslate"><span class="pre">AAD-F5Sales</span></code> as provider</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">Due to a bug in AGC, we can’t add more providers here. We will modify the list later on directly in the APM configuraiton (ID 835509)</p>
 </div>
-<a class="reference internal image-reference" href="../../_images/AGC-6.png"><img alt="../../_images/AGC-6.png" class="align-center" src="../../_images/AGC-6.png" style="width: 341.0px; height: 534.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/AGC-61.png"><img alt="../../_images/AGC-61.png" class="align-center" src="../../_images/AGC-61.png" style="width: 341.0px; height: 534.0px;" /></a>
 </li>
 <li><p class="first">Configure <code class="docutils literal notranslate"><span class="pre">Signle</span> <span class="pre">Sign-On</span> <span class="pre">Settings</span></code> as below</p>
-<a class="reference internal image-reference" href="../../_images/AGC-7.png"><img alt="../../_images/AGC-7.png" class="align-center" src="../../_images/AGC-7.png" style="width: 750.0px; height: 915.75px;" /></a>
+<a class="reference internal image-reference" href="../../_images/AGC-71.png"><img alt="../../_images/AGC-71.png" class="align-center" src="../../_images/AGC-71.png" style="width: 750.0px; height: 915.75px;" /></a>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">We will focus on Claims later on</p>
 </div>
 </li>
 <li><p class="first">Configure <code class="docutils literal notranslate"><span class="pre">Rate</span> <span class="pre">Limiting</span></code> as below. We will limit request per user based on their Email address extracted from the JWT token. The value used for the <code class="docutils literal notranslate"><span class="pre">User</span> <span class="pre">ID</span> <span class="pre">Key</span></code> is <code class="docutils literal notranslate"><span class="pre">subsession.oauth.scope.last.jwt.Email</span></code></p>
-<a class="reference internal image-reference" href="../../_images/AGC-8.png"><img alt="../../_images/AGC-8.png" class="align-center" src="../../_images/AGC-8.png" style="width: 750.0px; height: 583.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/AGC-81.png"><img alt="../../_images/AGC-81.png" class="align-center" src="../../_images/AGC-81.png" style="width: 750.0px; height: 583.5px;" /></a>
 </li>
 </ol>
 </li>
@@ -321,7 +320,7 @@ APM will authenticate JWT tokens coming from different providers with different 
 </li>
 <li><p class="first">Client SSL arcadia_client_ssl</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/AGC-9.png"><img alt="../../_images/AGC-9.png" class="align-center" src="../../_images/AGC-9.png" style="width: 750.0px; height: 788.5px;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/AGC-91.png"><img alt="../../_images/AGC-91.png" class="align-center" src="../../_images/AGC-91.png" style="width: 750.0px; height: 788.5px;" /></a>
 </div></blockquote>
 </li>
 </ul>
@@ -334,12 +333,12 @@ APM will authenticate JWT tokens coming from different providers with different 
 <li><p class="first">Now we have to add manually the 2 more providers in the APM configuration (due to the BUGID in AGC 6.0)</p>
 <ol class="arabic">
 <li><p class="first"><code class="docutils literal notranslate"><span class="pre">Unstrict</span></code> the configuration in AGC, by clicking on the <code class="docutils literal notranslate"><span class="pre">lock</span></code> icon and approve the change.</p>
-<a class="reference internal image-reference" href="../../_images/unstrictness.png"><img alt="../../_images/unstrictness.png" class="align-center" src="../../_images/unstrictness.png" style="width: 1000.0px; height: 394.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/unstrictness1.png"><img alt="../../_images/unstrictness1.png" class="align-center" src="../../_images/unstrictness1.png" style="width: 1000.0px; height: 394.5px;" /></a>
 </li>
 <li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Access</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Federation</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">JSON</span> <span class="pre">Web</span> <span class="pre">Token</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Provider</span> <span class="pre">List</span></code> and <code class="docutils literal notranslate"><span class="pre">edit</span></code> the existing profile</p>
 </li>
 <li><p class="first">Add <code class="docutils literal notranslate"><span class="pre">provider1</span></code> and <code class="docutils literal notranslate"><span class="pre">provider2</span></code> into the list</p>
-<a class="reference internal image-reference" href="../../_images/provider-list.png"><img alt="../../_images/provider-list.png" class="align-center" src="../../_images/provider-list.png" style="width: 500.0px; height: 244.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/provider-list1.png"><img alt="../../_images/provider-list1.png" class="align-center" src="../../_images/provider-list1.png" style="width: 500.0px; height: 244.0px;" /></a>
 </li>
 </ol>
 </li>
@@ -368,7 +367,7 @@ APM will authenticate JWT tokens coming from different providers with different 
 <li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">New</span> <span class="pre">Token</span></code></p>
 </li>
 <li><p class="first">I have already set the values for the Oauth Client. As a reminder, here, Postman is the Oauth Agent - it is requesting the Access Token</p>
-<a class="reference internal image-reference" href="../../_images/oauth2.png"><img alt="../../_images/oauth2.png" class="align-center" src="../../_images/oauth2.png" style="width: 500.0px; height: 505.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/oauth21.png"><img alt="../../_images/oauth21.png" class="align-center" src="../../_images/oauth21.png" style="width: 500.0px; height: 505.5px;" /></a>
 </li>
 <li><p class="first">Authenticate with your Corporate F5 account. If it fails, it means you are not part of the F5 Sales Azure tenant (Open an IT Ticket)</p>
 </li>
@@ -387,18 +386,18 @@ APM will authenticate JWT tokens coming from different providers with different 
 <li>Don’t use <code class="docutils literal notranslate"><span class="pre">Oauth</span> <span class="pre">2.0</span></code>, as we already have the tokens. But use <code class="docutils literal notranslate"><span class="pre">Bearer</span> <span class="pre">Token</span></code> instead. I generated these tokens from the website <a class="reference external" href="http://jwtbuilder.jamiekurtz.com/">http://jwtbuilder.jamiekurtz.com/</a></li>
 </ol>
 <div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Partner</span> <span class="mi">1</span>
-<span class="n">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</span><span class="o">.</span><span class="n">eyJpc3MiOiJwYXJ0bmVyMSIsImlhdCI6MTU5MzQ1NTk4NSwiZXhwIjoxNjg4MDYzOTg1LCJhdWQiOiJhcGkuYXJjYWRpYS1maW5hbmNlLmlvIiwic3ViIjoiYXBpLmFyY2FkaWEtZmluYW5jZS5pbyIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjoiTWFuYWdlciJ9</span><span class="o">.</span><span class="n">JRboDfKWvSLVU3md6OULGifoVxJ</span><span class="o">-</span><span class="n">ryx7y</span><span class="o">-</span><span class="mi">0</span><span class="n">DKrOlPOM</span>
+<span class="n">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</span><span class="o">.</span><span class="n">eyJpc3MiOiJwYXJ0bmVyMSIsImlhdCI6MTU5MTc4NTQ1OSwiZXhwIjoxNjIzMzIxNDU5LCJhdWQiOiJhcGkuYXJjYWRpYS1maW5hbmNlLmlvIiwic3ViIjoiYXBpLmFyY2FkaWEtZmluYW5jZS5pbyIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0</span><span class="o">.</span><span class="n">EXanJudwJiu_HUJ0r0Xb2oeEaENn1OnJ3N9y5IVhvYM</span>
 </pre></div>
 </div>
 <div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Partner</span> <span class="mi">2</span>
-<span class="n">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</span><span class="o">.</span><span class="n">eyJpc3MiOiJwYXJ0bmVyMiIsImlhdCI6MTU5MzQ1NTk4NSwiZXhwIjoxNjg4MDYzOTg1LCJhdWQiOiJhcGkuYXJjYWRpYS1maW5hbmNlLmlvIiwic3ViIjoiYXBpLmFyY2FkaWEtZmluYW5jZS5pbyIsIkdpdmVuTmFtZSI6IkJvYiIsIlN1cm5hbWUiOiJUaGUgU3BvbmdlIiwiRW1haWwiOiJib2JAc3BvbmdlLmNvbSIsIlJvbGUiOiJDb250cmFjdG9yIn0</span><span class="o">.</span><span class="n">aqTxd6X4z7EFijJsyiuq8mZAKMLG519Bmjz1ra24L</span><span class="o">-</span><span class="n">s</span>
+<span class="n">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</span><span class="o">.</span><span class="n">eyJpc3MiOiJwYXJ0bmVyMiIsImlhdCI6MTU5Mjg1MzI4NiwiZXhwIjoxNjI0Mzg5Mjg2LCJhdWQiOiJhcGkuYXJjYWRpYS1maW5hbmNlLmlvIiwic3ViIjoiYXBpLmFyY2FkaWEtZmluYW5jZS5pbyIsIkdpdmVuTmFtZSI6IkJvYiIsIlN1cm5hbWUiOiJUaGUgU3BvbmdlIiwiRW1haWwiOiJib2JAZ21haWwuY29tIiwiUm9sZSI6Ik1hbmFnZXIifQ</span><span class="o">.</span><span class="n">J</span><span class="o">-</span><span class="n">mheqiM</span><span class="o">-</span><span class="mi">2</span><span class="n">Hyn</span><span class="o">-</span><span class="n">Re_ghUWO4chXKc6rJ6ISxJTCGJ8f8</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p class="first">Test the <strong>Rate Limiting</strong> by sending 4 calls with the same token. The 4th will be block. You can notice the reponse code <code class="docutils literal notranslate"><span class="pre">429</span> <span class="pre">Too</span> <span class="pre">Many</span> <span class="pre">Requests</span></code></p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/ratelimit.png"><img alt="../../_images/ratelimit.png" class="align-center" src="../../_images/ratelimit.png" style="width: 1125.0px; height: 460.5px;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/ratelimit1.png"><img alt="../../_images/ratelimit1.png" class="align-center" src="../../_images/ratelimit1.png" style="width: 1125.0px; height: 460.5px;" /></a>
 </div></blockquote>
 </li>
 <li><p class="first">Send an <strong>attack</strong></p>
@@ -426,10 +425,8 @@ APM will authenticate JWT tokens coming from different providers with different 
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../module4/module4.html" class="btn btn-neutral float-right" title="Module 4 - Fine granted access with NGINX Controller APIm module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="../module2/module2.html" class="btn btn-neutral float-left" title="Module 2 - Publish API with OAS3 spec file via API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../module3/module3.html" class="btn btn-neutral float-left" title="Module 3 - Protect Arcadia API with Adv. Waf and APM (Bearer SSO)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
