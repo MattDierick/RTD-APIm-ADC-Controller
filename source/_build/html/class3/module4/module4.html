@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Module 4 - Fine granted access with NGINX Controller APIm module &mdash; NGINX Controller 3.x with BIG-IP Lab  documentation</title>
+  <title>Module 4 - Fine grained access with NGINX Controller APIm module &mdash; NGINX Controller 3.x with BIG-IP Lab  documentation</title>
   
 
   
@@ -89,7 +89,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../module1/module1.html">Module 1 - Publish API with OAS3 spec file from the Controller GUI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../module2/module2.html">Module 2 - Publish API with OAS3 spec file via API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../module3/module3.html">Module 3 - Protect Arcadia API with Adv. Waf and APM (Bearer SSO)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Module 4 - Fine granted access with NGINX Controller APIm module</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Module 4 - Fine grained access with NGINX Controller APIm module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#step-1-understand-the-jwt-token-claims">Step 1 - Understand the JWT token claims</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#step-2-create-a-new-claim-in-apm-in-order-to-forward-this-claim-into-the-bearer-sso">Step 2 - Create a new Claim in APM in order to forward this claim into the Bearer SSO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#step-3-modify-the-bearer-sso-in-order-to-inject-this-new-claim">Step 3 - Modify the Bearer SSO in order to inject this new Claim</a></li>
@@ -149,7 +149,7 @@
         
           <li><a href="../class3.html">Class 3 - Publish and Protect Arcadia API</a> &raquo;</li>
         
-      <li>Module 4 - Fine granted access with NGINX Controller APIm module</li>
+      <li>Module 4 - Fine grained access with NGINX Controller APIm module</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -168,8 +168,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-4-fine-granted-access-with-nginx-controller-apim-module">
-<h1>Module 4 - Fine granted access with NGINX Controller APIm module<a class="headerlink" href="#module-4-fine-granted-access-with-nginx-controller-apim-module" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-4-fine-grained-access-with-nginx-controller-apim-module">
+<h1>Module 4 - Fine grained access with NGINX Controller APIm module<a class="headerlink" href="#module-4-fine-grained-access-with-nginx-controller-apim-module" title="Permalink to this headline">¶</a></h1>
 <p>In this lab, we will allow access to the Arcadia API, only for Manager Role. To do so, we will first check the JWT token claims and understand how to forward a claim from a provider into the Bearer SSO.</p>
 <div class="section" id="step-1-understand-the-jwt-token-claims">
 <h2>Step 1 - Understand the JWT token claims<a class="headerlink" href="#step-1-understand-the-jwt-token-claims" title="Permalink to this headline">¶</a></h2>

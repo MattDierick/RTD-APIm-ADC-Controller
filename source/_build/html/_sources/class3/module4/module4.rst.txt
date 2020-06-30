@@ -1,4 +1,4 @@
-Module 4 - Fine granted access with NGINX Controller APIm module
+Module 4 - Fine grained access with NGINX Controller APIm module
 ################################################################
 
 In this lab, we will allow access to the Arcadia API, only for Manager Role. To do so, we will first check the JWT token claims and understand how to forward a claim from a provider into the Bearer SSO.
