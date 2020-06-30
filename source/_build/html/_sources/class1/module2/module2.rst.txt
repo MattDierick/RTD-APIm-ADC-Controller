@@ -1,7 +1,7 @@
 Workflow of the demo
 ####################
 
-The demo is splitted in 2 classes
+The demo is split in 3 classes
     - Deploy, publish and protect Arcadia Web application
         - Deploy and publish Arcadia Main App
         - Deploy and publish Money Transfer App
@@ -9,8 +9,8 @@ The demo is splitted in 2 classes
         - Apply WAF policy
     - Publish and protect Arcadia API
         - Publish the API using an OpenAPI 3.0 spec file
-        - Check the Developer Portal
         - Protect the API with Advanced WAF and APM using OpenAPI 3.0 spec file
+        - Discover the new Developer Portal
 
 |
 
@@ -22,15 +22,16 @@ Step 1 - DevOps deploy Arcadia application
 Tasks:
 
     #. DevOps commit a new code in GitLab in order to publish a brand new application "Arcadia Bank"
-    #. GitLab webhooks this commit and ask Jenkins to run a pipeline. This pipeline:
+    #. GitLab webhooks this commit and asks Jenkins to run a pipeline. This pipeline:
         #. Deploy Arcadia application in Kubernetes (Terraform).
         #. Deploy nodeports in Kubernetes (but it could be KIC) (Terraform).
         #. Deploy NGINX+ instances (ADC) in Docker, in front of this K8S cluster (Terraform)
         #. Create Gateways in NGINX Controller for each NGINX+ instance (Ansible)
         #. Deploy AS3 template into front BIGIP to publish publically the application - without WAF (Ansible)
     #. NetOps create ADC configuration in NGINX controller in order to "route" traffic to the right K8S service
-        #. MainApp (/*) to service MainApp
-        #. BackEnd (/file*) to service BackEnd
+        
+        #. MainApp ``/*`` to service MainApp
+        #. BackEnd ``/file*`` to service BackEnd
 
 
 .. image:: ../pictures/module2/MainApp.png

@@ -99,7 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../module2/module2.html">Module 2 - Publish API with OAS3 spec file via API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../module3/module3.html">Module 3 - Protect Arcadia API with Adv. Waf and APM (Bearer SSO)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../module4/module4.html">Module 4 - Fine granted access with NGINX Controller APIm module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module5/module5.html">Module 4 - Fine granted access with NGINX Controller APIm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/module5.html">Module 5 - Developer Portal</a></li>
 </ul>
 </li>
 </ul>
@@ -182,7 +182,7 @@
 <div class="section" id="step-1-create-an-api-application">
 <h2>Step 1 - Create an API Application<a class="headerlink" href="#step-1-create-an-api-application" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Click on top left right corner icon, and click on <code class="docutils literal notranslate"><span class="pre">Apps</span></code></li>
+<li>Click on top left corner icon, and click on <code class="docutils literal notranslate"><span class="pre">Apps</span></code></li>
 <li>Click <code class="docutils literal notranslate"><span class="pre">Create</span></code></li>
 <li>Create a new Application<ol class="arabic">
 <li>name : <code class="docutils literal notranslate"><span class="pre">app_api</span></code></li>
@@ -213,13 +213,13 @@
 <li><p class="first">Select <code class="docutils literal notranslate"><span class="pre">OpenAPI</span> <span class="pre">specification</span></code></p>
 <ol class="arabic simple">
 <li>and <code class="docutils literal notranslate"><span class="pre">Copy</span> <span class="pre">and</span> <span class="pre">paste</span> <span class="pre">specification</span> <span class="pre">text</span></code> <strong>if you are not connected in the jumphost</strong> from here : <a class="reference external" href="https://app.swaggerhub.com/apis/F5EMEASSA/json_arcadia/1.0.0-oas3">https://app.swaggerhub.com/apis/F5EMEASSA/json_arcadia/1.0.0-oas3</a></li>
-<li>or <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">file</span></code> <strong>if your are connected in the jumphost</strong>, the file is located in Downloads and its name is <code class="docutils literal notranslate"><span class="pre">arcadia-swagger3.yaml</span></code></li>
+<li>or <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">file</span></code> <strong>if your are connected in the jumphost</strong>, the file is located in Downloads folder and its name is <code class="docutils literal notranslate"><span class="pre">arcadia-swagger3.yaml</span></code></li>
 </ol>
 <img alt="../../_images/oas_paste.png" class="align-center" src="../../_images/oas_paste.png" />
 </li>
 <li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Next</span></code></p>
 </li>
-<li><p class="first">You can see all the resources have been imported from the <code class="docutils literal notranslate"><span class="pre">swagger</span> <span class="pre">file</span></code> and you can open one resource to check its parameters</p>
+<li><p class="first">You can see all the resources have been imported from the <code class="docutils literal notranslate"><span class="pre">swagger</span> <span class="pre">file</span></code> and please open one resource to check its parameters</p>
 <a class="reference internal image-reference" href="../../_images/resource_list.png"><img alt="../../_images/resource_list.png" class="align-center" src="../../_images/resource_list.png" style="width: 700.0px; height: 464.1px;" /></a>
 <a class="reference internal image-reference" href="../../_images/resource_sell_stocks.png"><img alt="../../_images/resource_sell_stocks.png" class="align-center" src="../../_images/resource_sell_stocks.png" style="width: 700.0px; height: 1079.4px;" /></a>
 </li>
@@ -265,7 +265,7 @@
 </li>
 <li><p class="first">It is time to configure the <code class="docutils literal notranslate"><span class="pre">Routing</span></code>. It is similar to the <code class="docutils literal notranslate"><span class="pre">components</span></code> in the WebApp configuration</p>
 </li>
-<li><p class="first">Create a new component routing to the <code class="docutils literal notranslate"><span class="pre">MainApp</span></code></p>
+<li><p class="first">Create a new component, routing the traffic to the <code class="docutils literal notranslate"><span class="pre">MainApp</span></code></p>
 <ol class="arabic">
 <li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">New</span></code> in the <code class="docutils literal notranslate"><span class="pre">Components</span> <span class="pre">section</span></code> and configure it as below</p>
 <a class="reference internal image-reference" href="../../_images/component_1.png"><img alt="../../_images/component_1.png" class="align-center" src="../../_images/component_1.png" style="width: 700.0px; height: 694.4px;" /></a>
@@ -278,7 +278,7 @@
 <li><p class="first">You can see the workload</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">We only configure one workload as the API we will test is hosted in the main app pod (sell stocks and buy stocks)</p>
+<p class="last">We only configure one workload as the API we will test is hosted in the main app K8S service (sell stocks and buy stocks)</p>
 </div>
 </li>
 <li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">Next</span></code> until the end and click <code class="docutils literal notranslate"><span class="pre">Submit</span></code></p>

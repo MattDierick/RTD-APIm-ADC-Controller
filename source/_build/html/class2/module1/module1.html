@@ -180,29 +180,38 @@
 </div>
 <div class="section" id="step-1-deploy-arcadia-main-app-with-a-ci-cd-pipeline-like-a-devops">
 <h2>Step 1 - Deploy Arcadia Main app with a CI/CD pipeline like a DevOps<a class="headerlink" href="#step-1-deploy-arcadia-main-app-with-a-ci-cd-pipeline-like-a-devops" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li>Open <code class="docutils literal notranslate"><span class="pre">Chrome</span></code>, you can notice Chrome opens all the tabs for you</li>
-<li>Login to all tools<ol class="arabic">
-<li>Controller : <a class="reference external" href="mailto:admin&#37;&#52;&#48;nginx-udf&#46;internal">admin<span>&#64;</span>nginx-udf<span>&#46;</span>internal</a> / admin123!</li>
-<li>Jenkins : admin / admin</li>
-<li>GitLab : root / F5twister$<ul>
-<li>If GitLab does not start, restart the docker in the GitLab VM (WebSSH &gt; docker restart gitlab). Wait 5 minutes.</li>
-</ul>
+<ol class="arabic">
+<li><p class="first">Open <code class="docutils literal notranslate"><span class="pre">Chrome</span></code>, you can notice Chrome opens all the tabs for you</p>
 </li>
-<li>Kubernetes : click on skip</li>
-<li>BIG-IP : admin / admin</li>
+<li><p class="first">Login to all tools</p>
+<ol class="arabic">
+<li><p class="first">Controller : <a class="reference external" href="mailto:admin&#37;&#52;&#48;nginx-udf&#46;internal">admin<span>&#64;</span>nginx-udf<span>&#46;</span>internal</a> / admin123!</p>
+</li>
+<li><p class="first">Jenkins : admin / admin</p>
+</li>
+<li><p class="first">GitLab : root / F5twister$</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If GitLab does not start, restart the docker in the GitLab VM (WebSSH &gt; docker restart gitlab). Wait 5 minutes.</p>
+</div>
+</li>
+<li><p class="first">Kubernetes : click on <code class="docutils literal notranslate"><span class="pre">skip</span></code></p>
+</li>
+<li><p class="first">BIG-IP : admin / admin</p>
+</li>
 </ol>
 </li>
-<li>In Gitlab, click on Administrator / Arcadia-MainApp<ol class="arabic">
+<li><p class="first">In Gitlab, click on Administrator / Arcadia-MainApp</p>
+<ol class="arabic simple">
 <li>Click on file <code class="docutils literal notranslate"><span class="pre">deploy</span></code></li>
-<li>Click <code class="docutils literal notranslate"><span class="pre">edit</span></code> and make a modification - like YES !!!!!</li>
+<li>Click <code class="docutils literal notranslate"><span class="pre">edit</span></code> and make a modification, like <code class="docutils literal notranslate"><span class="pre">YES</span> <span class="pre">!!!!!</span></code></li>
 <li>Click <code class="docutils literal notranslate"><span class="pre">Commit</span> <span class="pre">changes</span></code></li>
 </ol>
 </li>
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">At this moment, you simulate a commit like a DevOps. This <code class="docutils literal notranslate"><span class="pre">commit</span></code> will trigger a <code class="docutils literal notranslate"><span class="pre">webhook</span></code> to <code class="docutils literal notranslate"><span class="pre">Jenkins</span></code>, so that Jenkins execute a <code class="docutils literal notranslate"><span class="pre">pipeline</span></code>.</p>
+<p class="last">At this moment, you simulate a commit like a DevOps. This <code class="docutils literal notranslate"><span class="pre">commit</span></code> will trigger a <code class="docutils literal notranslate"><span class="pre">webhook</span></code> to <code class="docutils literal notranslate"><span class="pre">Jenkins</span></code>, so that Jenkins executes a <code class="docutils literal notranslate"><span class="pre">pipeline</span></code>.</p>
 </div>
 <ol class="arabic simple">
 <li>In Jenkins, click on <code class="docutils literal notranslate"><span class="pre">DeployMainApp</span></code> pipeline</li>
@@ -214,6 +223,9 @@
 <p class="first admonition-title">Note</p>
 <p class="last">At this stage, Arcadia Main app and Back End app are deployed un K8S. But you need to publish them with NGINX+ via the controller.</p>
 </div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="section" id="step-2-publish-arcadia-application-with-nginx-and-controller">
 <h2>Step 2 - Publish Arcadia application with NGINX+ and Controller<a class="headerlink" href="#step-2-publish-arcadia-application-with-nginx-and-controller" title="Permalink to this headline">¶</a></h2>
@@ -223,12 +235,12 @@
 <li><p class="first">Deployed Arcadia application (main and back end pods) in Kubernetes</p>
 <ol class="arabic simple">
 <li>Connect to <code class="docutils literal notranslate"><span class="pre">Kubernetes</span></code> and check that.</li>
-<li>You can see 2 deployments (main and back) with nodeports</li>
+<li>You can see 2 deployments (main and back) with nodeports services</li>
 </ol>
 </li>
 <li><p class="first">Started 3 NGINX+ instances in a docker</p>
 <ol class="arabic simple">
-<li>WebSSH to CICD and DOCKER (NGINX API gw, Dev Portal)</li>
+<li>WebSSH to <code class="docutils literal notranslate"><span class="pre">CICD</span> <span class="pre">and</span> <span class="pre">DOCKER</span> <span class="pre">(NGINX</span> <span class="pre">API</span> <span class="pre">gw,</span> <span class="pre">Dev</span> <span class="pre">Portal)</span></code></li>
 <li>Run a <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code></li>
 </ol>
 <div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>ubuntu@ip-10-1-1-9:~$ docker ps
@@ -248,13 +260,16 @@ ab75d7bd60bb        nginx                            &quot;nginx -g &#39;daemon 
 </ol>
 <img alt="../../_images/instances.png" class="align-center" src="../../_images/instances.png" />
 </li>
-<li><p class="first">Deploy an AS3 declaration into the BIG-IP in order to publish the NGINX+ API GW</p>
+<li><p class="first">Deployed an AS3 declaration into the BIG-IP in order to publish the NGINX+ instance externally</p>
 </li>
 </ol>
 </div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">It is time to configure the NGINX+ instances in order to publish Arcadia application (main and back pods)</p>
+<p class="last">It is time to configure the NGINX+ instances in order to publish Arcadia application (main and back services)</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 <p><strong>Configure the Controller</strong></p>
 <div class="admonition warning">
@@ -268,9 +283,9 @@ ab75d7bd60bb        nginx                            &quot;nginx -g &#39;daemon 
 </li>
 <li><p class="first">Click on <code class="docutils literal notranslate"><span class="pre">Apps</span></code> and <code class="docutils literal notranslate"><span class="pre">create</span> <span class="pre">app</span></code></p>
 <ol class="arabic simple">
-<li>Application name : app_webapp</li>
-<li>Display name : Web Application Arcadia</li>
-<li>Environment : Production Environment</li>
+<li>Application name : <code class="docutils literal notranslate"><span class="pre">app_webapp</span></code></li>
+<li>Display name : <code class="docutils literal notranslate"><span class="pre">Web</span> <span class="pre">Application</span> <span class="pre">Arcadia</span></code></li>
+<li>Environment : <code class="docutils literal notranslate"><span class="pre">Production</span> <span class="pre">Environment</span></code></li>
 </ol>
 </li>
 <li><p class="first">Click <code class="docutils literal notranslate"><span class="pre">submit</span></code></p>
@@ -335,7 +350,7 @@ ab75d7bd60bb        nginx                            &quot;nginx -g &#39;daemon 
 <ol class="arabic">
 <li><p class="first">Get back to <code class="docutils literal notranslate"><span class="pre">Web</span> <span class="pre">App</span></code> and add a new <code class="docutils literal notranslate"><span class="pre">Component</span></code></p>
 </li>
-<li><p class="first">Do the same, but for the back end pod</p>
+<li><p class="first">Do the same, but for the back end service</p>
 <img alt="../../_images/cp_back_1.png" class="align-center" src="../../_images/cp_back_1.png" />
 </li>
 </ol>

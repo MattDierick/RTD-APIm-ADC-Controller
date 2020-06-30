@@ -38,8 +38,8 @@ Step 1 - Deploy Arcadia App3 and the new componenent with a CI/CD pipeline
    .. image:: ../pictures/module3/components.png
       :align: center
 
-#. In ``Chrome`` refresh the page. You can see the new App ``Refer friends`
-#. Transfer some money to your friends in order to populate analytics
+
+#. In ``Chrome`` refresh the page. You can see the new App ``Refer friends``
 
 .. image:: ../pictures/module3/app3.png
    :align: center

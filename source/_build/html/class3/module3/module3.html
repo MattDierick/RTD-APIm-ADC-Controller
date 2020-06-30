@@ -97,7 +97,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../module4/module4.html">Module 4 - Fine granted access with NGINX Controller APIm module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module5/module5.html">Module 4 - Fine granted access with NGINX Controller APIm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/module5.html">Module 5 - Developer Portal</a></li>
 </ul>
 </li>
 </ul>
@@ -168,7 +168,7 @@
             
   <div class="section" id="module-3-protect-arcadia-api-with-adv-waf-and-apm-bearer-sso">
 <h1>Module 3 - Protect Arcadia API with Adv. Waf and APM (Bearer SSO)<a class="headerlink" href="#module-3-protect-arcadia-api-with-adv-waf-and-apm-bearer-sso" title="Permalink to this headline">¶</a></h1>
-<p>In this lab we will deploy in front of the API Gateway a BIG-IP security policy based on Adv. WAF and APM.
+<p>In this lab we will deploy a BIG-IP security policy based on Adv. WAF and APM, in front of the NGINX+ API GW.
 In order to make life better and simple for DevOps, we will delegate all the Authentication layer to APM.
 APM will authenticate JWT tokens coming from different providers with different keys, and we will use APM Bearer SSO in order to share a unique JWT key with the API gateways.</p>
 <div class="admonition note">
@@ -232,7 +232,7 @@ APM will authenticate JWT tokens coming from different providers with different 
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">As you don’t include any JWT token in you request, the API GW rejected the request. It is time to configure APM to inject this JWT Bearer SSO</p>
+<p class="last">As you don’t include any JWT token in your request, the API GW rejected the request. It is time to configure APM to inject this JWT Bearer SSO</p>
 </div>
 </div>
 <div class="section" id="configure-adv-waf-and-apm">
@@ -387,11 +387,13 @@ APM will authenticate JWT tokens coming from different providers with different 
 <li>You can find the tokens on the desktop in the file <code class="docutils literal notranslate"><span class="pre">JWT</span> <span class="pre">tokens.txt</span></code></li>
 <li>Don’t use <code class="docutils literal notranslate"><span class="pre">Oauth</span> <span class="pre">2.0</span></code>, as we already have the tokens. But use <code class="docutils literal notranslate"><span class="pre">Bearer</span> <span class="pre">Token</span></code> instead. I generated these tokens from the website <a class="reference external" href="http://jwtbuilder.jamiekurtz.com/">http://jwtbuilder.jamiekurtz.com/</a></li>
 </ol>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Partner</span> <span class="mi">1</span>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Partner</span> <span class="mi">1</span><span class="p">:</span>
+
 <span class="n">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</span><span class="o">.</span><span class="n">eyJpc3MiOiJwYXJ0bmVyMSIsImlhdCI6MTU5MzQ1NTk4NSwiZXhwIjoxNjg4MDYzOTg1LCJhdWQiOiJhcGkuYXJjYWRpYS1maW5hbmNlLmlvIiwic3ViIjoiYXBpLmFyY2FkaWEtZmluYW5jZS5pbyIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjoiTWFuYWdlciJ9</span><span class="o">.</span><span class="n">JRboDfKWvSLVU3md6OULGifoVxJ</span><span class="o">-</span><span class="n">ryx7y</span><span class="o">-</span><span class="mi">0</span><span class="n">DKrOlPOM</span>
 </pre></div>
 </div>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Partner</span> <span class="mi">2</span>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Partner</span> <span class="mi">2</span><span class="p">:</span>
+
 <span class="n">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</span><span class="o">.</span><span class="n">eyJpc3MiOiJwYXJ0bmVyMiIsImlhdCI6MTU5MzQ1NTk4NSwiZXhwIjoxNjg4MDYzOTg1LCJhdWQiOiJhcGkuYXJjYWRpYS1maW5hbmNlLmlvIiwic3ViIjoiYXBpLmFyY2FkaWEtZmluYW5jZS5pbyIsIkdpdmVuTmFtZSI6IkJvYiIsIlN1cm5hbWUiOiJUaGUgU3BvbmdlIiwiRW1haWwiOiJib2JAc3BvbmdlLmNvbSIsIlJvbGUiOiJDb250cmFjdG9yIn0</span><span class="o">.</span><span class="n">aqTxd6X4z7EFijJsyiuq8mZAKMLG519Bmjz1ra24L</span><span class="o">-</span><span class="n">s</span>
 </pre></div>
 </div>

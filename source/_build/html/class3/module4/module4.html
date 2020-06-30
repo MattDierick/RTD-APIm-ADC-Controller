@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Module 4 - Fine granted access with NGINX Controller APIm module" href="../module5/module5.html" />
+    <link rel="next" title="Module 5 - Developer Portal" href="../module5/module5.html" />
     <link rel="prev" title="Module 3 - Protect Arcadia API with Adv. Waf and APM (Bearer SSO)" href="../module3/module3.html" /> 
 </head>
 
@@ -91,7 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../module3/module3.html">Module 3 - Protect Arcadia API with Adv. Waf and APM (Bearer SSO)</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Module 4 - Fine granted access with NGINX Controller APIm module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#step-1-understand-the-jwt-token-claims">Step 1 - Understand the JWT token claims</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-2-create-a-new-claim-in-apm-in-order-to-forward-this-role-claim-into-the-bearer-sso">Step 2 - Create a new Claim in APM in order to forward this Role claim into the Bearer SSO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-create-a-new-claim-in-apm-in-order-to-forward-this-claim-into-the-bearer-sso">Step 2 - Create a new Claim in APM in order to forward this claim into the Bearer SSO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#step-3-modify-the-bearer-sso-in-order-to-inject-this-new-claim">Step 3 - Modify the Bearer SSO in order to inject this new Claim</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#step-4-update-the-authorization-component-setting-in-the-controller">Step 4 - Update the authorization component setting in the controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#step-5-make-a-test">Step 5 - Make a test</a><ul class="simple">
@@ -99,7 +99,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../module5/module5.html">Module 4 - Fine granted access with NGINX Controller APIm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/module5.html">Module 5 - Developer Portal</a></li>
 </ul>
 </li>
 </ul>
@@ -170,47 +170,48 @@
             
   <div class="section" id="module-4-fine-granted-access-with-nginx-controller-apim-module">
 <h1>Module 4 - Fine granted access with NGINX Controller APIm module<a class="headerlink" href="#module-4-fine-granted-access-with-nginx-controller-apim-module" title="Permalink to this headline">¶</a></h1>
-<p>In this lab, we will allow access to the Arcadia API, only for Manager Role. To do so, we will first check the JWT token claims and understand how to forward a claims from a provider into the Bearer SSO.</p>
+<p>In this lab, we will allow access to the Arcadia API, only for Manager Role. To do so, we will first check the JWT token claims and understand how to forward a claim from a provider into the Bearer SSO.</p>
 <div class="section" id="step-1-understand-the-jwt-token-claims">
 <h2>Step 1 - Understand the JWT token claims<a class="headerlink" href="#step-1-understand-the-jwt-token-claims" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>In the previous lab, we used 2 tokens:</dt>
-<dd><div class="code bash first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Partner</span> <span class="mi">1</span>
+<p>In the previous lab, we used 2 tokens:</p>
+<blockquote>
+<div><div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Partner</span> <span class="mi">1</span><span class="p">:</span>
+
 <span class="n">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</span><span class="o">.</span><span class="n">eyJpc3MiOiJwYXJ0bmVyMSIsImlhdCI6MTU5MzQ1NTk4NSwiZXhwIjoxNjg4MDYzOTg1LCJhdWQiOiJhcGkuYXJjYWRpYS1maW5hbmNlLmlvIiwic3ViIjoiYXBpLmFyY2FkaWEtZmluYW5jZS5pbyIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjoiTWFuYWdlciJ9</span><span class="o">.</span><span class="n">JRboDfKWvSLVU3md6OULGifoVxJ</span><span class="o">-</span><span class="n">ryx7y</span><span class="o">-</span><span class="mi">0</span><span class="n">DKrOlPOM</span>
 </pre></div>
 </div>
-<div class="code bash last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Partner</span> <span class="mi">2</span>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Partner</span> <span class="mi">2</span><span class="p">:</span>
+
 <span class="n">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</span><span class="o">.</span><span class="n">eyJpc3MiOiJwYXJ0bmVyMiIsImlhdCI6MTU5MzQ1NTk4NSwiZXhwIjoxNjg4MDYzOTg1LCJhdWQiOiJhcGkuYXJjYWRpYS1maW5hbmNlLmlvIiwic3ViIjoiYXBpLmFyY2FkaWEtZmluYW5jZS5pbyIsIkdpdmVuTmFtZSI6IkJvYiIsIlN1cm5hbWUiOiJUaGUgU3BvbmdlIiwiRW1haWwiOiJib2JAc3BvbmdlLmNvbSIsIlJvbGUiOiJDb250cmFjdG9yIn0</span><span class="o">.</span><span class="n">aqTxd6X4z7EFijJsyiuq8mZAKMLG519Bmjz1ra24L</span><span class="o">-</span><span class="n">s</span>
 </pre></div>
 </div>
-</dd>
-</dl>
+</div></blockquote>
 <ol class="arabic">
-<li><p class="first">Navigate to <a class="reference external" href="https://jwt.io/">https://jwt.io/</a> and paste <code class="docutils literal notranslate"><span class="pre">Partner1</span></code> JWT token into the website. And check the Role claim. <code class="docutils literal notranslate"><span class="pre">Partner</span> <span class="pre">1</span></code> is a manager.</p>
+<li><p class="first">Navigate to <a class="reference external" href="https://jwt.io/">https://jwt.io/</a> and paste <code class="docutils literal notranslate"><span class="pre">Partner1</span></code> JWT token into the website. And check the claim <code class="docutils literal notranslate"><span class="pre">Role</span></code>. <code class="docutils literal notranslate"><span class="pre">Partner</span> <span class="pre">1</span></code> is a manager.</p>
 <img alt="../../_images/jwt-partner1.png" class="align-center" src="../../_images/jwt-partner1.png" />
 </li>
-<li><p class="first">Do the them with Partner2 JWT token. <code class="docutils literal notranslate"><span class="pre">Partner</span> <span class="pre">2</span></code> is a contractor</p>
+<li><p class="first">Do the same with Partner2 JWT token. <code class="docutils literal notranslate"><span class="pre">Partner</span> <span class="pre">2</span></code> is a contractor</p>
 <img alt="../../_images/jwt-partner2.png" class="align-center" src="../../_images/jwt-partner2.png" />
 </li>
 </ol>
 </div>
-<div class="section" id="step-2-create-a-new-claim-in-apm-in-order-to-forward-this-role-claim-into-the-bearer-sso">
-<h2>Step 2 - Create a new Claim in APM in order to forward this Role claim into the Bearer SSO<a class="headerlink" href="#step-2-create-a-new-claim-in-apm-in-order-to-forward-this-role-claim-into-the-bearer-sso" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="step-2-create-a-new-claim-in-apm-in-order-to-forward-this-claim-into-the-bearer-sso">
+<h2>Step 2 - Create a new Claim in APM in order to forward this claim into the Bearer SSO<a class="headerlink" href="#step-2-create-a-new-claim-in-apm-in-order-to-forward-this-claim-into-the-bearer-sso" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The providers will inject a Claim into the JWT. This claim is <code class="docutils literal notranslate"><span class="pre">Role</span></code>. We need to re-inject this claim into the Bearer SSO token so that NGINX GW only access request from user belonging to Manager Role.</p>
+<p class="last">The providers will inject a Claim into the JWT. This claim is <code class="docutils literal notranslate"><span class="pre">Role</span></code>. We need to re-inject this claim into the Bearer SSO token so that NGINX GW only accept requests from users belonging to Manager Role.</p>
 </div>
 <ol class="arabic simple">
-<li>In the <code class="docutils literal notranslate"><span class="pre">BIG-IP</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Federation</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Oauth</span> <span class="pre">Authorization</span> <span class="pre">Server</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Claim`</span></code></li>
+<li>In the <code class="docutils literal notranslate"><span class="pre">BIG-IP</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Federation</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Oauth</span> <span class="pre">Authorization</span> <span class="pre">Server</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Claim</span></code></li>
 <li>Click <code class="docutils literal notranslate"><span class="pre">Create</span></code></li>
 <li>Create this <code class="docutils literal notranslate"><span class="pre">Claim</span></code><ol class="arabic">
 <li>Name <code class="docutils literal notranslate"><span class="pre">Claim_Role</span></code></li>
 <li>Claim Type <code class="docutils literal notranslate"><span class="pre">String</span></code></li>
-<li>Claim Name <code class="docutils literal notranslate"><span class="pre">Role`</span></code></li>
-<li>Claim Value <code class="docutils literal notranslate"><span class="pre">%{subsession.oauth.scope.last.jwt.Role}`</span></code></li>
+<li>Claim Name <code class="docutils literal notranslate"><span class="pre">Role</span></code></li>
+<li>Claim Value <code class="docutils literal notranslate"><span class="pre">%{subsession.oauth.scope.last.jwt.Role}</span></code></li>
 </ol>
 </li>
-<li>Click <code class="docutils literal notranslate"><span class="pre">Save`</span></code></li>
+<li>Click <code class="docutils literal notranslate"><span class="pre">Save</span></code></li>
 </ol>
 </div>
 <div class="section" id="step-3-modify-the-bearer-sso-in-order-to-inject-this-new-claim">
@@ -230,7 +231,7 @@
 <h2>Step 4 - Update the authorization component setting in the controller<a class="headerlink" href="#step-4-update-the-authorization-component-setting-in-the-controller" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Now, the BIG-IP APM is injecting the Claim in the JWT Bearer SSO token. It is time to tell to the NGINX GW, to only grant access if the Role contains Manager</p>
+<p class="last">Now, the BIG-IP APM is injecting the Claim in the JWT Bearer SSO token. It is time to tell to the NGINX GW, to only grant access if the <code class="docutils literal notranslate"><span class="pre">Role</span></code> contains <code class="docutils literal notranslate"><span class="pre">Manager</span></code></p>
 </div>
 <ol class="arabic">
 <li><p class="first">In the controller GUI</p>
@@ -254,18 +255,24 @@
 <h2>Step 5 - Make a test<a class="headerlink" href="#step-5-make-a-test" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p class="first">In <code class="docutils literal notranslate"><span class="pre">Postman</span></code>, send a request with <code class="docutils literal notranslate"><span class="pre">Partner1</span></code> JWT token. As a reminder, he is <code class="docutils literal notranslate"><span class="pre">Manager</span></code>. Request passes.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Partner</span> <span class="mi">1</span>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Partner</span> <span class="mi">1</span><span class="p">:</span>
+
 <span class="n">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</span><span class="o">.</span><span class="n">eyJpc3MiOiJwYXJ0bmVyMSIsImlhdCI6MTU5MzQ1NTk4NSwiZXhwIjoxNjg4MDYzOTg1LCJhdWQiOiJhcGkuYXJjYWRpYS1maW5hbmNlLmlvIiwic3ViIjoiYXBpLmFyY2FkaWEtZmluYW5jZS5pbyIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjoiTWFuYWdlciJ9</span><span class="o">.</span><span class="n">JRboDfKWvSLVU3md6OULGifoVxJ</span><span class="o">-</span><span class="n">ryx7y</span><span class="o">-</span><span class="mi">0</span><span class="n">DKrOlPOM</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Then, send the same request with <code class="docutils literal notranslate"><span class="pre">Partner2</span></code> JWT token. As a reminder, he is <code class="docutils literal notranslate"><span class="pre">Contractor</span></code>. Request fails.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Partner</span> <span class="mi">2</span>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Partner</span> <span class="mi">2</span><span class="p">:</span>
+
 <span class="n">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</span><span class="o">.</span><span class="n">eyJpc3MiOiJwYXJ0bmVyMiIsImlhdCI6MTU5MzQ1NTk4NSwiZXhwIjoxNjg4MDYzOTg1LCJhdWQiOiJhcGkuYXJjYWRpYS1maW5hbmNlLmlvIiwic3ViIjoiYXBpLmFyY2FkaWEtZmluYW5jZS5pbyIsIkdpdmVuTmFtZSI6IkJvYiIsIlN1cm5hbWUiOiJUaGUgU3BvbmdlIiwiRW1haWwiOiJib2JAc3BvbmdlLmNvbSIsIlJvbGUiOiJDb250cmFjdG9yIn0</span><span class="o">.</span><span class="n">aqTxd6X4z7EFijJsyiuq8mZAKMLG519Bmjz1ra24L</span><span class="o">-</span><span class="n">s</span>
 </pre></div>
 </div>
 </li>
 </ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As you can notice, APM is collecting the different claims and only forward the relevant claims to the internal API GW. Then, API GWs grant access based on the claim values.</p>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -279,7 +286,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../module5/module5.html" class="btn btn-neutral float-right" title="Module 4 - Fine granted access with NGINX Controller APIm module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../module5/module5.html" class="btn btn-neutral float-right" title="Module 5 - Developer Portal" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../module3/module3.html" class="btn btn-neutral float-left" title="Module 3 - Protect Arcadia API with Adv. Waf and APM (Bearer SSO)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

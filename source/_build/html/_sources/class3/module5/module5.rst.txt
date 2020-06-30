@@ -1,14 +1,14 @@
 Module 5 - Developer Portal
 ###########################
 
-.. note :: If you remember, we deployed 3 instances. One for the WebApp, one for the APIs and another one for the DevPortal. We will use this one in this lab.
+.. note :: If you remember, we deployed 3 instances. One for the WebApp, one for the APIs and another one for the DevPortal. We will use the latest in this lab.
 
-When we uploaded the OAS3.0 file, this file included the API documentation. There is only one step to publish the documentation into the DevPortal instance.
+When we uploaded the OAS3 file, this file included the API documentation as well. There is only one step to publish the documentation into the DevPortal instance.
 
 Step 1 - Assign the DevPortal tag to the DevPortal instance
 ***********************************************************
 
-The controller needs to know which instance to use to push the Developer Portal into it. To do so, we have to add a ``tag`` to the target instance. We will use the instance ``devportal``
+The controller needs to know which instance to use to push the Developer Portal into it. To do so, we have to add a ``tag`` to this instance. We will use the instance ``devportal``
 
 #. In the controller GUI, click on ``Infrastructure`` > ``Instances`` > ``Graphs``
 #. Select the ``devportal`` instance and click on the ``gear`` icon close to the name of the instance

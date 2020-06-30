@@ -13,7 +13,7 @@ Module 1 - Publish API with OAS3 spec file from the Controller GUI
 Step 1 - Create an API Application
 **********************************
 
-#. Click on top left right corner icon, and click on ``Apps``
+#. Click on top left corner icon, and click on ``Apps``
 #. Click ``Create``
 #. Create a new Application
 
@@ -39,13 +39,13 @@ Step 2 - Create an API Definition
    #. Select ``OpenAPI specification`` 
    
       #. and ``Copy and paste specification text`` **if you are not connected in the jumphost** from here : https://app.swaggerhub.com/apis/F5EMEASSA/json_arcadia/1.0.0-oas3
-      #. or ``Import file`` **if your are connected in the jumphost**, the file is located in Downloads and its name is ``arcadia-swagger3.yaml``
+      #. or ``Import file`` **if your are connected in the jumphost**, the file is located in Downloads folder and its name is ``arcadia-swagger3.yaml``
 
       .. image:: ../pictures/module1/oas_paste.png
          :align: center
 
    #. Click ``Next``
-   #. You can see all the resources have been imported from the ``swagger file`` and you can open one resource to check its parameters
+   #. You can see all the resources have been imported from the ``swagger file`` and please open one resource to check its parameters
 
       .. image:: ../pictures/module1/resource_list.png
          :align: center
@@ -84,7 +84,7 @@ Step 3 - Publish the API
          :align: center
 
 #. It is time to configure the ``Routing``. It is similar to the ``components`` in the WebApp configuration
-#. Create a new component routing to the ``MainApp``
+#. Create a new component, routing the traffic to the ``MainApp``
 
    #. Click ``Add New`` in the ``Components section`` and configure it as below
 
@@ -100,7 +100,7 @@ Step 3 - Publish the API
    
    #. You can see the workload
 
-      .. note :: We only configure one workload as the API we will test is hosted in the main app pod (sell stocks and buy stocks)
+      .. note :: We only configure one workload as the API we will test is hosted in the main app K8S service (sell stocks and buy stocks)
 
    #. Click ``Next`` until the end and click ``Submit``
 

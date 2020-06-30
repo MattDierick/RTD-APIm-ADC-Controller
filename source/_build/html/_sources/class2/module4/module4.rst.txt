@@ -41,6 +41,7 @@ Step 1 - Send an attack
 ***********************
 
 #. In ``Chrome``, in Arcadia web application, refer a friend
+    
     #. Refer bob@sponge.com
 
     .. image:: ../pictures/module4/bobthesponge.png
@@ -51,6 +52,8 @@ Step 1 - Send an attack
     .. code :: json
 
         {\"$ne\":\"michael@gmail.com\"}
+
+    .. note :: This attacks means return everything not equals to ``michael@gmail.com``
 
 #. Attack succeed and you can get the DB content
 

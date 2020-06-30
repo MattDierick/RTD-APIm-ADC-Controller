@@ -6,10 +6,10 @@ Architecture of Arcadia Application
 
 .. note:: This application is available in GitLab in case you want to build your own lab : https://gitlab.com/arcadia-application
 
-First of all, it is important to understand how Arcadia app is split between micro-services
+First of all, it is important to understand how Arcadia app is split between microservices
 
 
-**This is what Arcadia App looks like when the 4 microservices are up and running, and you can see how traffic is routed based on URI**
+**This is how Arcadia App looks like when the 4 microservices are up and running, and you can notice how traffic is routed based on URI**
 
 .. image:: ../pictures/module1/arcadia-api.png
    :align: center
@@ -39,7 +39,9 @@ If you deploy ``Main App``, ``Back End``, ``Money Tranfer`` and ``Refer Friend``
 
 |
 
-**The diagram below show the IP addresses and the ports used for all the routes**
+**The diagram belows show the IP addresses and the ports used for all the routes**
+
+.. note :: For a lab standpoints, these IP addresses and ports does not change.  But in a real life, they are dynamic.
 
 .. image:: ../pictures/module1/arcadia-routes.png
    :align: center

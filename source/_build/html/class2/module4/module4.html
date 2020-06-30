@@ -206,19 +206,22 @@
 <div class="section" id="step-1-send-an-attack">
 <h2>Step 1 - Send an attack<a class="headerlink" href="#step-1-send-an-attack" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><dl class="first docutils">
-<dt>In <code class="docutils literal notranslate"><span class="pre">Chrome</span></code>, in Arcadia web application, refer a friend</dt>
-<dd><ol class="first arabic simple">
+<li><p class="first">In <code class="docutils literal notranslate"><span class="pre">Chrome</span></code>, in Arcadia web application, refer a friend</p>
+<blockquote>
+<div><ol class="arabic simple">
 <li>Refer <a class="reference external" href="mailto:bob&#37;&#52;&#48;sponge&#46;com">bob<span>&#64;</span>sponge<span>&#46;</span>com</a></li>
 </ol>
-<img alt="../../_images/bobthesponge.png" class="last align-center" src="../../_images/bobthesponge.png" />
-</dd>
-</dl>
+<img alt="../../_images/bobthesponge.png" class="align-center" src="../../_images/bobthesponge.png" />
+</div></blockquote>
 </li>
 <li><p class="first">Send an attack with the below payload in the <code class="docutils literal notranslate"><span class="pre">refer</span> <span class="pre">friend</span></code> field</p>
 <blockquote>
 <div><div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>\<span class="s2">&quot;$ne</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">michael@gmail.com</span><span class="se">\&quot;</span><span class="s2">}</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This attacks means return everything not equals to <code class="docutils literal notranslate"><span class="pre">michael&#64;gmail.com</span></code></p>
 </div>
 </div></blockquote>
 </li>

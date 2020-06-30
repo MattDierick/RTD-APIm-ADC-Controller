@@ -1,7 +1,7 @@
 Module 3 - Protect Arcadia API with Adv. Waf and APM (Bearer SSO)
 #################################################################
 
-In this lab we will deploy in front of the API Gateway a BIG-IP security policy based on Adv. WAF and APM.
+In this lab we will deploy a BIG-IP security policy based on Adv. WAF and APM, in front of the NGINX+ API GW.
 In order to make life better and simple for DevOps, we will delegate all the Authentication layer to APM. 
 APM will authenticate JWT tokens coming from different providers with different keys, and we will use APM Bearer SSO in order to share a unique JWT key with the API gateways.
 
@@ -73,7 +73,7 @@ Configure NGINX Controller with a new Identity Provider
          :align: center
          :scale: 75%
 
-.. note :: As you don't include any JWT token in you request, the API GW rejected the request. It is time to configure APM to inject this JWT Bearer SSO
+.. note :: As you don't include any JWT token in your request, the API GW rejected the request. It is time to configure APM to inject this JWT Bearer SSO
 
 
 
@@ -218,12 +218,14 @@ Test your protected API with Authentication, WAF and Rate Limiting
 
       .. code :: bash 
 
-         Partner 1
+         Partner 1:
+
          eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwYXJ0bmVyMSIsImlhdCI6MTU5MzQ1NTk4NSwiZXhwIjoxNjg4MDYzOTg1LCJhdWQiOiJhcGkuYXJjYWRpYS1maW5hbmNlLmlvIiwic3ViIjoiYXBpLmFyY2FkaWEtZmluYW5jZS5pbyIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjoiTWFuYWdlciJ9.JRboDfKWvSLVU3md6OULGifoVxJ-ryx7y-0DKrOlPOM
 
       .. code :: bash
 
-         Partner 2
+         Partner 2:
+         
          eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwYXJ0bmVyMiIsImlhdCI6MTU5MzQ1NTk4NSwiZXhwIjoxNjg4MDYzOTg1LCJhdWQiOiJhcGkuYXJjYWRpYS1maW5hbmNlLmlvIiwic3ViIjoiYXBpLmFyY2FkaWEtZmluYW5jZS5pbyIsIkdpdmVuTmFtZSI6IkJvYiIsIlN1cm5hbWUiOiJUaGUgU3BvbmdlIiwiRW1haWwiOiJib2JAc3BvbmdlLmNvbSIsIlJvbGUiOiJDb250cmFjdG9yIn0.aqTxd6X4z7EFijJsyiuq8mZAKMLG519Bmjz1ra24L-s
 
 #. Test the **Rate Limiting** by sending 4 calls with the same token. The 4th will be block. You can notice the reponse code ``429 Too Many Requests``

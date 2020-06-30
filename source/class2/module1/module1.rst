@@ -26,18 +26,18 @@ Step 1 - Deploy Arcadia Main app with a CI/CD pipeline like a DevOps
    #. Jenkins : admin / admin
    #. GitLab : root / F5twister$
 
-      - If GitLab does not start, restart the docker in the GitLab VM (WebSSH > docker restart gitlab). Wait 5 minutes.
-   #. Kubernetes : click on skip
+      .. warning :: If GitLab does not start, restart the docker in the GitLab VM (WebSSH > docker restart gitlab). Wait 5 minutes.
+   #. Kubernetes : click on ``skip``
    #. BIG-IP : admin / admin
 
 #. In Gitlab, click on Administrator / Arcadia-MainApp
    
    #. Click on file ``deploy``
-   #. Click ``edit`` and make a modification - like YES !!!!!
+   #. Click ``edit`` and make a modification, like ``YES !!!!!``
    #. Click ``Commit changes``
 
 
-.. note :: At this moment, you simulate a commit like a DevOps. This ``commit`` will trigger a ``webhook`` to ``Jenkins``, so that Jenkins execute a ``pipeline``.
+.. note :: At this moment, you simulate a commit like a DevOps. This ``commit`` will trigger a ``webhook`` to ``Jenkins``, so that Jenkins executes a ``pipeline``.
 
 #. In Jenkins, click on ``DeployMainApp`` pipeline
 #. A pipeline is running, click on it
@@ -48,6 +48,8 @@ Step 1 - Deploy Arcadia Main app with a CI/CD pipeline like a DevOps
 
 .. note :: At this stage, Arcadia Main app and Back End app are deployed un K8S. But you need to publish them with NGINX+ via the controller.
 
+|
+
 Step 2 - Publish Arcadia application with NGINX+ and Controller
 ***************************************************************
 
@@ -56,10 +58,10 @@ Step 2 - Publish Arcadia application with NGINX+ and Controller
    #. Deployed Arcadia application (main and back end pods) in Kubernetes
 
       #. Connect to ``Kubernetes`` and check that.
-      #. You can see 2 deployments (main and back) with nodeports
+      #. You can see 2 deployments (main and back) with nodeports services
    #. Started 3 NGINX+ instances in a docker
 
-      #. WebSSH to CICD and DOCKER (NGINX API gw, Dev Portal)
+      #. WebSSH to ``CICD and DOCKER (NGINX API gw, Dev Portal)``
       #. Run a ``docker ps``
 
       .. code :: bash
@@ -80,10 +82,12 @@ Step 2 - Publish Arcadia application with NGINX+ and Controller
       .. image:: ../pictures/module1/instances.png
          :align: center
 
-   #. Deploy an AS3 declaration into the BIG-IP in order to publish the NGINX+ API GW
+   #. Deployed an AS3 declaration into the BIG-IP in order to publish the NGINX+ instance externally
 
 
-.. note :: It is time to configure the NGINX+ instances in order to publish Arcadia application (main and back pods)
+.. note :: It is time to configure the NGINX+ instances in order to publish Arcadia application (main and back services)
+
+|
 
 **Configure the Controller**
 
@@ -93,9 +97,9 @@ Step 2 - Publish Arcadia application with NGINX+ and Controller
 #. Click on top ``left corner icon`` and ``Services``
 #. Click on ``Apps`` and ``create app``
 
-   #. Application name : app_webapp
-   #. Display name : Web Application Arcadia
-   #. Environment : Production Environment
+   #. Application name : ``app_webapp``
+   #. Display name : ``Web Application Arcadia``
+   #. Environment : ``Production Environment``
 #. Click ``submit``
 
    .. image:: ../pictures/module1/create_app_main.png
@@ -134,7 +138,7 @@ Step 2 - Publish Arcadia application with NGINX+ and Controller
 |
 
 #. Get back to ``Web App`` and add a new ``Component``
-#. Do the same, but for the back end pod
+#. Do the same, but for the back end service
 
    .. image:: ../pictures/module1/cp_back_1.png
       :align: center

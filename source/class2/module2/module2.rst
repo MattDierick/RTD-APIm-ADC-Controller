@@ -9,7 +9,7 @@ In this module, we will deploy the Money Tranfer container for Arcadia Bank appl
 .. image:: ../pictures/module2/app2.png
    :align: center
 
-.. note :: In this lab, we will automate some tasks in the controller. As you noticed in the previous lab, it is long to create and you can make mistakes. We will deploy a new component with Postman
+.. note :: In this lab, we will automate some tasks in the controller. As you noticed in the previous lab, it is long to create and you can make mistakes. We will deploy a new component using the NGINX Controller API.
 
 |
 
@@ -42,14 +42,14 @@ Step 2 - Publish Money Transfer App with NGINX+ and Controller
    #. Send the first call ``Log in NGINX Controller``
    #. Send the second call ``Create App2 Component``
 
-   .. note :: with one click, you created the component. Fast and no human mistake.
+   .. note :: With one click, you created the component. Fast and no human mistake.
 
 #. Connect to Controller GUI and check the new component in ``web application arcadia``
 
    .. image:: ../pictures/module2/components.png
       :align: center
 
-   .. note :: You can notice the new ``Money Transfer`` component
+   .. note :: You can notice the new ``Money Transfer`` component is created
 
 #. In ``Chrome`` refresh the page. You can see the new App ``Money Transfer``
 #. Transfer some money to your friends in order to populate analytics

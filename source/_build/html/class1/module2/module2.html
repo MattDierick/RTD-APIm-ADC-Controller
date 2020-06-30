@@ -168,7 +168,7 @@
   <div class="section" id="workflow-of-the-demo">
 <h1>Workflow of the demo<a class="headerlink" href="#workflow-of-the-demo" title="Permalink to this headline">¶</a></h1>
 <dl class="docutils">
-<dt>The demo is splitted in 2 classes</dt>
+<dt>The demo is split in 3 classes</dt>
 <dd><ul class="first last simple">
 <li><dl class="first docutils">
 <dt>Deploy, publish and protect Arcadia Web application</dt>
@@ -185,8 +185,8 @@
 <dt>Publish and protect Arcadia API</dt>
 <dd><ul class="first last">
 <li>Publish the API using an OpenAPI 3.0 spec file</li>
-<li>Check the Developer Portal</li>
 <li>Protect the API with Advanced WAF and APM using OpenAPI 3.0 spec file</li>
+<li>Discover the new Developer Portal</li>
 </ul>
 </dd>
 </dl>
@@ -205,11 +205,12 @@
 </div>
 <p>Tasks:</p>
 <blockquote>
-<div><ol class="arabic simple">
-<li>DevOps commit a new code in GitLab in order to publish a brand new application “Arcadia Bank”</li>
+<div><ol class="arabic">
+<li><p class="first">DevOps commit a new code in GitLab in order to publish a brand new application “Arcadia Bank”</p>
+</li>
 <li><dl class="first docutils">
-<dt>GitLab webhooks this commit and ask Jenkins to run a pipeline. This pipeline:</dt>
-<dd><ol class="first last arabic">
+<dt>GitLab webhooks this commit and asks Jenkins to run a pipeline. This pipeline:</dt>
+<dd><ol class="first last arabic simple">
 <li>Deploy Arcadia application in Kubernetes (Terraform).</li>
 <li>Deploy nodeports in Kubernetes (but it could be KIC) (Terraform).</li>
 <li>Deploy NGINX+ instances (ADC) in Docker, in front of this K8S cluster (Terraform)</li>
@@ -219,14 +220,13 @@
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>NetOps create ADC configuration in NGINX controller in order to “route” traffic to the right K8S service</dt>
-<dd><ol class="first last arabic">
-<li>MainApp (/<a href="#id1"><span class="problematic" id="id2">*</span></a>) to service MainApp</li>
-<li>BackEnd (/file*) to service BackEnd</li>
+<li><p class="first">NetOps create ADC configuration in NGINX controller in order to “route” traffic to the right K8S service</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>MainApp <code class="docutils literal notranslate"><span class="pre">/*</span></code> to service MainApp</li>
+<li>BackEnd <code class="docutils literal notranslate"><span class="pre">/file*</span></code> to service BackEnd</li>
 </ol>
-</dd>
-</dl>
+</div></blockquote>
 </li>
 </ol>
 </div></blockquote>

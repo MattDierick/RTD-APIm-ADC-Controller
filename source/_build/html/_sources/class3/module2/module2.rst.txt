@@ -1,7 +1,7 @@
 Module 2 - Publish API with OAS3 spec file via API
 ##################################################
 
-.. note :: We will clean up the previous lab in order to configure exactly the same outcomes but with API calls only.
+.. note :: We will clean up the previous lab in order to configure exactly the same objetcts but with API calls only.
 
 Clean up the APIm configuration
 *******************************

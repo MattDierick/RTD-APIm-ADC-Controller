@@ -5,7 +5,7 @@ Welcome into the NGINX Controller 3.x with BIG-IP Lab
 
 .. warning :: For any remark or mistake in this lab, please reach out Matthieu DIERICK or fork this repo and fix it with a merge request.
 
-Video explaining the Arcadia Finance application and how you will deploy it.
+.. note :: The video below will explain you how Arcadia Finance application works and is structured. It is important to understand this part before configuring the lab. In the next section, we present the same if you don't want to watch the video.
 
 .. raw :: html
 
