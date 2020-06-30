@@ -1,26 +1,17 @@
 Class 1 - Understand the infrastructure and the workflow
-######################################################
+########################################################
 
 Welcome into the NGINX Controller 3.x with BIG-IP Lab
 
 .. warning :: For any remark or mistake in this lab, please reach out Matthieu DIERICK or fork this repo and fix it with a merge request.
 
-This section convers the concept and the goals of the lab.
+Video explaining the Arcadia Finance application and how you will deploy it.
 
-Class 1 :
-   - Understand the architecture
-   - Understand the differents steps in this lab
+.. raw :: html
 
-Class 2 :
-   - Deploy Arcadia Finance application into Kubernetes cluster
-   - Publish Arcadia application with NGINX and BIG-IP
-   - Protect Arcadia application with Advanced WAF
-   - Future - Protect arcadia application with NGINX App Protect controlled by the controller
-
-Class 3 : 
-   - Publish Arcadia API with OpenAPI 3.0 spec file
-   - Protect Arcadia API with BIG-IP Advanced WAF and APM
-   - Futur - Protect arcadia application with NGINX App Protect controlled by the controller
+    <div style="text-align: center; margin-bottom: 2em;">
+    <iframe width="1120" height="630" src="https://www.youtube.com/embed/0Xumf_VFlCE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
 
 .. toctree::
    :maxdepth: 1
