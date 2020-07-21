@@ -1,5 +1,5 @@
-Protect Arcadia Application
-###########################
+Protect Arcadia Application with Declarative WAF
+################################################
 
 .. warning :: ONLY IF YOU START THE LAB FROM HERE - ELSE DON'T READ THIS WARNING. If you want to start from here (because you are only interested by Declarative WAF), and do not want to run all the steps before, you can use ``Postman`` and ``Jenkins`` to create everything for you. To do so, follow the steps below.
     
