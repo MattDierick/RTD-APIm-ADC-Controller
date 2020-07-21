@@ -1,6 +1,26 @@
 Protect Arcadia Application
 ###########################
 
+.. warning :: ONLY IF YOU START THE LAB FROM HERE - ELSE DON'T READ THIS WARNING. If you want to start from here (because you are only interested by Declarative WAF), and do not want to run all the steps before, you can use ``Postman`` and ``Jenkins`` to create everything for you. To do so, follow the steps below.
+    
+    #. Open ``Jenkins`` and run the pipeline ``DeployMainApp``
+    #. Open ``Postman``, and select the collection ``Arcadia Manual Pipeline - no CICD``
+    #. Run the calls
+
+        #. Login to NGINX Controller
+        #. Create WebApp Application
+        #. Create MainApp Component
+        #. Create BackEnd Component
+    #. Open ``Jenkins`` and run the pipeline ``DeployApp2``
+    #. Open ``Postman``, and select the collection ``Arcadia Manual Pipeline - no CICD``
+    #. Run the call
+
+        #. Create App2 Component
+    #. Open ``Jenkins`` and run the pipeline ``DeployApp3``
+
+    Now, Arcadia App is fully deployed and the NGINX Controller is set up.
+
+
 In this module, we will deploy a WAF policy to protect Arcadia Bank application and we will publish it. With v16.0 (and in draft in v15.1), the WAF policy can be deployed via a declarative call, and the WAF policy itself is a JSON file.
 
 .. note :: We use the new v15.1/v16.0 Declarative WAF policy. You can retrieve the JSON Policy in the GitLab repo and below.
