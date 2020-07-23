@@ -8,7 +8,7 @@ In this section, we will publish and protect Arcadia API. There are 4 API allowi
    - Sell stocks
    - Make a money transfer
 
-The API specification is available here : https://app.swaggerhub.com/apis/F5EMEASSA/json_arcadia/1.0.0-oas3
+The API specification is available here : https://app.swaggerhub.com/apis/F5EMEASSA/Arcadia-OAS3/1.0.0-oas3
 
 .. image:: swagger.png
    :align: center
