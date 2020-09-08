@@ -10,7 +10,7 @@ Module 1 - Publish API with OAS3 spec file from the Controller GUI
    password: admin123!
 
 
-Step 1 - Create an API Application
+Step 1 - Create an New Application
 **********************************
 
 #. Click on top left corner icon, and click on ``Apps``
@@ -38,7 +38,7 @@ Step 2 - Create an API Definition
    #. Version : ``v1``
    #. Select ``OpenAPI specification`` 
    
-      #. and ``Copy and paste specification text`` **if you are not connected in the jumphost** from here : https://app.swaggerhub.com/apis/F5EMEASSA/json_arcadia/1.0.0-oas3
+      #. and ``Copy and paste specification text`` **if you are not connected in the jumphost** from here : https://app.swaggerhub.com/apis/F5EMEASSA/Arcadia-OAS3/1.0.0-oas3
       #. or ``Import file`` **if your are connected in the jumphost**, the file is located in Downloads folder and its name is ``arcadia-swagger3.yaml``
 
       .. image:: ../pictures/module1/oas_paste.png
