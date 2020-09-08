@@ -105,7 +105,7 @@ Check the files used here
 #. You can see several files, but the most important are 
 
     #. playbook-v16.yaml
-    #. as3-v16.yaml
+    #. as3-v16.json
     #. policy-fund-1.json
 
 #. Open ``policy-fund-1.json``
