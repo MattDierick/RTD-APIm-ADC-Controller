@@ -9,14 +9,12 @@ In this module, we will deploy the 2 main containers for Arcadia Bank applicatio
 .. image:: ../pictures/module1/MainApp.png
    :align: center
 
-
-
-**Connect to Jumhost RDP and Login as user / user**
-
 .. note :: As a DevOps, you will deploy Arcadia Application (main and back end pods) with an automation tool set
 
 Step 1 - Deploy Arcadia Main app with a CI/CD pipeline like a DevOps
 ********************************************************************
+
+**Connect to Jumhost RDP and Login as user / user**
 
 #. Open ``Chrome``, you can notice Chrome opens all the tabs for you
 
