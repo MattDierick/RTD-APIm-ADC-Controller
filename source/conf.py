@@ -16,6 +16,11 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+import sys
+import sphinx
+import sphinx_rtd_theme
+from sphinx.errors import VersionRequirementError
+
 # -- Project information -----------------------------------------------------
 
 project = u'NGINX Controller 3.x with BIG-IP Lab'
@@ -38,6 +43,8 @@ release = u''
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx_copybutton',
+    'sphinx_rtd_theme'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
