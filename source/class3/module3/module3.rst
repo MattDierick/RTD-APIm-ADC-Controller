@@ -73,7 +73,7 @@ Configure NGINX Controller with a new Identity Provider
          :align: center
          :scale: 75%
 
-.. note :: As you don't include any JWT token in your request, the API GW rejected the request. It is time to configure APM to inject this JWT Bearer SSO
+.. note :: As you don't insert any JWT token in your request, the API GW rejected the request. It is time to configure APM to inject this JWT Bearer SSO
 
 
 
@@ -82,11 +82,10 @@ Configure Adv. WAF and APM
 
 .. note :: In this lab we will use Access Guided Configuration and we will do some custom tuning in the policies. There are several ways to protect API with BIG-IP, but at the moment, we will focus on AGC so that you can understand how it works. GSA team is working on a dedicated UDF Blueprint for API Declarative WAF policy with v16.0
 
-#. Delete the existing ``vs-arcadia-api`` Virtual Server in the BIG_IP. We are going to create a new one from the Guided Configuration.
-
 #. Connect to the Jumhost (user / user)
 #. Open ``Chrome`` and connect to the BIG-IP (admin / admin)
-#. First of all, create a JWK Bearer SSO key. If you remember below, the key (encoded64) was ``aWxvdmVuZ2lueA``, and decoded64 ``ilovenginx``
+#. Delete the existing ``vs-arcadia-api`` Virtual Server in the BIG-IP. We are going to create a new one from the Guided Configuration.
+#. Create a JWK Bearer SSO key. If you remember below, the key (encoded64) was ``aWxvdmVuZ2lueA``, and decoded64 ``ilovenginx``
 
       #. Click ``Access`` > ``Federation`` > ``JSON Web Token`` > ``Key Configuration``
       #. Create a new key as below with the value ``ilovenginx`` as Shared Secret
@@ -110,7 +109,7 @@ Configure Adv. WAF and APM
 
    .. note ::  The OAS file is located in ``Downloads`` directory and its name is ``swaggerArcadia2.json``
 
-   #. Check the boxes ``Use Rate Limiting`` and OAuth 2.0``
+   #. Check the boxes ``Use Rate Limiting`` and ``OAuth 2.0``
 
       .. image:: ../pictures/module3/AGC-2.png
          :align: center
@@ -157,7 +156,7 @@ Configure Adv. WAF and APM
          :align: center
          :scale: 75%
 
-|
+   |
 
    #. Configure the ``Virtual Server`` as below
 
@@ -190,6 +189,11 @@ Configure Adv. WAF and APM
 .. note :: Congratulation, Arcadia API is protected by an Advanced WAF (you can check the policy) and APM in order to authenticate requests from 3 providers.
 
 .. note :: I invite you to check the Access > API Protection configuration
+
+.. warning :: In order to use Oauth with Azure AD, you have to force an update of the Azure JWT keys. In ``Federation`` > ``Oauth Client / Resource Server`` > ``Provider``, click on ``Start`` button to force APM to download the new keys.
+
+   .. image:: ../pictures/module3/refresh_keys.png
+      :align: center
 
 |
 
