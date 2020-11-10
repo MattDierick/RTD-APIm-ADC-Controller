@@ -38,20 +38,20 @@ Step 2 - Create an API Definition
    #. Version : ``v1``
    #. Select ``OpenAPI specification`` 
    
-      #. and ``Copy and paste specification text`` **if you are not connected in the jumphost** from here : https://app.swaggerhub.com/apis/F5EMEASSA/Arcadia-OAS3/1.0.0-oas3
-      #. or ``Import file`` **if your are connected in the jumphost**, the file is located in Downloads folder and its name is ``arcadia-swagger3.yaml``
+      #. and ``Copy and paste specification text`` **if you are not connected in the jumphost** from here : https://app.swaggerhub.com/apis/F5EMEASSA/Arcadia-OAS3/2.0.1-schema
+      #. or ``Import file`` **if your are connected in the jumphost**, the file is located in the ``Desktop`` folder and its name is ``OAS3-Arcadia.yaml``
 
       .. image:: ../pictures/module1/oas_paste.png
          :align: center
 
    #. Click ``Next``
-   #. You can see all the resources have been imported from the ``swagger file`` and please open one resource to check its parameters
+   #. You can see all the resources have been imported from the ``swagger file`` and please open one resource to check its content.
 
       .. image:: ../pictures/module1/resource_list.png
          :align: center
          :scale: 70%
 
-      .. image:: ../pictures/module1/resource_sell_stocks.png
+      .. image:: ../pictures/module1/resource_money_transfer.png
          :align: center
          :scale: 70%
 
@@ -65,6 +65,10 @@ Step 3 - Publish the API
 .. note :: At this stage, the API definition is created. So the controller knows the differents URI but doesn't know yet where to forward the traffic to.
 
 #. Click on the API definition raw, and on the right frame, click on ``+ Add Published API``
+   
+   .. image:: ../pictures/module1/add_published_api.png
+      :align: center
+
 #. Configure the mandatory settings 
    
    #. Name: ``prod-api``
@@ -96,10 +100,8 @@ Step 3 - Publish the API
          :align: center
          :scale: 70%
 
-      .. warning :: Don't forget to click on ``done`` 2 times. One ``done`` for the URI and one ``done`` for the workload
+      .. note :: Click ``Done`` then click ``Next``
    
-   #. You can see the workload
-
       .. note :: We only configure one workload as the API we will test is hosted in the main app K8S service (sell stocks and buy stocks)
 
    #. Click ``Next`` until the end and click ``Submit``
